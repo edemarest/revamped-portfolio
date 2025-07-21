@@ -1,0 +1,25 @@
+.playground {
+  padding: 4rem 2rem;
+  background: #121212;
+  color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-areas:
+    "funFact petPainter"
+    "tool3 tool4";
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto;
+  gap: 2rem;
+}
+
+.funFact {
+  grid-area: funFact;
+}
+
+.petPainter {
+  grid-area: petPainter;
+}
+
+/* Add tool3, tool4 areas later */
