@@ -12,9 +12,9 @@
 
 /* Base card style */
 .card {
-  background: #2a2a2a;
+  background: var(--color-card-bg);
   padding: 1.5rem;
-  border: 1px solid #444;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -25,28 +25,35 @@
 
 .card h3 {
   margin-bottom: 0.5rem;
+  color: var(--color-accent);
+  font-family: 'Bona Nova SC', 'DM Serif Display', serif;
+  letter-spacing: 0.02em;
 }
 
 .card p {
-  color: #ccc;
+  color: var(--color-text-secondary);
+  font-family: 'Manrope', sans-serif;
 }
 
 .card:hover {
-  border-color: #888;
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
 }
 
 /* Expanded cards styling */
 .expanded {
-  background: #333;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+  background: var(--color-card-bg);
+  box-shadow: 0 0 20px var(--color-glow-purple);
+  border-color: var(--color-accent);
 }
 
 /* Expanded content */
 .details {
   margin-top: 1rem;
-  color: #aaa;
+  color: var(--color-text-secondary);
   line-height: 1.5;
   animation: fadeIn 0.3s ease;
+  font-family: 'Manrope', sans-serif;
 }
 
 .projectImage {
@@ -75,11 +82,23 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: transparent;
+  background: var(--color-accent);
   border: none;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   cursor: pointer;
+  border-radius: 4px;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+  font-family: 'Manrope', sans-serif;
+}
+
+.close:hover {
+  background: var(--color-accent-alt);
 }
 
 /* Fade-in animation */

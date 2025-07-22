@@ -1,11 +1,39 @@
+/* ==========================================
+   FONT IMPORTS
+   ========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital,wght@0,400;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Mate+SC&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geo:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rationale&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
+
+/* ==========================================
+   ROOT VARIABLES & GLOBAL SETTINGS
+   ========================================== */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* Color Palette */
+  --color-bg: #0b0b0b;
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #cfcfcf;
+  --color-border: #333333;
+  --color-card-bg: #1a1a1a;
+
+  --color-accent: #f54e4e;
+  --color-accent-alt: #e4686e;
+  --color-glow-purple: #bb55ff;
+
+  /* Typography */
+  font-family: 'Manrope', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* System Settings */
+  color-scheme: dark;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,62 +41,436 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ==========================================
+   HTML & BODY STYLES
+   ========================================== */
 html {
   scroll-behavior: smooth;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-/* src/index.css */
-
 body {
   margin: 0;
   padding: 0;
-  background-color: #1e1e1e;
-  color: white;
-  font-family: system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: 'Manrope', sans-serif;
+  width: 100%;
+  min-height: 100vh;
 }
 
+/* ==========================================
+   MAIN LAYOUT & CONTAINER STYLES
+   ========================================== */
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================
+   SECTION & TYPOGRAPHY STYLES
+   ========================================== */
 section {
   padding: 4rem 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive section padding */
+@media (max-width: 768px) {
+  section {
+    padding: 2rem 1rem;
+  }
 }
 
 .section-header {
   text-align: center;
   margin-bottom: 2rem;
+  font-family: 'Michroma', 'DM Serif Display', serif;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
 }
 
-h1, h2 {
+h1, h2, h3, h4 {
   margin-bottom: 1rem;
+  font-family: 'Bona Nova SC', 'DM Serif Display', serif;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
 }
 
+p {
+  color: var(--color-text-primary);
+  font-family: 'Manrope', sans-serif;
+}
+
+/* ==========================================
+   LINK STYLES
+   ========================================== */
+a {
+  font-weight: 500;
+  color: var(--color-accent);
+  text-decoration: inherit;
+  font-family: 'Manrope', sans-serif;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-accent-alt);
+}
+
+/* ==========================================
+   BUTTON & INTERACTIVE ELEMENTS
+   ========================================== */
+button {
+  font-family: 'Manrope', sans-serif;
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: 500;
+}
+
+button:hover {
+  background: var(--color-accent-alt);
+}
+
+input, textarea {
+  font-family: 'Manrope', sans-serif;
+  background: var(--color-card-bg);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.6rem;
+}
+
+/* Connection Buttons Container */
+.connection-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Red Glow Button - Primary Action */
+.btn-red-glow {
+  background-color: black;
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
+  color: var(--color-text-primary);
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  font-family: 'Manrope', sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-red-glow:hover {
+  color: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent), 0 0 20px var(--color-accent);
+  transform: scale(1.05);
+  animation: pulseGlow 2s infinite;
+}
+
+/* Icon styling for better hover effects in red glow button */
+.btn-red-glow svg {
+  color: var(--color-text-primary);
+  transition: color 0.3s ease;
+}
+
+.btn-red-glow:hover svg {
+  color: var(--color-accent);
+}
+
+/* Circular Icon Button */
+.icon-circle {
+  background-color: black;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  color: var(--color-text-primary);
+  width: 48px;
+  height: 48px;
+  font-family: 'Manrope', sans-serif;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.icon-circle:hover {
+  color: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent), 0 0 20px var(--color-accent);
+  transform: scale(1.1);
+  animation: pulseGlow 1.5s infinite ease-in-out;
+}
+
+/* Icon styling for better hover effects */
+.icon-circle svg {
+  color: var(--color-text-primary);
+  transition: color 0.3s ease;
+}
+
+.icon-circle:hover svg {
+  color: var(--color-accent);
+}
+
+/* Icon Classes */
+.icon-download::before {
+  content: "⬇";
+  font-style: normal;
+}
+
+.icon-linkedin::before {
+  content: "💼";
+  font-style: normal;
+}
+
+.icon-github::before {
+  content: "🐙";
+  font-style: normal;
+}
+
+.icon-twitter::before {
+  content: "🐦";
+  font-style: normal;
+}
+
+/* ==========================================
+   FOOTER STYLES
+   ========================================== */
 footer {
   text-align: center;
   padding: 2rem;
-  border-top: 1px solid #444;
+  border-top: 1px solid var(--color-border);
   font-size: 0.9rem;
-  color: #aaa;
+  color: var(--color-text-secondary);
+  width: 100%;
+  box-sizing: border-box;
 }
 
+/* ==========================================
+   MASONRY GRID LAYOUT
+   ========================================== */
 .masonry-grid {
   display: flex;
   margin-left: -1rem;
   width: auto;
 }
+
 .masonry-grid_column {
   padding-left: 1rem;
   background-clip: padding-box;
 }
+
 .masonry-grid_column > div {
   margin-bottom: 1.5rem;
+}
+
+/* ==========================================
+   ANIMATION KEYFRAMES
+   ========================================== */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%   { box-shadow: 0 0 6px var(--color-accent); }
+  50%  { box-shadow: 0 0 12px var(--color-accent); }
+  100% { box-shadow: 0 0 6px var(--color-accent); }
+}
+
+@keyframes gradientTextFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.animatedGradientText {
+  background: linear-gradient(
+    90deg,
+    #ff4d4d,
+    #ff9999,
+    #ffc0cb,
+    #ff9999,
+    #ff4d4d
+  );
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientTextFlow 6s ease-in-out infinite alternate;
+  display: block;
+}
+
+/* ==========================================
+   UTILITY CLASSES
+   ========================================== */
+.text-accent { 
+  color: var(--color-accent); 
+}
+
+.text-secondary { 
+  color: var(--color-text-secondary); 
+}
+
+.glow-purple { 
+  box-shadow: 0 0 20px var(--color-glow-purple); 
+}
+
+.card-bg { 
+  background: var(--color-card-bg); 
+}
+
+.border-accent {
+  border-color: var(--color-accent);
+}
+
+/* Navigation Active Link Styles */
+.nav-link-active {
+  color: var(--color-accent);
+  position: relative;
+}
+
+.nav-link-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 100%;
+  background: var(--color-accent);
+  border-radius: 1px;
+  animation: nav-underline-slide 0.3s ease-in-out;
+}
+
+@keyframes nav-underline-slide {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+/* Hover Glow Effect */
+.glow-on-hover {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.glow-on-hover:hover {
+  color: var(--color-accent);
+  text-shadow: 0 0 6px var(--color-accent), 0 0 12px var(--color-accent);
+}
+
+/* Scroll Shadow Effect */
+.scrolled {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  background-color: rgba(0, 0, 0, 0.75) !important;
+}
+
+/* ==========================================
+   RESPONSIVE UTILITIES
+   ========================================== */
+/* Ensure all elements respect box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive container for very large screens */
+@media (min-width: 1920px) {
+  section {
+    padding: 4rem 4rem;
+  }
+}
+
+/* Medium screens */
+@media (max-width: 1024px) {
+  section {
+    padding: 3rem 2rem;
+  }
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+  section {
+    padding: 2rem 1rem;
+  }
+
+  /* Responsive connection buttons */
+  .connection-buttons {
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .btn-red-glow {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .icon-circle {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  section {
+    padding: 1.5rem 0.75rem;
+  }
+  
+  .section-header {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Responsive connection buttons */
+  .connection-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-red-glow {
+    width: 200px;
+    justify-content: center;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .icon-circle {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
 }
 
