@@ -1,0 +1,221 @@
+.card {
+  background: var(--color-card-bg);
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  height: auto;
+  min-height: 390px;
+  max-height: none;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 0 transparent;
+}
+
+.card:hover {
+  border-color: #f54e4e;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(245, 78, 78, 0.15);
+}
+
+/* Optional selected card effect */
+.cardSelected {
+  border: 1.5px solid #f54e4e;
+  box-shadow: 0 0 0 1px rgba(245, 78, 78, 0.35);
+}
+
+.title {
+  margin: 0.5rem 0 0.4rem 0;
+  font-family: var(--font-header, 'Manrope', 'Segoe UI', sans-serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #f54e4e;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  min-height: 2.2em;
+}
+
+.cardDescription {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  font-family: 'Manrope', sans-serif;
+  line-height: 1.45;
+  margin-top: auto;
+  margin-bottom: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  min-height: 4.8em;
+}
+
+.cardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin: 0.6rem 0 0.5rem 0;
+}
+
+.projectImage {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+
+/* Modal styles */
+/* Modal overlay with fade+blur+scale animation */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Modal container with elevated styling */
+.modal {
+  background: var(--color-card-bg);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  max-width: 940px;
+  width: 95vw;
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 2.8rem 2.2rem 2.2rem 2.2rem;
+  position: relative;
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+/* Top right close button */
+.closeModal {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: #f54e4e;
+  border: none;
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+  font-family: inherit;
+  z-index: 10;
+}
+
+.closeModal:hover {
+  background: var(--color-accent-alt);
+}
+
+/* Grid layout for modal content */
+.expandedGrid {
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  align-items: flex-start;
+  padding-top: 0.2rem;
+}
+
+.mediaColumn {
+  flex: 0 0 260px;
+  max-width: 320px;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.textColumn {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Mobile layout */
+@media (max-width: 700px) {
+  .expandedGrid {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .mediaColumn {
+    max-width: 100%;
+    min-width: 0;
+    align-items: center;
+  }
+}
+
+/* Header matches section headers */
+.textColumn h3 {
+  font-family: var(--font-header, 'Manrope', 'Segoe UI', sans-serif);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  color: #f54e4e;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+/* Tags inside modal */
+.cardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+}
+
+/* Description */
+.cardDescription {
+  color: var(--color-text-secondary);
+  font-family: 'Manrope', sans-serif;
+  line-height: 1.6;
+  font-size: 0.97rem;
+  margin: 0;
+  white-space: pre-line;
+}
+
+/* View Project button */
+.viewProjectButton {
+  padding: 0.7rem 1.6rem;
+  background-color: #f54e4e;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 999px;
+  display: inline-block;
+  margin-top: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-align: center;
+  width: fit-content;
+}
+
+.viewProjectButton:hover {
+  background-color: var(--color-accent-alt);
+  transform: translateY(-1px);
+}

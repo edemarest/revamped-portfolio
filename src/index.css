@@ -24,6 +24,8 @@
   --color-accent: #f54e4e;
   --color-accent-alt: #e4686e;
   --color-glow-purple: #bb55ff;
+  --static-gradient-redwhite: linear-gradient(90deg, #f54e4e 0%, #fff 70%);
+  --animated-gradient: linear-gradient(90deg, #ff4d4d, #ff9999, #ffc0cb, #ff9999, #ff4d4d);
 
   /* Typography */
   font-family: 'Manrope', sans-serif;
@@ -71,7 +73,7 @@ body {
    SECTION & TYPOGRAPHY STYLES
    ========================================== */
 section {
-  padding: 4rem 2rem;
+  padding: 1rem 2rem;
   width: 100%;
   box-sizing: border-box;
 }
@@ -407,7 +409,7 @@ img {
 /* Responsive container for very large screens */
 @media (min-width: 1920px) {
   section {
-    padding: 4rem 4rem;
+    padding: 2rem 2rem;
   }
 }
 

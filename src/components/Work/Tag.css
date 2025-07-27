@@ -1,0 +1,56 @@
+.tag-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.3em 1.1em;
+  font-size: 0.97em;
+  font-weight: 600;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+  font-family: inherit;
+  white-space: nowrap;
+  user-select: none;
+  line-height: 1;
+  margin: 0 0.3rem 0.5rem 0;
+}
+
+.tag-icon {
+  display: inline-flex;
+  font-size: 1em;
+  vertical-align: middle;
+}
+
+/* ---------------- FILTER (top bar) ---------------- */
+
+.tag-filter {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+
+.tag-filter:hover {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 1px rgba(245, 78, 78, 0.3),
+              0 0 6px rgba(245, 78, 78, 0.2);
+}
+
+.tag-selected {
+  background: #f54e4e;
+  color: #fff;
+  border-color: #f54e4e;
+  box-shadow: 0 2px 8px rgba(245, 78, 78, 0.2),
+              0 0 0 1px rgba(245, 78, 78, 0.4),
+              0 0 10px rgba(245, 78, 78, 0.5);
+}
+
+/* ---------------- CARD (project static tag) ---------------- */
+
+.tag-card {
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: default;
+}

@@ -34,6 +34,7 @@ export default function Hero() {
 
   return (
     <section id="hero" className={styles.hero}>
+      <div className={styles.avatarRedBlend} />
       <div className={styles.fadeOverlay} />
 
       {/* ---- Media Background Layer ---- */}
@@ -54,7 +55,7 @@ export default function Hero() {
             ELLA DEMAREST
           </h1>
 
-          <h2 className={`${styles.title} ${isTypingDone ? styles.fadeIn : styles.hidden} animatedGradientText`}>
+          <h2 className={`${styles.title} ${isTypingDone ? styles.fadeIn : styles.hidden} ${styles.staticGradientText}`}>
             Full-Stack Developer
           </h2>
 
@@ -68,33 +69,32 @@ export default function Hero() {
           </div>
 
           <div className={`${styles.connectionButtons} connection-buttons`}>
-            <a href="/resume.pdf" className="btn-red-glow" download>
-              <FaDownload />
-              Resume
+            <a href="/resume.pdf" className={styles.circleGradientButton} download>
+              <FaDownload className={`animatedGradientText ${styles.circleGradientIcon}`} />
             </a>
             <a
               href="https://linkedin.com/in/yourusername"
-              className="icon-circle"
+              className={styles.circleGradientButton}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaLinkedin />
+              <FaLinkedin className={`animatedGradientText ${styles.circleGradientIcon}`} />
             </a>
             <a
               href="https://github.com/yourusername"
-              className="icon-circle"
+              className={styles.circleGradientButton}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaGithub />
+              <FaGithub className={`animatedGradientText ${styles.circleGradientIcon}`} />
             </a>
             <a
               href="https://twitter.com/yourusername"
-              className="icon-circle"
+              className={styles.circleGradientButton}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaTwitter />
+              <FaTwitter className={`animatedGradientText ${styles.circleGradientIcon}`} />
             </a>
           </div>
         </div>
