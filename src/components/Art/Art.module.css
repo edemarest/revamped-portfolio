@@ -1,0 +1,122 @@
+.artSection {
+  width: 100%;
+  padding: 2rem 0;
+  background: transparent;
+}
+
+.artGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  row-gap: 3.8rem;
+  column-gap: 2.2rem;
+  justify-items: center;
+  align-items: start;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.artItem {
+  position: relative;
+  background: rgba(20, 20, 20, 0.7);
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12), 0 0 0 3px #222, 0 0 0 6px var(--color-accent);
+  padding: 0.35rem 0.35rem 0.6rem 0.35rem;
+  transition: transform 0.4s cubic-bezier(.5,1.5,.5,1), box-shadow 0.3s;
+  animation: swingBack 0.7s cubic-bezier(.5,1.5,.5,1);
+.artItem:not(:hover) {
+  animation: swingBack 0.7s cubic-bezier(.5,1.5,.5,1);
+}
+
+@keyframes swingBack {
+  0% { transform: rotate(var(--random, 4deg)) scale(1.04); }
+  60% { transform: rotate(-2deg) scale(1.01); }
+  80% { transform: rotate(1deg) scale(1.01); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+  will-change: transform;
+  z-index: 1;
+  min-width: 200px;
+  max-width: 400px;
+  opacity: 0.95;
+}
+.artItem:hover {
+  transform: rotate(var(--random, 4deg)) scale(1.04);
+  box-shadow: 0 8px 32px var(--color-accent), 0 0 0 3px #222, 0 0 0 6px var(--color-accent);
+}
+
+.artImg {
+  width: 100%;
+  aspect-ratio: 1 / 1.25;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  display: block;
+  background: #222;
+}
+
+/* Tape corners */
+
+.tapeTop {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 80px;
+  height: 20px;
+  background: linear-gradient(90deg, var(--color-accent) 60%, #fff 100%);
+  opacity: 0.7;
+  border-radius: 0;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  pointer-events: none;
+}
+.tapeBottom {
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%) rotate(2deg);
+  width: 80px;
+  height: 20px;
+  background: linear-gradient(90deg, var(--color-accent) 60%, #fff 100%);
+  opacity: 0.7;
+  border-radius: 0;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .artGrid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.2rem;
+  }
+  .artItem {
+    min-width: 140px;
+    max-width: 260px;
+    padding: 0.7rem 0.7rem 1.1rem 0.7rem;
+  }
+  .tapeTopLeft, .tapeTopRight, .tapeBottomLeft, .tapeBottomRight {
+    width: 32px;
+    height: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .artSection {
+    padding: 1rem 0;
+  }
+  .artGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+  }
+  .artItem {
+    min-width: 100px;
+    max-width: 160px;
+    padding: 0.4rem 0.4rem 0.7rem 0.4rem;
+  }
+  .tapeTopLeft, .tapeTopRight, .tapeBottomLeft, .tapeBottomRight {
+    width: 18px;
+    height: 7px;
+  }
+}

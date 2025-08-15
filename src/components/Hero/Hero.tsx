@@ -3,6 +3,10 @@ import styles from './Hero.module.css'
 import heroGif from '../../assets/hero-bg.gif'
 import heroAvatar from '../../assets/hero-avatar.png'
 import { FaDownload, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa'
+import bipLogo from '../../assets/company-logos/bip-logo.png'
+import regeneronLogo from '../../assets/company-logos/regeneron-logo.png'
+import remixLogo from '../../assets/company-logos/remix-logo.png'
+import vueLogo from '../../assets/company-logos/vue-logo.svg'
 
 export default function Hero() {
   const taglines = [
@@ -45,6 +49,25 @@ export default function Hero() {
 
       {/* ---- Avatar Layer ---- */}
       <img src={heroAvatar} alt="Ella Demarest Avatar" className={styles.avatar} />
+
+      {/* ---- Company Diamond Logos ---- */}
+      <div className={styles.companyDiamondContainer}>
+        {/* <div className={styles.companyLabel}>Companies I’ve Worked With</div> */}
+        <div className={styles.companyDiamond}>
+          <a href="https://remix.com" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
+            <img src={remixLogo} alt="Remix Therapeutics" />
+          </a>
+          <a href="https://vue.com" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
+            <img src={vueLogo} alt="Vue Health" />
+          </a>
+          <a href="https://bip.com" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
+            <img src={bipLogo} alt="BIP" />
+          </a>
+          <a href="https://regeneron.com" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
+            <img src={regeneronLogo} alt="Regeneron" />
+          </a>
+        </div>
+      </div>
 
       {/* ---- Foreground Text ---- */}
       <div className={styles.content}>

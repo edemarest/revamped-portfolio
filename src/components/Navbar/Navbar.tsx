@@ -11,7 +11,7 @@ export default function Navbar() {
       setIsScrolled(window.scrollY > 10)
 
       // Find active section
-      const sections = ['hero', 'projects', 'playground', 'art', 'about']
+      const sections = ['hero', 'projects', 'showcase', 'art', 'about']
       const current = sections.find(section => {
         const element = document.getElementById(section)
         if (element) {
@@ -44,7 +44,7 @@ export default function Navbar() {
       <ul className={styles.navList}>
         <li><a href="#hero" className={getLinkClasses('hero')}>Home</a></li>
         <li><a href="#projects" className={getLinkClasses('projects')}>Projects</a></li>
-        <li><a href="#playground" className={getLinkClasses('playground')}>Playground</a></li>
+        <li><a href="#showcase" className={getLinkClasses('showcase')}>Showcase</a></li>
         <li><a href="#art" className={getLinkClasses('art')}>Art</a></li>
         <li><a href="#about" className={getLinkClasses('about')}>About</a></li>
       </ul>

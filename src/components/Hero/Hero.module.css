@@ -1,3 +1,138 @@
+/* Company Diamond Container and Label */
+.companyDiamondContainer {
+  position: absolute;
+  top: 50%;
+  right: 2.5rem;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 4;
+}
+.companyLabel {
+  font-size: 1.1rem;
+  font-family: 'Michroma', 'DM Serif Display', serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+  background: var(--animated-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  opacity: 0;
+  animation: fadeInLabel 1.2s ease forwards;
+}
+@keyframes fadeInLabel {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+
+.companyDiamond {
+  position: relative;
+  width: 380px;
+  height: 190px;
+  pointer-events: none;
+  display: block;
+}
+
+
+.companyLogo {
+  position: absolute;
+  width: 180px;
+  height: 70px;
+  background: transparent;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.22);
+  backdrop-filter: blur(8px) saturate(180%);
+  -webkit-backdrop-filter: blur(8px) saturate(180%);
+  cursor: pointer;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.55;
+  transition: opacity 0.4s, box-shadow 0.3s;
+}
+.companyLogo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.55;
+  transition: filter 0.4s, opacity 0.4s;
+}
+.companyLogo:hover {
+  opacity: 1;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.32);
+}
+.companyLogo:hover img {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+}
+/* Diamond positions - scaled up */
+.companyLogo:nth-child(1) {
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0);
+}
+.companyLogo:nth-child(2) {
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.companyLogo:nth-child(3) {
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.companyLogo:nth-child(4) {
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 1024px) {
+  .companyDiamondContainer {
+    right: 1rem;
+  }
+  .companyDiamond {
+    width: 220px;
+    height: 110px;
+  }
+  .companyLogo {
+    width: 110px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .companyDiamondContainer {
+    position: static;
+    margin: 1rem auto 0 auto;
+    transform: none;
+    width: 100%;
+    align-items: center;
+  }
+  .companyDiamond {
+    position: static;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0;
+  }
+  .companyLogo {
+    position: static;
+    width: 80px;
+    height: 32px;
+    margin: 0.25rem;
+  }
+}
 /* SVG wave frame corners for hero bottom */
 .waveFrameLeft, .waveFrameRight {
   position: absolute;
@@ -76,8 +211,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 25%, rgba(0, 0, 0, 0.1) 60%, transparent 100%),
-    linear-gradient(to right top, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.2) 70%, transparent 100%);
+    linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 25%, rgba(0, 0, 0, 0.25) 60%, transparent 100%),
+    linear-gradient(to right top, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0.85) 50%, rgba(0, 0, 0, 0.35) 70%, transparent 100%);
   z-index: 2;
   pointer-events: none;
 }

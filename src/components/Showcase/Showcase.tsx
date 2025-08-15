@@ -9,10 +9,10 @@ const breakpointColumnsObj = {
   700: 1
 }
 
-export default function Playground() {
+export default function Showcase() {
   return (
-    <section id="playground" style={{ padding: '2rem' }}>
-      <h2>🧪 Playground</h2>
+    <section id="showcase" style={{ padding: '2rem' }}>
+      <h2>🧪 Showcase</h2>
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="masonry-grid"
