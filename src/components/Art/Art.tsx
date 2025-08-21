@@ -2,21 +2,11 @@
 
 import React from 'react'
 import styles from './Art.module.css'
-import caroline from '../../assets/art/caroline.png'
-import ember from '../../assets/art/ember.jpg'
-import dabi from '../../assets/art/dabi.png'
-import gibdo from '../../assets/art/gibdo.png'
-import hawks from '../../assets/art/hawks.png'
-import eva from '../../assets/art/eva.png'
 
-const artImages = [
-  caroline,
-  ember,
-  dabi,
-  gibdo,
-  hawks,
-  eva,
-]
+// Dynamically import all images from assets/art
+const artImages = Object.values(
+  import.meta.glob('../../assets/art/*.{png,jpg,jpeg,gif}', { eager: true, as: 'url' })
+)
 
 export default function Art() {
   return (

@@ -50,7 +50,7 @@ export default function ProjectCard({ project, isExpanded, onOpen, onClose }: Pr
                                 <h3>{project.title}</h3>
                                 <div className={styles.cardTags}>
                                     {project.tags.map(tag => (
-                                        <span key={tag} className={styles.tag}>
+                                        <span key={tag} className={styles.modalTag}>
                                             {tagIconMap[tag]} {tag}
                                         </span>
                                     ))}

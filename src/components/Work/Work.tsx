@@ -1,7 +1,6 @@
 import styles from './Work.module.css'
 import { useState, useMemo } from 'react'
 import ProjectCard from './ProjectCard'
-import { tagIconMap } from './TagIcons'
 import projectData from '../../projects.json'
 import Tag from './Tag'
 
