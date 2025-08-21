@@ -50,9 +50,8 @@ export default function Hero() {
       {/* ---- Avatar Layer ---- */}
       <img src={heroAvatar} alt="Ella Demarest Avatar" className={styles.avatar} />
 
-      {/* ---- Company Diamond Logos ---- */}
+      {/* ---- Company Logos Grid ABOVE icons ---- */}
       <div className={styles.companyDiamondContainer}>
-        {/* <div className={styles.companyLabel}>Companies I’ve Worked With</div> */}
         <div className={styles.companyDiamond}>
           <a href="https://remix.com" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
             <img src={remixLogo} alt="Remix Therapeutics" />
@@ -91,6 +90,7 @@ export default function Hero() {
             </p>
           </div>
 
+          {/* ---- Connection Icons (horizontal on mobile) ---- */}
           <div className={`${styles.connectionButtons} connection-buttons`}>
             <a href="/resume.pdf" className={styles.circleGradientButton} download>
               <FaDownload className={`animatedGradientText ${styles.circleGradientIcon}`} />

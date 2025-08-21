@@ -1,66 +1,89 @@
 .tag-base {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 0.5em;
-  padding: 0.3em 1.1em;
-  font-size: 0.97em;
-  font-weight: 600;
+  padding: 0.32em 1.1em;
   border-radius: 999px;
-  transition: all 0.25s ease;
-  font-family: inherit;
-  white-space: nowrap;
+  background: linear-gradient(90deg, rgba(255, 34, 34, 0.20) 0%, rgba(255, 68, 68, 0.37) 100%);
+  color: #ffb3b3;
+  font-weight: 600;
+  font-size: 0.8rem;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s, transform 0.18s;
   user-select: none;
-  line-height: 1;
-  margin: 0 0.3rem 0.5rem 0;
 }
 
 .tag-icon {
-  display: inline-flex;
-  font-size: 1em;
-  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 0.8em;
+  transition: color 0.2s;
 }
 
 /* ---------------- FILTER (top bar) ---------------- */
 
 .tag-filter {
-  background: rgba(255, 255, 255, 0.08);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  cursor: pointer;
-  backdrop-filter: blur(4px);
+  font-size: 1.07em;
+  padding: 0.2em 0.9em;
+  margin-right: 0.7em;
+  margin-bottom: 0.3em;
+  background: linear-gradient(90deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.18) 100%);
+  color: #fff;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s, transform 0.18s;
 }
 
 .tag-filter:hover {
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 0 1px rgba(245, 78, 78, 0.3),
-              0 0 6px rgba(245, 78, 78, 0.2);
+  background: linear-gradient(90deg, rgba(245,78,78,0.22) 0%, rgba(245,78,78,0.22) 100%);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(245,78,78,0.13);
+  transform: scale(1.12);
+  z-index: 2;
+}
+.tag-filter:hover .tag-icon {
+  color: #fff;
 }
 
-.tag-selected {
-  background: #f54e4e;
-  color: #fff;
-  border-color: #f54e4e;
-  box-shadow: 0 2px 8px rgba(245, 78, 78, 0.2),
-              0 0 0 1px rgba(245, 78, 78, 0.4),
-              0 0 10px rgba(245, 78, 78, 0.5);
+.tag-filter.tag-selected {
+  background: linear-gradient(90deg, rgba(245,78,78,0.38) 0%, rgba(245,78,78,0.38) 100%);
+  color: var(--color-accent);
+  box-shadow: 0 2px 18px rgba(245,78,78,0.22);
+  transform: scale(1.08);
+  z-index: 2;
+}
+.tag-filter.tag-selected .tag-icon {
+  color: var(--color-accent);
 }
 
 /* ---------------- CARD (project static tag) ---------------- */
 
 .tag-card {
-  background: rgba(255, 255, 255, 0.07);
-  color: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  cursor: default;
+  font-size: 0.85em;
+  padding: 0.26em 0.7em;
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  border: none;
+  box-shadow: none;
+  transition: background 0.18s, color 0.18s;
 }
 
-.tag-card-small {
-  font-size: 0.7em;
-  padding: 0.4em 1.2em;
-  gap: 0.1em;
+.tag-card:hover {
+  background: rgba(245,78,78,0.22);
+  color: #fff;
 }
-.tag-card-small .tag-icon {
-  font-size: 0.6em !important;
-  margin-right: 4px;
+
+.tag-card.tag-selected {
+  background: rgba(245,78,78,0.38);
+  color: var(--color-accent);
+}
+.tag-card.tag-selected .tag-icon {
+  color: var(--color-accent);
+}
+
+.tag-card .tag-icon {
+  color: #fff;
+  font-size: 0.95em;
+  transition: color 0.18s;
 }

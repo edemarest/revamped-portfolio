@@ -6,8 +6,7 @@ import MobileModelViewer from './MobileModelViewer';
 import styles from './ModelsCarousel.module.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { FaRegHandPointer } from 'react-icons/fa'; // swap icon
-
+import { FaRegHandPointer, FaChevronLeft, FaChevronRight, FaCube } from 'react-icons/fa';
 
 type Model = {
   url: string;
@@ -72,42 +71,87 @@ const ModelsCarousel: React.FC = () => {
   const rightIdx = (currentSlide + 1) % models.length;
 
   return (
-    <div>
+    <div style={{ position: 'relative' }}>
+      {/* Absolutely positioned ModelViewer over the center slide */}
+      <div
+        style={{
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 10,
+          width: '380px',
+          height: '380px',
+          pointerEvents: 'auto'
+        }}
+        className={styles.centerSlide}
+      >
+        <ErrorBoundary>
+          <React.Suspense fallback={<img src={models[currentSlide].thumbnail} alt={models[currentSlide].url} className={styles.staticImg} />}>
+            <ModelViewer
+              modelPath={models[currentSlide].url}
+              cameraConfig={models[currentSlide].camera}
+              scale={models[currentSlide].scale}
+            />
+          </React.Suspense>
+        </ErrorBoundary>
+        {/* Overlay rotation/box icon in bottom-right */}
+        <div className={styles.centerPanIcon}>
+          <FaCube size={28} />
+        </div>
+      </div>
+      {/* Carousel grid for navigation and thumbnails */}
       <div className={styles.customCarousel}>
-        {/* Left Slide (static) */}
-        <div className={styles.sideSlide}>
+        {/* Left Arrow */}
+        <button
+          className={`${styles.carouselArrow} ${styles.left}`}
+          aria-label="Previous"
+          onClick={() => setCurrentSlide(leftIdx)}
+        >
+          <FaChevronLeft size={28} />
+        </button>
+        {/* Left Slide (static image only, clickable) */}
+        <div
+          className={styles.sideSlide}
+          style={{ cursor: 'pointer' }}
+          onClick={() => setCurrentSlide(leftIdx)}
+        >
           <img src={models[leftIdx].thumbnail} alt={models[leftIdx].url} className={styles.staticImg} />
           <button
             className={styles.rotateBtn}
             aria-label="Select this model"
-            onClick={() => setCurrentSlide(leftIdx)}
+            onClick={e => { e.stopPropagation(); setCurrentSlide(leftIdx); }}
           >
             <FaRegHandPointer size={24} />
           </button>
         </div>
-        {/* Center Slide (interactive) */}
-        <div className={styles.centerSlide}>
-          <ErrorBoundary>
-            <React.Suspense fallback={<img src={models[currentSlide].thumbnail} alt={models[currentSlide].url} className={styles.staticImg} />}>
-              <ModelViewer
-                modelPath={models[currentSlide].url}
-                cameraConfig={models[currentSlide].camera}
-                scale={models[currentSlide].scale}
-              />
-            </React.Suspense>
-          </ErrorBoundary>
+        {/* Center Slide (empty, just for layout) */}
+        <div className={styles.centerSlide} style={{ opacity: 0, pointerEvents: 'none' }}>
+          {/* Empty, ModelViewer is absolutely positioned above */}
         </div>
-        {/* Right Slide (static) */}
-        <div className={styles.sideSlide}>
+        {/* Right Slide (static image only, clickable) */}
+        <div
+          className={styles.sideSlide}
+          style={{ cursor: 'pointer' }}
+          onClick={() => setCurrentSlide(rightIdx)}
+        >
           <img src={models[rightIdx].thumbnail} alt={models[rightIdx].url} className={styles.staticImg} />
           <button
             className={styles.rotateBtn}
             aria-label="Select this model"
-            onClick={() => setCurrentSlide(rightIdx)}
+            onClick={e => { e.stopPropagation(); setCurrentSlide(rightIdx); }}
           >
             <FaRegHandPointer size={24} />
           </button>
         </div>
+        {/* Right Arrow */}
+        <button
+          className={`${styles.carouselArrow} ${styles.right}`}
+          aria-label="Next"
+          onClick={() => setCurrentSlide(rightIdx)}
+        >
+          <FaChevronRight size={28} />
+        </button>
       </div>
       {/* Dots navigation */}
       <ul className={styles.slickDots}>

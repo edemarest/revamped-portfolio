@@ -3,6 +3,7 @@ import { useState, useMemo } from 'react'
 import ProjectCard from './ProjectCard'
 import projectData from '../../projects.json'
 import Tag from './Tag'
+import { FaFilter } from 'react-icons/fa'
 
 type Project = {
   id: string
@@ -44,8 +45,19 @@ export default function Work() {
   }
 
   return (
-    <section id="projects" className={styles.work}>
-      <h2 className="section-header">Projects</h2>
+    <section id="projects" className="section">
+      <div className="section-header">
+        <h2 className="section-title">Projects</h2>
+        <p className="section-body">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur consectetur, nisl nisi consectetur nisi, euismod euismod nisi nisi euismod.
+        </p>
+        <div className="section-subtitle">
+          <FaFilter className="section-subtitle-icon" />
+          <span className="section-subtitle-text">
+            Filter projects by technology or stack.
+          </span>
+        </div>
+      </div>
       <div className={styles.tagBar}>
         {allTags.map(tag => (
           <Tag
@@ -55,7 +67,6 @@ export default function Work() {
             selected={selectedTags.includes(tag)}
             onClick={() => handleTagClick(tag)}
           />
-
         ))}
       </div>
       <div className={styles.cardGrid}>

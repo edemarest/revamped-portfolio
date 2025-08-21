@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import styles from './MobileModelViewer.module.css';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 type Model = {
   url: string;
@@ -12,14 +14,36 @@ interface Props {
 }
 
 const MobileModelViewer: React.FC<Props> = ({ models }) => {
+  const [current, setCurrent] = useState(0);
+
+  if (!models.length) return null;
+
+  const prevIdx = (current - 1 + models.length) % models.length;
+  const nextIdx = (current + 1) % models.length;
+
   return (
-    <div>
-      {/* Mobile model grid will be implemented here */}
-      {models.map((model, idx: number) => (
-        <div key={idx}>
-          <img src={model.thumbnail} alt={model.url} style={{ width: '100%', height: '100%' }} />
-        </div>
-      ))}
+    <div className={styles.carouselWrapper}>
+      <button
+        className={styles.arrow}
+        aria-label="Previous"
+        onClick={() => setCurrent(prevIdx)}
+      >
+        <FaChevronLeft size={22} />
+      </button>
+      <div className={styles.imageFrame}>
+        <img
+          src={models[current].thumbnail}
+          alt={models[current].url}
+          className={styles.image}
+        />
+      </div>
+      <button
+        className={styles.arrow}
+        aria-label="Next"
+        onClick={() => setCurrent(nextIdx)}
+      >
+        <FaChevronRight size={22} />
+      </button>
     </div>
   );
 };

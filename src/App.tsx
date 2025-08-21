@@ -7,10 +7,6 @@ import ModelsSection from './components/Models/ModelsSection'
 import About from './components/About/About'
 import Footer from './components/Footer/Footer'
 
-
-
-import ModelViewer from './components/Models/ModelViewer';
-
 function App() {
   return (
     <>
@@ -18,7 +14,7 @@ function App() {
       <Hero />
       <div className="body-gradient-line" />
       <Work />
-      <Showcase />
+      {/* <Showcase /> */}
       <Art />
       <ModelsSection />
       <About />

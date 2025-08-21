@@ -38,10 +38,15 @@ const ModelPrimitive = React.memo(function ModelPrimitive({ modelPath, scale }: 
   return <primitive object={scene} scale={finalScale} position={[0, -1, 0]} />;
 });
 
+// Track canvas count for debugging
+let canvasCount = 0;
+
 export default function ModelViewer({ modelPath, cameraConfig, scale }: ModelViewerProps) {
+  // Remove useEffect for canvasCount if you want to avoid remount logs
   return (
     <div className={styles.canvasWrapper}>
       <Canvas
+        key={modelPath} // Only remount if modelPath changes
         style={{ width: '100%', height: '100%' }}
         camera={{ position: cameraConfig?.position, fov: cameraConfig?.fov }}
         frameloop="demand"

@@ -15,37 +15,37 @@
   },
   {
     "url": "/assets/model-files/Portal.glb",
-    "camera": { "position": [200, 100, 80], "fov": 10 },
+    "camera": { "position": [-180, 180, 180], "fov": 6 },
     "thumbnail": "/assets/model-icons/portal.png",
     "tags": ["Blender", "Substance Painter"],
-    "scale": 0.75
+    "scale": 1.25
   },
   {
     "url": "/assets/model-files/car.glb",
     "camera": { "position": [90, 30, 120], "fov": 10 },
     "thumbnail": "/assets/model-icons/car.png",
     "tags": ["Blender", "Substance Painter"],
-    "scale": 1.0
+    "scale": 1.5
   },
   {
     "url": "/assets/model-files/TreasureChest.glb",
-    "camera": { "position": [20, 10, 35], "fov": 3 },
+    "camera": { "position": [20, 10, 90], "fov": 7 },
     "thumbnail": "/assets/model-icons/chest.png",
     "tags": ["Blender", "ZBrush", "Procreate"],
-    "scale": 3.0
+    "scale": 2
   },
   {
     "url": "/assets/model-files/BoneWings.glb",
-    "camera": { "position": [60, 0, 100], "fov": 11 },
+    "camera": { "position": [30, 0, 100], "fov": 11 },
     "thumbnail": "/assets/model-icons/boneWings.png",
     "tags": ["Blender", "Procreate"],
     "scale": 2.875
   },
   {
     "url": "/assets/model-files/Wings.glb",
-    "camera": { "position": [0, 0, 75], "fov": 4 },
+    "camera": { "position": [90, 0, 120], "fov": 8 },
     "thumbnail": "/assets/model-icons/wings.png",
     "tags": ["Blender", "Procreate"],
-    "scale": 3
+    "scale": 3.6
   }
 ]

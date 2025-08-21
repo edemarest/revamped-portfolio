@@ -6,6 +6,7 @@
     width: 100%;
     margin: 0 auto 2rem auto;
     background: rgba(255, 0, 0, 0.08);
+    position: relative; /* Ensure relative for arrow positioning */
 }
 
 .centerSlide, .modelFrame {
@@ -20,8 +21,9 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: 0 0 32px 8px #ff2222;
-  border: 2px solid #ff2222;
+  /* Remove box-shadow/glow from center slide */
+  box-shadow: none;
+  border: 3px solid var(--color-accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,10 +32,11 @@
   transition: box-shadow 0.3s, border-color 0.3s;
 }
 
-/* Remove hover border-color change */
+/* Remove hover effect and scale from center slide */
 .centerSlide:hover {
-    box-shadow: 0 0 48px 12px #ff2222;
+    box-shadow: none;
     border-color: #ff2222;
+    /* No scale or extra glow */
 }
 
 .sideSlide {
@@ -42,17 +45,19 @@
     border-radius: 12px;
     background: rgba(255, 0, 0, 0.08);
     box-shadow: 0 0 10px 2px rgba(255, 0, 0, 0.10);
-    border: 2px solid #ff2222;
+    border: 3px solid var(--color-accent);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     z-index: 1;
-    transition: box-shadow 0.3s, border-color 0.3s;
+    transition: box-shadow 0.3s, border-color 0.3s, transform 0.18s;
 }
 
+/* Side slides grow and glow on hover */
 .sideSlide:hover {
-    box-shadow: 0 0 18px 4px #ff2222;
+    box-shadow: 0 0 18px 4px var(--color-accent);
+    transform: scale(1.07);
 }
 
 .staticImg {
@@ -66,7 +71,7 @@
     position: absolute;
     bottom: 12px;
     right: 12px;
-    background: rgba(255, 0, 0, 0.7);
+    background: var(--color-accent);
     border: none;
     border-radius: 50%;
     padding: 8px;
@@ -78,7 +83,7 @@
 
 .rotateBtn:hover {
     background: #fff;
-    color: #ff2222;
+    color: var(--color-accent);
 }
 
 /* Dots navigation styles */
@@ -88,7 +93,7 @@
     align-items: center;
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 50px 0 0 0;
     gap: 12px;
 }
 
@@ -103,9 +108,9 @@
     width: 14px !important;
     height: 14px !important;
     border-radius: 50% !important;
-    border: 2px solid #ff2222 !important;
+    border: 2px solid #ffa3a3 !important;
     background: transparent !important;
-    box-shadow: 0 0 6px 2px #ff222244 !important;
+    box-shadow: 0 0 6px 2px #ff424244 !important;
     transition: box-shadow 0.2s, background 0.2s, width 0.2s, height 0.2s;
     cursor: pointer;
     outline: none;
@@ -125,9 +130,9 @@
     width: 22px !important;
     height: 22px !important;
     border-radius: 50% !important;
-    border: 3px solid #ff2222 !important;
-    background: #ff2222 !important;
-    box-shadow: 0 0 16px 6px #ff2222cc !important;
+    border: 3px solid var(--color-accent) !important;
+    background: var(--color-accent) !important;
+    box-shadow: 0 0 16px 6px var(--color-accent)cc !important;
     min-width: 22px !important;
     min-height: 22px !important;
     max-width: 22px !important;
@@ -136,13 +141,13 @@
 
 /* Hover effect for inactive dot */
 .slickDots button:hover {
-    box-shadow: 0 0 12px 4px #ff2222aa !important;
-    border-color: #ff2222 !important;
+    box-shadow: 0 0 12px 4px #ff2222d7 !important;
+    border-color: var(--color-accent)!important;
 }
 
 /* Focus style */
 .slickDots button:focus {
-    outline: 2px solid #ff2222;
+    outline: 2px solid var(--color-accent);
 }
 
 .carouselWrapper {
@@ -192,4 +197,46 @@
 
 .slickDots {
     bottom: -30px;
+}
+
+.carouselArrow {
+  background: rgba(255,0,0,0.12);
+  border: none;
+  border-radius: 50%;
+  color: var(--color-accent);
+  box-shadow: 0 2px 8px rgba(255,0,0,0.10);
+  cursor: pointer;
+  padding: 8px;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.carouselArrow.left {
+  left: 0;
+}
+.carouselArrow.right {
+  right: 0;
+}
+.carouselArrow:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.centerPanIcon {
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  padding: 8px;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(255,0,0,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  pointer-events: none;
 }

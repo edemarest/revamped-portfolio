@@ -86,6 +86,13 @@
   pointer-events: none;
 }
 
+.tagBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6em;
+  margin: 0.8rem 0 1.2rem 0;
+}
+
 @media (max-width: 900px) {
   .artGrid {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -107,16 +114,53 @@
     padding: 1rem 0;
   }
   .artGrid {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.7rem;
+    display: none;
   }
-  .artItem {
-    min-width: 100px;
-    max-width: 160px;
-    padding: 0.4rem 0.4rem 0.7rem 0.4rem;
+  .artGridMobile {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 2rem;
+    column-gap: 0.1rem;
+    justify-items: center;
+    align-items: start;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 100vw;
   }
-  .tapeTopLeft, .tapeTopRight, .tapeBottomLeft, .tapeBottomRight {
-    width: 18px;
+  .artItemMobile {
+    position: relative;
+    background: rgba(20, 20, 20, 0.7);
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12), 0 0 0 2px #222, 0 0 0 4px var(--color-accent);
+    min-width: 0;
+    max-width: 100px;
+    width: 100%;
+    opacity: 0.95;
+    will-change: transform;
+    z-index: 1;
+  }
+  .artItemMobile:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 16px var(--color-accent), 0 0 0 2px #222, 0 0 0 4px var(--color-accent);
+  }
+  .artImg {
+    width: 100%;
+    aspect-ratio: 1 / 1.25;
+    object-fit: cover;
+    border-radius: 2px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    display: block;
+    background: #222;
+  }
+  .tapeTop, .tapeBottom {
+    width: 32px;
     height: 7px;
+    top: -8px;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.7;
+    z-index: 2;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
   }
 }
