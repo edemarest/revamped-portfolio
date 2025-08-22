@@ -100,6 +100,7 @@
   border-bottom: 1px solid #222;
   box-shadow: 0 2px 16px rgba(0,0,0,0.10);
   width: 100%;
+  border-radius: 20px;
 }
 
 .bannerText {
