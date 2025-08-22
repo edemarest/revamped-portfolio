@@ -106,7 +106,7 @@
     "short": "A Lua-based puzzle game to fill the board with one color. Dynamic difficulty and leaderboards.",
     "details": "Flood is a Lua-based puzzle game where players aim to match the entire board to one color in limited turns. The board grows in complexity and has customizable difficulty. Built with a color fill algorithm and real-time leaderboards.\n\nChallenges: Created efficient flood-fill logic and prevented infinite loops. Balanced board generation with dynamic difficulty scaling. Built backend leaderboard functionality using Roblox datastores.",
     "media": [
-      { "type": "youtube", "id": "your_youtube_id_here" }
+      { "type": "youtube", "id": "NrAPQCIUMqU" }
     ],
     "cover": "/assets/project-images/flood.png",
     "link": "https://www.roblox.com/games/12921382755/FLOOD-Beta",
