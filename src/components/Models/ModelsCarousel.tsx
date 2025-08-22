@@ -1,5 +1,4 @@
-import React, { useMemo, useState } from 'react';
-import Slider from 'react-slick';
+import React, { useState } from 'react';
 import ModelViewer from './ModelViewer';
 import ErrorBoundary from './ErrorBoundary';
 import MobileModelViewer from './MobileModelViewer';
@@ -18,9 +17,11 @@ type Model = {
 
 const ModelsCarousel: React.FC = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isCompact, setIsCompact] = useState(window.innerWidth <= 700);
   const [models, setModels] = useState<Model[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [contextLost, setContextLost] = useState(false);
 
   React.useEffect(() => {
     fetch('/assets/models.json')
@@ -33,37 +34,82 @@ const ModelsCarousel: React.FC = () => {
   }, []);
 
   React.useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      setIsCompact(window.innerWidth <= 700);
+    };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const settings = useMemo(() => ({
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: isMobile ? 1 : 3,
-    slidesToScroll: 1,
-    arrows: true,
-    autoplay: false,
-    swipe: true,
-    touchMove: true,
-    lazyLoad: 'ondemand' as const,
-    className: styles.slickSlider,
-    responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
-    ],
-    appendDots: (dots: React.ReactNode) => <ul className={styles.slickDots}>{dots}</ul>,
-    beforeChange: (_: number, next: number) => setCurrentSlide(next),
-  }), [isMobile]);
+  // Handler for WebGL context loss
+  const handleContextLoss = () => setContextLost(true);
+
+  // Reset contextLost when slide changes
+  React.useEffect(() => {
+    setContextLost(false);
+  }, [currentSlide]);
 
   if (loading) {
     return <div className={styles.carouselWrapper}>Loading models...</div>;
   }
 
-  if (isMobile) {
-    return <MobileModelViewer models={models} />;
+  if (isMobile || isCompact) {
+    // Mobile: 1 main image/model, previews below, no arrows
+    return (
+      <div className={styles.carouselBgWrapper} style={{ position: 'relative' }}>
+        <div className={styles.infoBoxMobile}>
+          <FaRegHandPointer className={styles.infoIcon} />
+          <span className={styles.infoText}>
+            Click and drag to rotate and examine the 3D model
+          </span>
+        </div>
+        <div
+          style={{
+            position: 'relative',
+            width: '100%',
+            maxWidth: '380px',
+            minWidth: '260px',
+            margin: '0 auto',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+          }}
+        >
+          {/* Main slide only, no arrows */}
+          <div className={styles.mobileSlideRow}>
+            <div className={styles.centerSlide} style={{ position: 'relative', flex: '1 1 0' }}>
+              <ErrorBoundary>
+                <React.Suspense fallback={<img src={models[currentSlide].thumbnail} alt={models[currentSlide].url} className={styles.staticImg} />}>
+                  <ModelViewer
+                    modelPath={models[currentSlide].url}
+                    cameraConfig={models[currentSlide].camera}
+                    scale={models[currentSlide].scale}
+                    onContextLost={handleContextLoss}
+                  />
+                </React.Suspense>
+              </ErrorBoundary>
+              <div className={styles.centerPanIcon}>
+                <FaCube size={28} />
+              </div>
+            </div>
+          </div>
+          {/* Preview thumbnails row */}
+          <div className={styles.mobilePreviewRow}>
+            {models.map((model, idx) => (
+              <button
+                key={idx}
+                className={`${styles.mobilePreviewThumb} ${idx === currentSlide ? styles.mobilePreviewActive : ''}`}
+                onClick={() => setCurrentSlide(idx)}
+                aria-label={`Preview model ${idx + 1}`}
+              >
+                <img src={model.thumbnail} alt={model.url} />
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
   }
 
   // Calculate indices for left, center, right
@@ -71,7 +117,14 @@ const ModelsCarousel: React.FC = () => {
   const rightIdx = (currentSlide + 1) % models.length;
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div className={styles.carouselBgWrapper} style={{ position: 'relative' }}>
+      {/* Info box in top right on desktop */}
+      <div className={styles.infoBoxDesktop}>
+        <FaRegHandPointer className={styles.infoIcon} />
+        <span className={styles.infoText}>
+          Click and drag to rotate and examine the 3D model
+        </span>
+      </div>
       {/* Absolutely positioned ModelViewer over the center slide */}
       <div
         style={{
@@ -80,21 +133,32 @@ const ModelsCarousel: React.FC = () => {
           top: '50%',
           transform: 'translate(-50%, -50%)',
           zIndex: 10,
-          width: '380px',
-          height: '380px',
+          width: 'var(--center-slide-size)',
+          height: 'var(--center-slide-size)',
           pointerEvents: 'auto'
         }}
         className={styles.centerSlide}
       >
-        <ErrorBoundary>
-          <React.Suspense fallback={<img src={models[currentSlide].thumbnail} alt={models[currentSlide].url} className={styles.staticImg} />}>
-            <ModelViewer
-              modelPath={models[currentSlide].url}
-              cameraConfig={models[currentSlide].camera}
-              scale={models[currentSlide].scale}
-            />
-          </React.Suspense>
-        </ErrorBoundary>
+        {/* Only show ModelViewer if context is not lost, otherwise show fallback image */}
+        {!contextLost ? (
+          <ErrorBoundary>
+            <React.Suspense fallback={<img src={models[currentSlide].thumbnail} alt={models[currentSlide].url} className={styles.staticImg} />}>
+              <ModelViewer
+                modelPath={models[currentSlide].url}
+                cameraConfig={models[currentSlide].camera}
+                scale={models[currentSlide].scale}
+                onContextLost={handleContextLoss}
+              />
+            </React.Suspense>
+          </ErrorBoundary>
+        ) : (
+          <img
+            src={models[currentSlide].thumbnail}
+            alt={models[currentSlide].url}
+            className={styles.staticImg}
+            style={{ width: '100%', height: '100%', objectFit: 'contain', background: '#fff' }}
+          />
+        )}
         {/* Overlay rotation/box icon in bottom-right */}
         <div className={styles.centerPanIcon}>
           <FaCube size={28} />
@@ -111,39 +175,43 @@ const ModelsCarousel: React.FC = () => {
           <FaChevronLeft size={28} />
         </button>
         {/* Left Slide (static image only, clickable) */}
-        <div
-          className={styles.sideSlide}
-          style={{ cursor: 'pointer' }}
-          onClick={() => setCurrentSlide(leftIdx)}
-        >
-          <img src={models[leftIdx].thumbnail} alt={models[leftIdx].url} className={styles.staticImg} />
-          <button
-            className={styles.rotateBtn}
-            aria-label="Select this model"
-            onClick={e => { e.stopPropagation(); setCurrentSlide(leftIdx); }}
+        {!isCompact && (
+          <div
+            className={styles.sideSlide}
+            style={{ cursor: 'pointer' }}
+            onClick={() => setCurrentSlide(leftIdx)}
           >
-            <FaRegHandPointer size={24} />
-          </button>
-        </div>
+            <img src={models[leftIdx].thumbnail} alt={models[leftIdx].url} className={styles.staticImg} />
+            <button
+              className={styles.rotateBtn}
+              aria-label="Select this model"
+              onClick={e => { e.stopPropagation(); setCurrentSlide(leftIdx); }}
+            >
+              <FaRegHandPointer size={24} />
+            </button>
+          </div>
+        )}
         {/* Center Slide (empty, just for layout) */}
         <div className={styles.centerSlide} style={{ opacity: 0, pointerEvents: 'none' }}>
           {/* Empty, ModelViewer is absolutely positioned above */}
         </div>
         {/* Right Slide (static image only, clickable) */}
-        <div
-          className={styles.sideSlide}
-          style={{ cursor: 'pointer' }}
-          onClick={() => setCurrentSlide(rightIdx)}
-        >
-          <img src={models[rightIdx].thumbnail} alt={models[rightIdx].url} className={styles.staticImg} />
-          <button
-            className={styles.rotateBtn}
-            aria-label="Select this model"
-            onClick={e => { e.stopPropagation(); setCurrentSlide(rightIdx); }}
+        {!isCompact && (
+          <div
+            className={styles.sideSlide}
+            style={{ cursor: 'pointer' }}
+            onClick={() => setCurrentSlide(rightIdx)}
           >
-            <FaRegHandPointer size={24} />
-          </button>
-        </div>
+            <img src={models[rightIdx].thumbnail} alt={models[rightIdx].url} className={styles.staticImg} />
+            <button
+              className={styles.rotateBtn}
+              aria-label="Select this model"
+              onClick={e => { e.stopPropagation(); setCurrentSlide(rightIdx); }}
+            >
+              <FaRegHandPointer size={24} />
+            </button>
+          </div>
+        )}
         {/* Right Arrow */}
         <button
           className={`${styles.carouselArrow} ${styles.right}`}
@@ -154,16 +222,18 @@ const ModelsCarousel: React.FC = () => {
         </button>
       </div>
       {/* Dots navigation */}
-      <ul className={styles.slickDots}>
-        {models.map((_, idx) => (
-          <li key={idx} className={idx === currentSlide ? styles.activeDot : ''}>
-            <button
-              aria-label={`Go to slide ${idx + 1}`}
-              onClick={() => setCurrentSlide(idx)}
-            />
-          </li>
-        ))}
-      </ul>
+      {!isCompact && (
+        <ul className={styles.slickDots}>
+          {models.map((_, idx) => (
+            <li key={idx} className={idx === currentSlide ? styles.activeDot : ''}>
+              <button
+                aria-label={`Go to slide ${idx + 1}`}
+                onClick={() => setCurrentSlide(idx)}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

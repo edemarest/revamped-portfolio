@@ -42,7 +42,6 @@
 }
 .artItem:hover {
   transform: rotate(var(--random, 4deg)) scale(1.04);
-  box-shadow: 0 8px 32px var(--color-accent), 0 0 0 3px #222, 0 0 0 6px var(--color-accent);
 }
 
 .artImg {
@@ -91,6 +90,23 @@
   flex-wrap: wrap;
   gap: 0.6em;
   margin: 0.8rem 0 1.2rem 0;
+  padding-bottom: 20px;
+}
+
+.sectionSubtitleTech {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 1.1rem 0 0.6rem 0;
+}
+.sectionSubtitleIcon {
+  font-size: 1.2rem;
+  color: #fff;
+}
+.sectionSubtitleText {
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 700;
 }
 
 @media (max-width: 900px) {
@@ -119,7 +135,7 @@
   .artGridMobile {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    row-gap: 2rem;
+    row-gap: 1.5rem;
     column-gap: 0.1rem;
     justify-items: center;
     align-items: start;
@@ -133,7 +149,7 @@
     border-radius: 4px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.12), 0 0 0 2px #222, 0 0 0 4px var(--color-accent);
     min-width: 0;
-    max-width: 100px;
+    max-width: 120px;
     width: 100%;
     opacity: 0.95;
     will-change: transform;
@@ -141,7 +157,6 @@
   }
   .artItemMobile:hover {
     transform: scale(1.03);
-    box-shadow: 0 4px 16px var(--color-accent), 0 0 0 2px #222, 0 0 0 4px var(--color-accent);
   }
   .artImg {
     width: 100%;

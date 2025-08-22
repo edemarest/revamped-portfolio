@@ -1,29 +1,59 @@
 import styles from './Work.module.css'
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import ProjectCard from './ProjectCard'
 import projectData from '../../projects.json'
 import Tag from './Tag'
-import { FaFilter } from 'react-icons/fa'
+import { FaFilter, FaCode } from 'react-icons/fa'
+
+type MediaItem =
+  | { type: "image"; fileSrc: string }
+  | { type: "youtube"; id: string }
+  | { type: "slides"; id: string }
 
 type Project = {
   id: string
   title: string
   short: string
   details: string
-  media?: string[]
+  media?: MediaItem[]
   cover?: string
   link?: string
   tags: string[]
 }
 
+// Convert legacy media format to MediaItem[]
+function normalizeMedia(media: any): MediaItem[] | undefined {
+  if (!media) return undefined;
+  // If already in correct format
+  if (Array.isArray(media) && typeof media[0] === 'object' && 'type' in media[0]) {
+    return media as MediaItem[];
+  }
+  // If array of strings (legacy)
+  if (Array.isArray(media) && typeof media[0] === 'string') {
+    return media.map((fileSrc: string) => ({ type: "image", fileSrc }));
+  }
+  return undefined;
+}
+
 const projects: Project[] = projectData.map((p: any) => ({
   ...p,
-  media: p.media?.map((m: any) => typeof m === 'string' ? m : m.fileSrc),
+  media: normalizeMedia(p.media),
+  cover: p.cover,
+  link: p.link,
+  tags: p.tags,
 }))
 
 export default function Work() {
   const [expandedId, setExpandedId] = useState<string | null>(null)
   const [selectedTags, setSelectedTags] = useState<string[]>([])
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 700)
+  const [showMobileFilter, setShowMobileFilter] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 700)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const allTags = useMemo(() => {
     const tagSet = new Set<string>()
@@ -44,31 +74,102 @@ export default function Work() {
     )
   }
 
+  // For mobile, close filter when clicking outside
+  useEffect(() => {
+    if (!showMobileFilter) return
+    const handleClick = (e: MouseEvent) => {
+      const el = document.getElementById('mobileTagFilter')
+      if (el && !el.contains(e.target as Node)) setShowMobileFilter(false)
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [showMobileFilter])
+
   return (
     <section id="projects" className="section">
       <div className="section-header">
-        <h2 className="section-title">Projects</h2>
+        <h2 className="section-title">
+          <FaCode className="section-title-icon" />
+          Projects
+        </h2>
         <p className="section-body">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur consectetur, nisl nisi consectetur nisi, euismod euismod nisi nisi euismod.
         </p>
-        <div className="section-subtitle">
-          <FaFilter className="section-subtitle-icon" />
-          <span className="section-subtitle-text">
-            Filter projects by technology or stack.
-          </span>
+        {/* Hide filter subtitle on mobile */}
+        {!isMobile && (
+          <div className="section-subtitle">
+            <FaFilter className="section-subtitle-icon" style={{ color: "#fff" }} />
+            <span className="section-subtitle-text" style={{ fontWeight: 700, color: "#fff" }}>
+              <b>Filter projects by technology or stack.</b>
+            </span>
+          </div>
+        )}
+      </div>
+      {isMobile ? (
+        <div className={styles.mobileTagBarWrapper}>
+          {/* Show selected tags as removable chips when filter bar is closed */}
+          {!showMobileFilter && selectedTags.length > 0 && (
+            <div className={styles.mobileSelectedTags}>
+              {selectedTags.map(tag => (
+                <span key={tag} className={styles.mobileSelectedTagChip}>
+                  {tag}
+                  <button
+                    className={styles.mobileTagRemoveBtn}
+                    aria-label={`Remove ${tag} filter`}
+                    onClick={() => handleTagClick(tag)}
+                  >
+                    ×
+                  </button>
+                </span>
+              ))}
+            </div>
+          )}
+          <button
+            className={styles.mobileTagBarButton}
+            onClick={() => setShowMobileFilter(true)}
+            aria-label="Filter projects"
+            style={{ display: showMobileFilter ? 'none' : 'flex' }}
+          >
+            <FaFilter style={{ marginRight: 8 }} />
+            Filter
+          </button>
+          <div
+            id="mobileTagFilter"
+            className={`${styles.mobileTagBar} ${showMobileFilter ? styles.mobileTagBarOpen : ''}`}
+            style={{ display: showMobileFilter ? 'block' : 'none' }}
+          >
+            <div className={styles.mobileTagList}>
+              {allTags.map(tag => (
+                <Tag
+                  key={tag}
+                  tag={tag}
+                  variant="filter"
+                  selected={selectedTags.includes(tag)}
+                  onClick={() => handleTagClick(tag)}
+                />
+              ))}
+            </div>
+            <button
+              className={styles.mobileTagDone}
+              onClick={() => setShowMobileFilter(false)}
+            >
+              Done
+            </button>
+          </div>
         </div>
-      </div>
-      <div className={styles.tagBar}>
-        {allTags.map(tag => (
-          <Tag
-            key={tag}
-            tag={tag}
-            variant="filter"
-            selected={selectedTags.includes(tag)}
-            onClick={() => handleTagClick(tag)}
-          />
-        ))}
-      </div>
+      ) : (
+        <div className={styles.tagBar}>
+          {allTags.map(tag => (
+            <Tag
+              key={tag}
+              tag={tag}
+              variant="filter"
+              selected={selectedTags.includes(tag)}
+              onClick={() => handleTagClick(tag)}
+            />
+          ))}
+        </div>
+      )}
       <div className={styles.cardGrid}>
         {filteredProjects.map(project => (
           <ProjectCard

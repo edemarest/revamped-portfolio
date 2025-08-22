@@ -1,0 +1,115 @@
+.funFactCarousel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+
+
+.funFactGroupFadeIn {
+  opacity: 1;
+  transform: translateY(-24px);
+  animation: fadeInFromTop 0.5s cubic-bezier(.4,0,.2,1);
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding-top: 40px;
+  height: auto;
+}
+
+.funFactGroupFadeOut {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s, transform 0.5s;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+@keyframes fadeInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-24px);
+  }
+}
+
+.funFactGroupInactive {
+  display: none;
+}
+
+
+.funFactCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.2rem;
+  background: rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 0.9rem 1.4rem;
+  box-shadow: 0 2px 12px rgba(245,78,78,0.08);
+  min-height: 64px;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.funFactImg {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #222;
+  box-shadow: 0 1px 6px rgba(245,78,78,0.13);
+}
+
+
+.funFactText {
+  font-size: 1.08rem;
+  color: #fff;
+  font-family: 'Manrope', 'Segoe UI', Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: left;
+  word-break: break-word;
+  flex: 1 1 0;
+}
+
+@media (max-width: 700px) {
+  .funFactCarousel {
+    min-height: 120px;
+    gap: 0.7rem;
+  }
+  .funFactGroupFadeIn, .funFactGroupFadeOut {
+    gap: 0.7rem;
+    padding: 0.2rem 0;
+  }
+  .funFactCard {
+    padding: 0.5rem 0.7rem;
+    min-height: 40px;
+    max-width: 98vw;
+  }
+  .funFactImg {
+    width: 32px;
+    height: 32px;
+  }
+  .funFactText {
+    font-size: 0.98rem;
+  }
+}

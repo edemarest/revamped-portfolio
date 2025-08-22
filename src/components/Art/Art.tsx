@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import styles from './Art.module.css'
 import Tag from '../Work/Tag'
-import { FaFilter, FaPaintBrush } from 'react-icons/fa'
+import { FaTools, FaPaintBrush } from 'react-icons/fa'
 import { SiAdobe } from 'react-icons/si'
-import { GiStoneBlock } from 'react-icons/gi'
 
 // Dynamically import all images from assets/art
 const artImages = Object.values(
@@ -25,27 +24,20 @@ export default function Art() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Tag selection logic (optional, for filtering)
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const handleTagClick = (tag: string) => {
-    setSelectedTags(prev =>
-      prev.includes(tag)
-        ? prev.filter(t => t !== tag)
-        : [...prev, tag]
-    );
-  };
-
   return (
-    <section className="section">
+    <section id="art" className="section">
       <div className="section-header">
-        <h2 className="section-title">Art</h2>
+        <h2 className="section-title">
+          <FaPaintBrush className="section-title-icon" />
+          Art
+        </h2>
         <p className="section-body">
           I have been drawing since I was in elementary school, and picked up digital art very early. I have been selling artwork commissions since I was in 5th grade and steadily increased my skills, prices, and marketing since then. I expanded my expertise into vector art and UI design, animation, painting, and more. While I focus more on programming now and rarely take commissions, I like to sit down and draw on Procreate now and then to destress. I enjoy painting horror-themed pieces and drawing characters from my favorite shows.
         </p>
-        <div className="section-subtitle">
-          <FaFilter className="section-subtitle-icon" />
-          <span className="section-subtitle-text">
-            Filter art by tool or technique.
+        <div className={styles.sectionSubtitleTech}>
+          <FaTools className={styles.sectionSubtitleIcon} />
+          <span className={styles.sectionSubtitleText}>
+            <b style={{ color: "#fff" }}>Applications</b>
           </span>
         </div>
         <div className={styles.tagBar}>
@@ -54,9 +46,7 @@ export default function Art() {
               key={tag.label}
               tag={tag.label}
               icon={tag.icon}
-              variant="filter"
-              selected={selectedTags.includes(tag.label)}
-              onClick={() => handleTagClick(tag.label)}
+              variant="filter-static" // static filter style
             />
           ))}
         </div>

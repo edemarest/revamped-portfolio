@@ -8,6 +8,7 @@ type ModelViewerProps = {
   modelPath: string;
   cameraConfig: { position: [number, number, number]; fov: number };
   scale?: number;
+  onContextLost?: () => void;
 };
 
 const ModelPrimitive = React.memo(function ModelPrimitive({ modelPath, scale }: { modelPath: string; scale?: number }) {
@@ -38,10 +39,25 @@ const ModelPrimitive = React.memo(function ModelPrimitive({ modelPath, scale }: 
   return <primitive object={scene} scale={finalScale} position={[0, -1, 0]} />;
 });
 
-// Track canvas count for debugging
-let canvasCount = 0;
+export default function ModelViewer({ modelPath, cameraConfig, scale, onContextLost }: ModelViewerProps) {
+  const canvasRef = React.useRef<HTMLCanvasElement>(null);
 
-export default function ModelViewer({ modelPath, cameraConfig, scale }: ModelViewerProps) {
+  React.useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    // Attach context loss handler (cast to EventListener, event as any)
+    const handleContextLost: EventListener = (e) => {
+      e.preventDefault();
+      if (onContextLost) onContextLost();
+    };
+    canvas.addEventListener('webglcontextlost', handleContextLost, false);
+
+    return () => {
+      canvas.removeEventListener('webglcontextlost', handleContextLost, false);
+    };
+  }, [onContextLost]);
+
   // Remove useEffect for canvasCount if you want to avoid remount logs
   return (
     <div className={styles.canvasWrapper}>

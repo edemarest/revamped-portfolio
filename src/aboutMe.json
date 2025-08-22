@@ -1,0 +1,45 @@
+{
+  "profilePhoto": "/assets/images/me.png",
+  "background": {
+    "title": "Background & Interests",
+    "text": "Hi, I’m Ella Demarest—a full-stack developer, artist, and creative problem solver. I’m passionate about building robust web applications, experimenting with AI/ML, and creating digital art. My journey spans bioinformatics, game development, and health tech. I’ve studied and worked in Boston and New York, and after spending a summer in NYC during my Regeneron internship, I fell in love with another city while also realizing how much Boston feels like home. I’m still deciding where I’ll settle—but I know I thrive in communities full of innovation, collaboration, and creativity."
+  },
+  "skills": [
+    {
+      "category": "Programming & Development",
+      "icon": "FaCode",
+      "skills": ["Python", "JavaScript", "TypeScript", "Java", "C#", "Racket", "SQL", "PHP", "Flask"]
+    },
+    {
+      "category": "Frameworks, Tools & Libraries",
+      "icon": "FaTools",
+      "skills": ["React.js", "Tailwind CSS", "WordPress", "HTML", "CSS", "Google Web Designer"]
+    },
+    {
+      "category": "Data & Bioinformatics",
+      "icon": "FaDatabase",
+      "skills": ["Database Design", "Bioinformatics", "Biology"]
+    },
+    {
+      "category": "Design & Creative",
+      "icon": "FaPaintBrush",
+      "skills": ["Figma", "Adobe Photoshop", "Adobe Illustrator", "Blender", "Substance Painter"]
+    },
+    {
+      "category": "Specialized",
+      "icon": "FaStar",
+      "skills": ["AI/ML", "Veeva CRM", "Game Development", "Digital Circuit Design"]
+    }
+  ],
+  "funFacts": [
+    { "img": "/assets/funfacts/death-note.png", "text": "My favorite animes are Attack on Titan and Death Note." },
+    { "img": "/assets/funfacts/pfizer.png", "text": "I was in a clinical trial for the Pfizer COVID-19 vaccine." },
+    { "img": "/assets/funfacts/frog.png", "text": "I have over a dozen tree frogs and dart frogs back home." },
+    { "img": "/assets/funfacts/rdc.webp", "text": "I attended the Roblox Developer Conference in 2020 (virtual)." },
+    { "img": "/assets/funfacts/pogo.webp", "text": "I walk 60+ kilometers per week playing Pokemon Go, am level 50, and play with a group in Cambridge every week!" },
+    { "img": "/assets/funfacts/volleyball.png", "text": "I used to play competitive indoor & beach volleyball but only play for fun now." },
+    { "img": "/assets/funfacts/silicon-valley.png", "text": "My favorite TV show is Silicon Valley." },
+    { "img": "/assets/funfacts/croagunk.png", "text": "My favorite Pokémon is Croagunk." },
+    { "img": "/assets/funfacts/skyrim.png", "text": "I have hundreds of hours in Skyrim and am (im)patiently waiting for Elder Scrolls VI." }
+  ]
+}

@@ -1,17 +1,38 @@
+/* New parent wrapper for full-height red background */
+.carouselBgWrapper {
+  width: 100%;
+  min-height: 520px; /* ensure it covers all carousel content */
+  background: rgba(255, 0, 0, 0.08);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .customCarousel {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; /* vertical centering for all children */
     gap: 2rem;
     width: 100%;
     margin: 0 auto 2rem auto;
-    background: rgba(255, 0, 0, 0.08);
-    position: relative; /* Ensure relative for arrow positioning */
+    position: relative;
+    min-height: var(--center-slide-size); /* ensure enough height for vertical centering */
 }
 
+/* Dynamic sizing variables for slides and dots using clamp for smooth scaling */
+:root {
+  --center-slide-size: clamp(220px, 30vw, 380px);
+  --side-slide-size: clamp(120px, 18vw, 240px);
+  --dot-size: clamp(10px, 2vw, 14px);
+  --dot-active-size: clamp(14px, 3vw, 22px);
+}
+
+/* Use variables for sizing */
 .centerSlide, .modelFrame {
-  width: 380px;
-  height: 380px;
+  width: var(--center-slide-size);
+  height: var(--center-slide-size);
   border-radius: 16px;
   background: #0a0a0a;
   background-image:
@@ -21,7 +42,6 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* Remove box-shadow/glow from center slide */
   box-shadow: none;
   border: 3px solid var(--color-accent);
   display: flex;
@@ -40,18 +60,18 @@
 }
 
 .sideSlide {
-    width: 240px;
-    height: 240px;
-    border-radius: 12px;
-    background: rgba(255, 0, 0, 0.08);
-    box-shadow: 0 0 10px 2px rgba(255, 0, 0, 0.10);
-    border: 3px solid var(--color-accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 1;
-    transition: box-shadow 0.3s, border-color 0.3s, transform 0.18s;
+  width: var(--side-slide-size);
+  height: var(--side-slide-size);
+  border-radius: 12px;
+  background: rgba(255, 0, 0, 0.08);
+  box-shadow: 0 0 10px 2px rgba(255, 0, 0, 0.10);
+  border: 3px solid var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 0.3s, border-color 0.3s, transform 0.18s;
 }
 
 /* Side slides grow and glow on hover */
@@ -105,8 +125,8 @@
 
 /* Inactive dot */
 .slickDots button {
-    width: 14px !important;
-    height: 14px !important;
+    width: var(--dot-size) !important;
+    height: var(--dot-size) !important;
     border-radius: 50% !important;
     border: 2px solid #ffa3a3 !important;
     background: transparent !important;
@@ -116,10 +136,10 @@
     outline: none;
     margin: 0 2px !important;
     aspect-ratio: 1 / 1 !important;
-    min-width: 14px !important;
-    min-height: 14px !important;
-    max-width: 14px !important;
-    max-height: 14px !important;
+    min-width: var(--dot-size) !important;
+    min-height: var(--dot-size) !important;
+    max-width: var(--dot-size) !important;
+    max-height: var(--dot-size) !important;
     padding: 0 !important;
     display: inline-block !important;
     vertical-align: middle !important;
@@ -127,16 +147,16 @@
 
 /* Active dot */
 .activeDot button {
-    width: 22px !important;
-    height: 22px !important;
+    width: var(--dot-active-size) !important;
+    height: var(--dot-active-size) !important;
     border-radius: 50% !important;
     border: 3px solid var(--color-accent) !important;
     background: var(--color-accent) !important;
     box-shadow: 0 0 16px 6px var(--color-accent)cc !important;
-    min-width: 22px !important;
-    min-height: 22px !important;
-    max-width: 22px !important;
-    max-height: 22px !important;
+    min-width: var(--dot-active-size) !important;
+    min-height: var(--dot-active-size) !important;
+    max-width: var(--dot-active-size) !important;
+    max-height: var(--dot-active-size) !important;
 }
 
 /* Hover effect for inactive dot */
@@ -239,4 +259,196 @@
   justify-content: center;
   z-index: 20;
   pointer-events: none;
+}
+
+/* Info box styles */
+.infoBox {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: rgba(0,0,0,0.82);
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.5em 1em 0.5em 0.8em;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 0.98em;
+  z-index: 30;
+  box-shadow: 0 2px 12px rgba(255,0,0,0.10);
+  pointer-events: none;
+}
+
+/* Info box centered above main slide on mobile */
+.infoBoxMobile {
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.82);
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.5em 1em 0.5em 0.8em;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 0.98em;
+  z-index: 30;
+  box-shadow: 0 2px 12px rgba(255,0,0,0.10);
+  margin-bottom: 0.7em;
+  pointer-events: none;
+  justify-content: center;
+}
+
+/* Info box in top right on desktop */
+.infoBoxDesktop {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: rgba(0,0,0,0.82);
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.5em 1em 0.5em 0.8em;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 0.98em;
+  z-index: 30;
+  box-shadow: 0 2px 12px rgba(255,0,0,0.10);
+  pointer-events: none;
+}
+
+/* Hide desktop info box on mobile, show mobile info box only on mobile */
+@media (max-width: 900px) {
+  .infoBoxDesktop {
+    display: none !important;
+  }
+}
+@media (max-width: 700px) {
+  .infoBoxMobile {
+    display: flex !important;
+  }
+}
+@media (min-width: 901px) {
+  .infoBoxMobile {
+    display: none !important;
+  }
+}
+
+/* Arrows on mobile: position absolutely on sides, not overlapping */
+.carouselArrow.mobileArrow {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  margin: 0 !important;
+  z-index: 2 !important;
+}
+
+/* Mobile slide row for arrows and main slide */
+.mobileSlideRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 260px;
+  max-width: 380px;
+  gap: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+/* Tablet and small desktop screens */
+@media (max-width: 1100px) {
+  .centerSlide, .modelFrame {
+    width: 300px;
+    height: 300px;
+  }
+  .sideSlide {
+    width: 180px;
+    height: 180px;
+  }
+  .carouselBgWrapper {
+    min-height: 400px;
+  }
+}
+
+/* Large mobile/tablet screens */
+@media (max-width: 900px) {
+  .centerSlide, .modelFrame {
+    width: 220px;
+    height: 220px;
+  }
+  .sideSlide {
+    width: 120px;
+    height: 120px;
+  }
+  .carouselBgWrapper {
+    min-height: 280px;
+  }
+  .customCarousel {
+    gap: 1rem;
+  }
+}
+
+/* Hide side slides and dots on small screens, keep arrows and center slide */
+@media (max-width: 700px) {
+  .sideSlide {
+    display: none !important;
+  }
+  .slickDots {
+    display: none !important;
+  }
+  .customCarousel {
+    gap: 0 !important;
+  }
+  .carouselArrow {
+    position: static !important;
+    top: unset !important;
+    left: unset !important;
+    right: unset !important;
+    transform: none !important;
+    margin: 0 0.2em;
+  }
+}
+
+/* Mobile preview row and thumbnails */
+.mobilePreviewRow {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0.2rem auto 0 auto;
+  padding: 0.2rem 0;
+  overflow-x: auto;
+}
+
+.mobilePreviewThumb {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+  outline: none;
+  transition: box-shadow 0.2s, border 0.2s;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobilePreviewThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #222;
+}
+
+.mobilePreviewActive {
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
 }

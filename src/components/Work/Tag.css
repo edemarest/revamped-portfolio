@@ -26,10 +26,10 @@
 /* ---------------- FILTER (top bar) ---------------- */
 
 .tag-filter {
-  font-size: 1.07em;
-  padding: 0.2em 0.9em;
-  margin-right: 0.7em;
-  margin-bottom: 0.3em;
+  font-size: 0.95em; /* slightly larger */
+  padding: 0.20em 0.85em;
+  margin-right: 0.62em;
+  margin-bottom: 0.28em;
   background: linear-gradient(90deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.18) 100%);
   color: #fff;
   transition: background 0.2s, box-shadow 0.2s, color 0.2s, transform 0.18s;
@@ -39,7 +39,7 @@
   background: linear-gradient(90deg, rgba(245,78,78,0.22) 0%, rgba(245,78,78,0.22) 100%);
   color: #fff;
   box-shadow: 0 4px 18px rgba(245,78,78,0.13);
-  transform: scale(1.12);
+  transform: scale(1.14);
   z-index: 2;
 }
 .tag-filter:hover .tag-icon {
@@ -50,40 +50,68 @@
   background: linear-gradient(90deg, rgba(245,78,78,0.38) 0%, rgba(245,78,78,0.38) 100%);
   color: var(--color-accent);
   box-shadow: 0 2px 18px rgba(245,78,78,0.22);
-  transform: scale(1.08);
+  transform: scale(1.10);
   z-index: 2;
 }
 .tag-filter.tag-selected .tag-icon {
   color: var(--color-accent);
 }
 
+/* Static filter tag for art/models sections */
+.tag-filter-static {
+  font-size: 0.95em;
+  padding: 0.20em 0.85em;
+  margin-right: 0.62em;
+  margin-bottom: 0.28em;
+  background: linear-gradient(90deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.18) 100%);
+  color: #fff;
+  border: none;
+  box-shadow: none;
+  cursor: default;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  border-radius: 999px;
+  font-weight: 600;
+  user-select: none;
+  transition: none;
+}
+
+/* No hover/selected for static filter tags */
+.tag-filter-static:hover,
+.tag-filter-static.tag-selected {
+  background: linear-gradient(90deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.18) 100%);
+  color: #fff;
+  box-shadow: none;
+  transform: none;
+}
+
+.tag-filter-static .tag-icon {
+  color: #fff;
+  font-size: 0.8em;
+  transition: none;
+}
+
 /* ---------------- CARD (project static tag) ---------------- */
 
 .tag-card {
-  font-size: 0.85em;
-  padding: 0.26em 0.7em;
+  font-size: 0.75em;
+  padding: 0.18em 0.5em;
   background: rgba(255,255,255,0.18);
   color: #fff;
   border: none;
   box-shadow: none;
-  transition: background 0.18s, color 0.18s;
-}
-
-.tag-card:hover {
-  background: rgba(245,78,78,0.22);
-  color: #fff;
+  transition: none;
+  cursor: default;
 }
 
 .tag-card.tag-selected {
-  background: rgba(245,78,78,0.38);
-  color: var(--color-accent);
-}
-.tag-card.tag-selected .tag-icon {
-  color: var(--color-accent);
+  background: rgba(255,255,255,0.18);
+  color: #fff;
 }
 
 .tag-card .tag-icon {
   color: #fff;
-  font-size: 0.95em;
-  transition: color 0.18s;
+  font-size: 0.85em;
+  transition: none;
 }

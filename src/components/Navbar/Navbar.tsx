@@ -7,11 +7,9 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Check if page is scrolled
       setIsScrolled(window.scrollY > 10)
-
-      // Find active section
-      const sections = ['hero', 'projects', 'showcase', 'art', 'about']
+      // Update sections to match App.tsx anchors
+      const sections = ['hero', 'projects', 'showcase', 'art', 'models', 'about']
       const current = sections.find(section => {
         const element = document.getElementById(section)
         if (element) {
@@ -20,7 +18,6 @@ export default function Navbar() {
         }
         return false
       })
-      
       if (current) {
         setActiveSection(current)
       }
@@ -28,26 +25,74 @@ export default function Navbar() {
 
     window.addEventListener('scroll', handleScroll)
     handleScroll() // Check initial state
-    
+
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const getLinkClasses = (section: string) => {
     const baseClasses = `${styles.link} glow-on-hover`
-    return activeSection === section 
+    return activeSection === section
       ? `${baseClasses} nav-link-active`
       : baseClasses
   }
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, section: string) => {
+    e.preventDefault();
+    const el = document.getElementById(section);
+    if (el) {
+      const yOffset = -80; // Adjust for fixed navbar height
+      const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav className={`${styles.nav} ${isScrolled ? 'scrolled' : ''}`}>
       <ul className={styles.navList}>
-        <li><a href="#hero" className={getLinkClasses('hero')}>Home</a></li>
-        <li><a href="#projects" className={getLinkClasses('projects')}>Projects</a></li>
-        <li><a href="#showcase" className={getLinkClasses('showcase')}>Showcase</a></li>
-        <li><a href="#art" className={getLinkClasses('art')}>Art</a></li>
-        <li><a href="#about" className={getLinkClasses('about')}>About</a></li>
+        <li>
+          <a
+            href="#hero"
+            className={getLinkClasses('hero')}
+            onClick={e => handleNavClick(e, 'hero')}
+          >Home</a>
+        </li>
+        <li>
+          <a
+            href="#projects"
+            className={getLinkClasses('projects')}
+            onClick={e => handleNavClick(e, 'projects')}
+          >Projects</a>
+        </li>
+        <li>
+          <a
+            href="#showcase"
+            className={getLinkClasses('showcase')}
+            onClick={e => handleNavClick(e, 'showcase')}
+          >Showcase</a>
+        </li>
+        <li>
+          <a
+            href="#models"
+            className={getLinkClasses('models')}
+            onClick={e => handleNavClick(e, 'models')}
+          >3D Models</a>
+        </li>
+        <li>
+          <a
+            href="#art"
+            className={getLinkClasses('art')}
+            onClick={e => handleNavClick(e, 'art')}
+          >Art</a>
+        </li>
+        <li>
+          <a
+            href="#about"
+            className={getLinkClasses('about')}
+            onClick={e => handleNavClick(e, 'about')}
+          >About</a>
+        </li>
       </ul>
     </nav>
   )
 }
+

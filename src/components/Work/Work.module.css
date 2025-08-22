@@ -237,3 +237,128 @@
   }
   }
 
+/* Mobile tag filter bar styles */
+.mobileTagBarWrapper {
+  width: 100%;
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+  z-index: 50;
+}
+
+.mobileTagBarButton {
+  background: linear-gradient(90deg, #ff2222 0%, #ff4444 100%);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  padding: 0.7em 1.4em;
+  font-size: 1.08em;
+  box-shadow: 0 2px 12px rgba(245,78,78,0.13);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.2em;
+}
+
+.mobileTagBarButton:hover {
+  background: linear-gradient(90deg, #ff4444 0%, #ff2222 100%);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(245,78,78,0.18);
+}
+
+.mobileTagBar {
+  width: 100%;
+  background: rgba(30,30,30,0.98);
+  border-radius: 14px;
+  box-shadow: 0 2px 18px rgba(245,78,78,0.13);
+  margin: 0 auto;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.32s cubic-bezier(.5,1.5,.5,1), opacity 0.22s;
+  position: relative;
+}
+
+.mobileTagBarOpen {
+  max-height: 320px;
+  opacity: 1;
+  padding: 1.1em 0.5em 0.7em 0.5em;
+  transition: max-height 0.32s cubic-bezier(.5,1.5,.5,1), opacity 0.22s;
+}
+
+.mobileTagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-bottom: 0.7em;
+  justify-content: flex-start;
+}
+
+.mobileTagDone {
+  background: linear-gradient(90deg, #ff2222 0%, #ff4444 100%);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 999px;
+  padding: 0.5em 1.2em;
+  font-size: 1em;
+  box-shadow: 0 2px 8px rgba(245,78,78,0.13);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  margin-left: auto;
+  display: block;
+}
+
+.mobileTagDone:hover {
+  background: linear-gradient(90deg, #ff4444 0%, #ff2222 100%);
+  color: #fff;
+}
+
+.mobileSelectedTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-bottom: 0.5em;
+  margin-top: 0.2em;
+}
+
+.mobileSelectedTagChip {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(90deg, #ff2222 0%, #ff4444 100%);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.22em 0.9em 0.22em 0.8em;
+  font-size: 0.98em;
+  margin-right: 0.18em;
+  margin-bottom: 0.18em;
+  box-shadow: 0 2px 8px rgba(245,78,78,0.10);
+  transition: background 0.2s, color 0.2s;
+}
+
+.mobileTagRemoveBtn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.1em;
+  margin-left: 0.4em;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0 0.3em;
+  transition: background 0.2s, color 0.2s;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.mobileTagRemoveBtn:hover {
+  background: #fff2;
+  color: #ff2222;
+}
+

@@ -5,11 +5,11 @@
     "short": "A privacy-focused community for Pokémon Sleep players. Features friend code sharing, posts, and tag-based filtering.",
     "details": "A community forum and friend code-sharing site for Pokémon Sleep players. Built with React and Firebase, the platform offers privacy-aware code sharing, discussion posts, and a tag-based filtering system. Users can share entries, earn reputation, and connect with others while protecting their codes from spammers.\n\nChallenges: Developed secure authentication and Firestore rules for privacy-preserving features. Created a flexible, scalable data structure for posts and user activity. Implemented a dynamic masonry layout and profanity filter to maintain quality user contributions.",
     "media": [
-      { "type": "image", "fileSrc": "src/assets/project-images/psc.png" },
-      { "type": "image", "fileSrc": "src/assets/project-images/psc2.png" },
-      { "type": "image", "fileSrc": "src/assets/project-images/psc3.png" }
+      { "type": "image", "fileSrc": "/assets/project-images/psc.png" },
+      { "type": "image", "fileSrc": "/assets/project-images/psc2.png" },
+      { "type": "image", "fileSrc": "/assets/project-images/psc3.png" }
     ],
-    "cover": "src/assets/project-images/psc.png",
+    "cover": "/assets/project-images/psc-logo.png",
     "link": "https://pokemon-sleep-research-community.com",
     "tags": ["Firebase", "React"]
   },
@@ -21,7 +21,7 @@
     "media": [
       { "type": "youtube", "id": "Ia5rDEf-x7s" }
     ],
-    "cover": "src/assets/project-images/phas-journal-cover.gif",
+    "cover": "/assets/project-images/phas-journal-cover.gif",
     "link": "https://phas-evidence-tracker.onrender.com/",
     "tags": ["React", "Node.js", "Express", "Discord SDK"]
   },
@@ -31,10 +31,10 @@
     "short": "A Stack Overflow clone with daily puzzles, messaging, and leaderboards. Built with the MERN stack.",
     "details": "This class project reimagines a bare-bones Stack Overflow clone with major feature upgrades. Built with the MERN stack, HuskyFlow introduces user authentication, direct messaging, and daily puzzle challenges modeled after games like NYT’s Sudoku and LinkedIn’s logic puzzles. Contributed to system architecture for puzzle schemas, leaderboard model, and backend API design.\n\nChallenges: Designed daily puzzle schema, including CodeNumbers and TruthTable logic puzzle formats. Created secure submission logic, leaderboard tracking, and one-attempt-per-day constraints. Collaborated in a team to modularize a complex full-stack codebase while integrating new features.",
     "media": [
-      { "type": "image", "fileSrc": "src/assets/project-images/swe_1.png" },
-      { "type": "image", "fileSrc": "src/assets/project-images/swe_2.png" }
+      { "type": "image", "fileSrc": "/assets/project-images/swe-1.png" },
+      { "type": "image", "fileSrc": "/assets/project-images/swe_2.png" }
     ],
-    "cover": "src/assets/project-images/swe_2.png",
+    "cover": "/assets/project-images/swe-logo.png",
     "link": "https://fake-so-client-418.onrender.com",
     "tags": ["Express", "MongoDB", "Node.js", "React"]
   },
@@ -44,10 +44,10 @@
     "short": "A bioinformatics platform for RNA sequence analysis with interactive visualization. Built with Flask and React.",
     "details": "An RNA sequence analysis platform that allows users to upload FASTA files and perform various structural and predictive analyses. Supports motif search, RNA folding stability, and splice site prediction, with results via interactive graphs and data tables. Backend uses Flask APIs with SciPy and BioPython; frontend is React and Tailwind.\n\nChallenges: Designed robust backend routes for multiple sequence types. Integrated bioinformatics libraries with performant React state handling. Planned scalability for long sequences and batch submissions.",
     "media": [
-      { "type": "image", "fileSrc": "src/assets/project-images/rna-tool-1.png" },
-      { "type": "image", "fileSrc": "src/assets/project-images/rna-tool-2.png" }
+      { "type": "image", "fileSrc": "/assets/project-images/rna-tool-1.png" },
+      { "type": "image", "fileSrc": "/assets/project-images/rna-tool-2.png" }
     ],
-    "cover": "src/assets/project-images/rna-tool-2.png",
+    "cover": "/assets/project-images/rna-logo.png",
     "link": "https://github.com/edemarest/rna-analysis-tool",
     "tags": ["Flask", "Python", "React"]
   },
@@ -60,7 +60,7 @@
       { "type": "youtube", "id": "U-qfejJFTfM" },
       { "type": "slides", "id": "194_5LoCfFsi7GLSna5Aaqp1MH_6LsLken8RVnQssJOw" }
     ],
-    "cover": "src/assets/project-images/power-rock.png",
+    "cover": "/assets/project-images/pr-logo.png",
     "link": "https://github.com/edemarest/Power-Rock-App",
     "tags": ["React"]
   },
@@ -70,10 +70,10 @@
     "short": "A learning management system inspired by Canvas. Course creation, user roles, and a full quiz engine.",
     "details": "Kambaz is a full-featured learning management system built from scratch as a class project modeled after Canvas. The app supports course creation, user enrollment, module tracking, and full CRUD functionality. Built a comprehensive quiz/exam engine supporting multiple question types, submission tracking, and publishing options for faculty.\n\nChallenges: Integrated quizzes into existing data model with RESTful API endpoints. Implemented permissions and views for both student and faculty workflows. Utilized Redux for state management and backend validation of user input and submission logic.",
     "media": [
-      { "type": "image", "fileSrc": "src/assets/project-images/kambaz_1.png" },
-      { "type": "image", "fileSrc": "src/assets/project-images/kambaz_2.png" }
+      { "type": "image", "fileSrc": "/assets/project-images/kambaz_1.png" },
+      { "type": "image", "fileSrc": "/assets/project-images/kambaz_2.png" }
     ],
-    "cover": "src/assets/project-images/kambaz_preview.png",
+    "cover": "/assets/project-images/kambaz-logo.png",
     "tags": ["Express", "JavaScript", "MongoDB", "Node.js", "React"]
   },
   {
@@ -84,7 +84,7 @@
     "media": [
       { "type": "youtube", "id": "BUmp30WhXAQ" }
     ],
-    "cover": "src/assets/project-images/robux_calculator.png",
+    "cover": "/assets/project-images/robux-logo.png",
     "link": "https://www.roblox.com/games/13685362163/Robux-Computer",
     "tags": ["React"]
   },
@@ -96,7 +96,7 @@
     "media": [
       { "type": "youtube", "id": "_1k-i0bezEs?si=IE99k5FS36lRjFY3" }
     ],
-    "cover": "src/assets/project-images/bloxle.png",
+    "cover": "/assets/project-images/bloxle.png",
     "link": "https://www.youtube.com/watch?v=_1k-i0bezEs",
     "tags": []
   },
@@ -108,7 +108,7 @@
     "media": [
       { "type": "youtube", "id": "your_youtube_id_here" }
     ],
-    "cover": "src/assets/project-images/flood.png",
+    "cover": "/assets/project-images/flood.png",
     "link": "https://www.roblox.com/games/12921382755/FLOOD-Beta",
     "tags": []
   },
@@ -118,9 +118,9 @@
     "short": "A maze-generation and solving game using Prim's algorithm. BFS/DFS visualization and interactive controls.",
     "details": "A pathfinding and maze-generation game using Prim’s algorithm and interactive controls. Users can navigate mazes using keyboard input and view optimal solutions through BFS and DFS toggles. Designed as a tool to visualize algorithm tradeoffs.\n\nChallenges: Implemented Prim’s algorithm for maze generation. Integrated animation states for search algorithms in real-time. Balanced visual clarity with technical depth for educational value.",
     "media": [
-      { "type": "image", "fileSrc": "src/assets/project-images/maze.png" }
+      { "type": "image", "fileSrc": "/assets/project-images/maze.png" }
     ],
-    "cover": "src/assets/project-images/maze.png",
+    "cover": "/assets/project-images/maze.png",
     "tags": ["Java"]
   }
 ]

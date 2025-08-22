@@ -14,9 +14,9 @@ function App() {
       <Hero />
       <div className="body-gradient-line" />
       <Work />
-      {/* <Showcase /> */}
-      <Art />
+      <Showcase />
       <ModelsSection />
+      <Art />
       <About />
       <Footer />
     </>

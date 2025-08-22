@@ -8,6 +8,17 @@ import regeneronLogo from '../../assets/company-logos/regeneron-logo.png'
 import remixLogo from '../../assets/company-logos/remix-logo.png'
 import vueLogo from '../../assets/company-logos/vue-logo.svg'
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+  return isMobile
+}
+
 export default function Hero() {
   const taglines = [
     "Specializing in front-end, back-end, and AI-driven systems.",
@@ -18,6 +29,7 @@ export default function Hero() {
   const [taglineIndex, setTaglineIndex] = useState(0);
   const [isTypingDone, setIsTypingDone] = useState(false);
   const [animationKey, setAnimationKey] = useState(0);
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     const typingTimer = setTimeout(() => {
@@ -38,7 +50,8 @@ export default function Hero() {
 
   return (
     <section id="hero" className={styles.hero}>
-      <div className={styles.avatarRedBlend} />
+      {/* ---- Red Gradient Avatar Blend (desktop only) ---- */}
+      {!isMobile && <div className={styles.avatarRedBlend} />}
       <div className={styles.fadeOverlay} />
 
       {/* ---- Media Background Layer ---- */}
@@ -50,25 +63,26 @@ export default function Hero() {
       {/* ---- Avatar Layer ---- */}
       <img src={heroAvatar} alt="Ella Demarest Avatar" className={styles.avatar} />
 
-      {/* ---- Company Logos Grid ABOVE icons ---- */}
-      <div className={styles.companyDiamondContainer}>
-        <div className={styles.companyDiamond}>
-          <a href="https://remix.com" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
-            <img src={remixLogo} alt="Remix Therapeutics" />
-          </a>
-          <a href="https://vue.com" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
-            <img src={vueLogo} alt="Vue Health" />
-          </a>
-          <a href="https://bip.com" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
-            <img src={bipLogo} alt="BIP" />
-          </a>
-          <a href="https://regeneron.com" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
-            <img src={regeneronLogo} alt="Regeneron" />
-          </a>
+      {/* ---- Company Logos ---- */}
+      {!isMobile && (
+        <div className={styles.companyDiamondContainer}>
+          <div className={styles.companyDiamond}>
+            <a href="https://www.remixtx.com/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
+              <img src={remixLogo} alt="Remix Therapeutics" />
+            </a>
+            <a href="https://vuehealth.com/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
+              <img src={vueLogo} alt="Vue Health" />
+            </a>
+            <a href="https://www.bip-group.com/en-us/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
+              <img src={bipLogo} alt="BIP" />
+            </a>
+            <a href="https://www.regeneron.com/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
+              <img src={regeneronLogo} alt="Regeneron" />
+            </a>
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* ---- Foreground Text ---- */}
       <div className={styles.content}>
         <div className={styles.textBlock}>
           <h1
@@ -82,21 +96,48 @@ export default function Hero() {
           </h2>
 
           <div className={styles.subtitleBlock}>
-            <p 
-              key={animationKey}
-              className={`${styles.subtitle} ${styles.taglineTransition}`}
-            >
-              {taglines[taglineIndex]}
-            </p>
+            {!isMobile && (
+              <p 
+                key={animationKey}
+                className={`${styles.subtitle} ${styles.taglineTransition}`}
+              >
+                {taglines[taglineIndex]}
+              </p>
+            )}
           </div>
 
-          {/* ---- Connection Icons (horizontal on mobile) ---- */}
+          {/* ---- Mobile Company Logos Row ---- */}
+          {isMobile && (
+            <div className={styles.mobileCompanyLogos} style={{ margin: '0 auto 0.7rem auto' }}>
+              <a href="https://www.remixtx.com/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
+                <img src={remixLogo} alt="Remix Therapeutics" />
+              </a>
+              <a href="https://vuehealth.com/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
+                <img src={vueLogo} alt="Vue Health" />
+              </a>
+              <a href="https://www.bip-group.com/en-us/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
+                <img src={bipLogo} alt="BIP" />
+              </a>
+              <a href="https://www.regeneron.com/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
+                <img src={regeneronLogo} alt="Regeneron" />
+              </a>
+            </div>
+          )}
+
+          {/* ---- Connection Icons ---- */}
           <div className={`${styles.connectionButtons} connection-buttons`}>
-            <a href="/resume.pdf" className={styles.circleGradientButton} download>
+            {/* Resume button with icon and text */}
+            <a
+              href="/assets/ella_demarest_resume.pdf"
+              className={styles.resumeButton}
+              download
+              style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+            >
               <FaDownload className={`animatedGradientText ${styles.circleGradientIcon}`} />
+              <span className={styles.resumeText}>Resume</span>
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/ella-demarest-b48553189/"
               className={styles.circleGradientButton}
               target="_blank"
               rel="noopener noreferrer"
@@ -104,7 +145,7 @@ export default function Hero() {
               <FaLinkedin className={`animatedGradientText ${styles.circleGradientIcon}`} />
             </a>
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/edemarest"
               className={styles.circleGradientButton}
               target="_blank"
               rel="noopener noreferrer"
@@ -112,7 +153,7 @@ export default function Hero() {
               <FaGithub className={`animatedGradientText ${styles.circleGradientIcon}`} />
             </a>
             <a
-              href="https://twitter.com/yourusername"
+              href="https://twitter.com/PhantomMisty"
               className={styles.circleGradientButton}
               target="_blank"
               rel="noopener noreferrer"
