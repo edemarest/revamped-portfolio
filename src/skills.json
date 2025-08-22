@@ -27,7 +27,8 @@
                 { "label": "CSS", "emphasized": false },
                 { "label": "Google Web Designer", "emphasized": false },
                 { "label": "Biopython", "emphasized": false },
-                { "label": "RNA-Seq", "emphasized": true }
+                { "label": "RNA-Seq", "emphasized": true },
+                { "label": "EC2", "emphasized": false }
             ]
         },
         {
@@ -40,7 +41,8 @@
                 { "label": "PostgreSQL", "emphasized": false },
                 { "label": "MySQL", "emphasized": false },
                 { "label": "Tableau", "emphasized": false },
-                { "label": "Dremio", "emphasized": false }
+                { "label": "Dremio", "emphasized": false },
+                { "label": "S3", "emphasized": false }
             ]
         },
         {
