@@ -93,7 +93,7 @@ export default function Work() {
           Projects
         </h2>
         <p className="section-body">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur consectetur, nisl nisi consectetur nisi, euismod euismod nisi nisi euismod.
+          Throughout the years I have worked on dozens of programming projects for school, work, and myself. I have a strong design background and extensive front end experience, but I also love the problem solving and data science knowledge that comes with developing the back end. Though I cannot make some of my best projects public since they are for work, here are a few that I can share. Lately I have been developing in React and am hoping to add more projects soon!
         </p>
         {/* Hide filter subtitle on mobile */}
         {!isMobile && (
