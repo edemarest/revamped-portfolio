@@ -19,10 +19,6 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, E
     return { hasError: true, error };
   }
 
-  componentDidCatch(error: Error, info: any) {
-    // You can log error info here
-  }
-
   render() {
     if (this.state.hasError) {
       return <div style={{ color: 'red', padding: 20 }}>Sorry, something went wrong loading the 3D model.</div>;
