@@ -1,5 +1,5 @@
 import styles from './SiteIntro.module.css'
-import { FaHandSparkles, FaGraduationCap, FaWaveSquare, FaRegHandPaper } from 'react-icons/fa'
+import { FaHandSparkles, FaGraduationCap } from 'react-icons/fa'
 
 const SiteIntro = () => (
     <section className={`${styles.siteIntro} section`}>

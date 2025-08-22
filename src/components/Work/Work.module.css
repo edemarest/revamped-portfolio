@@ -209,6 +209,7 @@
   grid-template-columns: repeat(4, 1fr);
   align-items: stretch;
   grid-auto-flow: row dense;
+  justify-content: center;
 }
 
 @media (max-width: 1200px) {
