@@ -2,7 +2,7 @@
   "profilePhoto": "/assets/images/me.png",
   "background": {
     "title": "Background & Interests",
-    "text": "Hi, I’m Ella Demarest—a full-stack developer, artist, and creative problem solver. I’m passionate about building robust web applications, experimenting with AI/ML, and creating digital art. My journey spans bioinformatics, game development, and health tech. I’ve studied and worked in Boston and New York, and after spending a summer in NYC during my Regeneron internship, I fell in love with another city while also realizing how much Boston feels like home. I’m still deciding where I’ll settle—but I know I thrive in communities full of innovation, collaboration, and creativity."
+"text": "I’m Ella, originally from San Diego and now based in Boston. I thrive in energetic, creative places and love building things—apps, interfaces, and new tech. My projects range from conversational engines at Northeastern’s IoT Lab to full-stack development at Regeneron and bioinformatics at Remix Therapeutics. Outside of work, I walk everywhere playing Pokémon Go (level 50!), explore new neighborhoods, and balance fitness with a weekly dessert ritual. I’m happiest when I’m building and making each week an adventure."
   },
   "skills": [
     {
@@ -41,5 +41,11 @@
     { "img": "/assets/funfacts/silicon-valley.png", "text": "My favorite TV show is Silicon Valley." },
     { "img": "/assets/funfacts/croagunk.png", "text": "My favorite Pokémon is Croagunk." },
     { "img": "/assets/funfacts/skyrim.png", "text": "I have hundreds of hours in Skyrim and am (im)patiently waiting for Elder Scrolls VI." }
+  ],
+  "carouselImages": [
+    { "src": "/assets/about/me.png", "caption": "Ella Demarest" },
+    { "src": "/assets/about/misty-and-sandy.jpg", "caption": "Misty & Sandy" },
+    { "src": "/assets/about/walter.jpg", "caption": "Walter" },
+    { "src": "/assets/about/ember.jpg", "caption": "Ember" }
   ]
 }
