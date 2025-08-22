@@ -9,17 +9,19 @@ import Footer from './components/Footer/Footer'
 
 function App() {
   return (
-    <>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <Navbar />
       <Hero />
       <div className="body-gradient-line" />
-      <Work />
-      <Showcase />
-      <ModelsSection />
-      <Art />
-      <About />
+      <div style={{ flex: 1 }}>
+        <Work />
+        <Showcase />
+        <ModelsSection />
+        <Art />
+        <About />
+      </div>
       <Footer />
-    </>
+    </div>
   )
 }
 

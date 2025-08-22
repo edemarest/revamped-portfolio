@@ -87,6 +87,7 @@
     min-width: 340px;
     max-width: 520px;
     width: 100%;
+    overflow: visible; /* Ensure children can expand */
 }
 
 .sectionBlock {
@@ -98,10 +99,11 @@
     flex-direction: column;
     align-items: stretch;
     min-height: 0;
-    position: relative;
-    margin-bottom: 0.7rem;
-    width: 100%;
     height: auto;
+    overflow: visible; /* Ensure children can expand */
+    position: relative;
+    margin-bottom: 0.5rem; /* Reduce from 0.7rem */
+    width: 100%;
 }
 
 .colHeading {
@@ -133,7 +135,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 2.2rem;
     margin-top: 2.2rem;
-    margin-bottom: 2.2rem;
+    margin-bottom: 1.2rem; /* Reduce from 2.2rem to avoid overlap */
     width: 100%;
     align-items: flex-start;
     min-height: 520px;
