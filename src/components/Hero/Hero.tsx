@@ -34,16 +34,17 @@ const Hero = () => {
 
   useEffect(() => {
     let i = 0;
+    setTypedName(""); // Start immediately
     const typeInterval = setInterval(() => {
       if (i < fullName.length) {
         setTypedName(fullName.substring(0, i + 1));
         i++;
         if (i === fullName.length) {
           clearInterval(typeInterval);
-          setTimeout(() => setIsTypingDone(true), 300); // slight pause after typing
+          setTimeout(() => setIsTypingDone(true), 150); // shorter pause
         }
       }
-    }, 80); // 80ms per character
+    }, 50); // faster typing
     return () => clearInterval(typeInterval);
   }, []);
 
@@ -70,13 +71,12 @@ const Hero = () => {
 
       {/* ---- Media Background Layer ---- */}
       <div className={styles.mediaContainer}>
-        <img src={heroGif} alt="hero background" className={styles.backgroundGif} />
+        <img src={heroGif} alt="hero background" className={styles.backgroundGif} loading="eager" />
         <div className={styles.gradientOverlay} />
       </div>
 
       {/* ---- Avatar Layer ---- */}
-      <img src={heroAvatar} alt="Ella Demarest Avatar" className={styles.avatar} />
-
+      <img src={heroAvatar} alt="Ella Demarest Avatar" className={styles.avatar} loading="eager" />
       {/* ---- Company Logos ---- */}
       {!isMobile && (
         <div className={styles.companyDiamondContainer}>
@@ -112,7 +112,7 @@ const Hero = () => {
 
           <div className={styles.subtitleBlock}>
             {!isMobile && (
-              <p 
+              <p
                 key={animationKey}
                 className={`${styles.subtitle} ${styles.taglineTransition}`}
               >
