@@ -1,74 +1,96 @@
 import styles from './About.module.css'
 import FunFactCarousel from './FunFactCarousel'
 import type { FunFact } from './FunFactCarousel'
-import { FaUserAstronaut, FaCode, FaTools, FaDatabase, FaPaintBrush, FaStar, FaChevronDown, FaChevronUp, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { FaUserAstronaut, FaLightbulb } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import aboutMe from '../../aboutMe.json'
 
 
 // Use carouselImages from aboutMe.json
-const aboutImages = Array.isArray(aboutMe.carouselImages)
-  ? aboutMe.carouselImages
-  : [
-      { src: '/assets/about/me.png', caption: 'Ella Demarest' },
-      { src: '/assets/about/misty-and-sandy.jpg', caption: 'Misty & Sandy' },
-      { src: '/assets/about/walter.jpg', caption: 'Walter' },
-      { src: '/assets/about/ember.jpg', caption: 'Ember' }
-    ];
+const aboutImages = [
+  { src: '/assets/about/me.png', caption: 'Me!' },
+  { src: '/assets/about/misty-and-sandy.jpg', caption: 'Misty & Sandy' },
+  { src: '/assets/about/walter.jpg', caption: 'Walter' },
+  { src: '/assets/about/ember.jpg', caption: 'Ember' }
+];
 
 function AboutImageCarousel() {
   const [idx, setIdx] = useState(0)
   const total = aboutImages.length
+  const [animIdx, setAnimIdx] = useState(0)
+  const [animState, setAnimState] = useState<'in' | 'out'>('in')
 
   useEffect(() => {
-    const timer = setInterval(() => setIdx(i => (i + 1) % total), 4000)
+    const timer = setInterval(() => {
+      setAnimState('out')
+      setTimeout(() => {
+        setAnimIdx(i => (i + 1) % total)
+        setIdx(i => (i + 1) % total)
+        setAnimState('in')
+      }, 50)
+    }, 4000)
     return () => clearInterval(timer)
   }, [total])
 
-  const prev = () => setIdx(i => (i - 1 + total) % total)
-  const next = () => setIdx(i => (i + 1) % total)
+  const showImage = (i: number) => {
+    if (i === idx) return
+    setAnimState('out')
+    setTimeout(() => {
+      setAnimIdx(i)
+      setIdx(i)
+      setAnimState('in')
+    }, 400)
+  }
 
   return (
     <div className={styles.aboutImageCarousel}>
-      <div className={styles.aboutImageCarouselImages}>
-        <button className={styles.aboutImageCarouselBtn} onClick={prev} aria-label="Previous image">
-          <FaChevronLeft />
-        </button>
-        <img src={aboutImages[idx].src} alt={aboutImages[idx].caption} className={styles.aboutImage} />
-        <button className={styles.aboutImageCarouselBtn} onClick={next} aria-label="Next image">
-          <FaChevronRight />
-        </button>
-      </div>
-      <div className={styles.aboutImageCaption}>
-        {aboutImages[idx].caption}
+      <div className={styles.aboutImageCarouselImagesRow}>
+        <div className={styles.aboutImagePreviewBarVertical}>
+          {aboutImages.map((img, i) => (
+            <button
+              key={img.src}
+              className={`${styles.aboutImagePreviewBtn} ${i === idx ? styles.aboutImagePreviewBtnActive : ''}`}
+              onClick={() => showImage(i)}
+              aria-label={`Show image: ${img.caption}`}
+              tabIndex={0}
+            >
+              <img
+                src={img.src}
+                alt={img.caption}
+                className={styles.aboutImagePreviewImgSmall}
+              />
+            </button>
+          ))}
+        </div>
+        <div className={styles.aboutImageMainCol}>
+          <div className={styles.aboutImagePostcard}>
+            <div className={styles.aboutImagePostcardBackdrop} />
+            <div
+              className={
+                animState === 'in'
+                  ? styles.aboutImagePostcardAnimIn
+                  : styles.aboutImagePostcardAnimOut
+              }
+            >
+              <div className={styles.aboutImagePostcardOuter}>
+                <img
+                  src={aboutImages[animIdx].src}
+                  alt={aboutImages[animIdx].caption}
+                  className={styles.aboutImage}
+                />
+                <div className={styles.aboutImageCaption}>
+                  {aboutImages[animIdx].caption}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
 }
 
 export default function About() {
-
-  // Icon mapping for skill categories
-  const iconMap = {
-    "Programming & Development": <FaCode />,
-    "Frameworks, Tools & Libraries": <FaTools />,
-    "Data & Bioinformatics": <FaDatabase />,
-    "Design & Creative": <FaPaintBrush />,
-    "Specialized": <FaStar />,
-  }
-
-  // Map category to color class
-  const skillClassMap: Record<string, string> = {
-    "Programming & Development": "programming",
-    "Frameworks, Tools & Libraries": "tools",
-    "Data & Bioinformatics": "database",
-    "Design & Creative": "design",
-    "Specialized": "specialized",
-  }
-
-  const [skillsOpen, setSkillsOpen] = useState(true)
-  const [funFactsOpen, setFunFactsOpen] = useState(true)
-
   return (
     <section id="about" className="section">
       <div className={styles.aboutIntroGrid}>
@@ -78,83 +100,31 @@ export default function About() {
             About Me
           </h2>
           <p className={styles.introBody}>
-            {aboutMe.background.text}
+            I’m Ella! Though I’ve studied and worked all over the place the past few years, I’m originally from San Diego, California. Boston has become my home during college, but after spending a summer in New York for my internship at Regeneron, I’ve found myself torn between two cities I love. I don’t yet know where I’ll end up, but I know I thrive in places full of energy, creativity, and innovation.<br /><br />
+            Ever since I was young, I’ve been drawn to making things—whether that’s coding an app, designing an interface, or experimenting with new tech. That curiosity has carried me through projects ranging from building a conversational engine at Northeastern’s IoT Lab, to full-stack development at Regeneron, to bioinformatics at Remix Therapeutics. I love starting with an idea, grinding through the details, and seeing something come to life end-to-end.<br /><br />
+            Even though much of my work involves sitting at a computer, I spend a lot of time outside. I walk everywhere—not just for the steps, but because I play Pokémon Go. It keeps me exploring new neighborhoods, and I’ve hit level 50 while joining a weekly Cambridge walking group. I also take health and fitness seriously, working out six days a week, but balance it with my favorite ritual: trying a new dessert every Saturday. (Right now, edible cookie dough from Little Miss Cupcape is undefeated.)<br /><br />
+            At the end of the day, I’m happiest when I’m building—projects, experiences, or connections—and finding little ways to make each week an adventure.
           </p>
-          <AboutImageCarousel />
         </div>
         <div className={styles.skillsCol}>
-          {/* Collapsible Skills */}
           <div className={styles.sectionBlock}>
-            <button
-              className={styles.collapseToggle}
-              onClick={() => setSkillsOpen(o => !o)}
-              aria-expanded={skillsOpen}
-              aria-controls="skills-collapse"
-              type="button"
-            >
-              <h3 className={styles.colHeading}>Skills</h3>
-              {skillsOpen ? <FaChevronUp /> : <FaChevronDown />}
-            </button>
-            <div
-              id="skills-collapse"
-              className={styles.collapsibleSection}
-              style={{
-                maxHeight: skillsOpen ? '1200px' : '0',
-                overflow: skillsOpen ? 'visible' : 'hidden',
-                transition: 'max-height 0.35s cubic-bezier(.5,1.5,.5,1)'
-              }}
-            >
-              <div className={styles.skillsCategoryGrid}>
-                {aboutMe.skills.map(cat => (
-                  <div className={styles.skillsCategoryCol} key={cat.category}>
-                    <div className={`${styles.skillsCategoryHeader} ${styles[skillClassMap[cat.category] || '']}`}>
-                      {iconMap[cat.category as keyof typeof iconMap]}
-                      <span>{cat.category}</span>
-                    </div>
-                    <div className={styles.skillsTagBar}>
-                      {cat.skills.map((skill: string) => (
-                        <span
-                          className={`${styles.skillTag} ${styles[skillClassMap[cat.category] || '']}`}
-                          key={skill}
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className={styles.sectionDivider} />
-          {/* Collapsible Fun Facts */}
-          <div className={styles.sectionBlock}>
-            <button
-              className={styles.collapseToggle}
-              onClick={() => setFunFactsOpen(o => !o)}
-              aria-expanded={funFactsOpen}
-              aria-controls="funfacts-collapse"
-              type="button"
-            >
-              <h3 className={styles.colHeading} style={{ marginBottom: '0.7rem' }}>
-                Fun Facts
-              </h3>
-              {funFactsOpen ? <FaChevronUp /> : <FaChevronDown />}
-            </button>
+            <h3 className={styles.colHeading} style={{ marginBottom: '0.7rem', display: 'flex', alignItems: 'center', gap: '0.6em', paddingBottom: '0.5em' }}>
+              <FaLightbulb style={{ color: 'var(--color-accent)', fontSize: '1.3em' }} />
+              Fun Facts
+            </h3>
             <div
               id="funfacts-collapse"
               className={styles.collapsibleSection}
               style={{
-                maxHeight: funFactsOpen ? '800px' : '0',
-                overflow: funFactsOpen ? 'visible' : 'hidden',
-                transition: 'max-height 0.35s cubic-bezier(.5,1.5,.5,1)'
+                maxHeight: 'none',
+                overflow: 'visible',
+                transition: 'none'
               }}
             >
-              {funFactsOpen && (
-                <FunFactCarousel funFacts={aboutMe.funFacts as FunFact[]} intervalMs={5000} />
-              )}
+              <FunFactCarousel funFacts={aboutMe.funFacts as FunFact[]} intervalMs={5000} />
             </div>
           </div>
+          <AboutImageCarousel />
         </div>
       </div>
     </section>

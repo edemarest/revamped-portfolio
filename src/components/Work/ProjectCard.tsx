@@ -1,3 +1,4 @@
+
 import styles from './ProjectCard.module.css'
 import Tag from './Tag'
 import { tagIconMap } from './TagIcons'
@@ -30,22 +31,6 @@ type Props = {
 export default function ProjectCard({ project, isExpanded, onOpen, onClose }: Props) {
     const [expandedImgIdx, setExpandedImgIdx] = useState<number | null>(null);
 
-    const mediaCount = project.media?.length || 0;
-    const isSingleMedia = mediaCount === 1;
-    const isDoubleMedia = mediaCount === 2;
-
-    // Dynamic sizing logic
-    let mediaColumnStyle: React.CSSProperties = {};
-    let embeddedMediaHeight = 180;
-
-    if (isSingleMedia) {
-        mediaColumnStyle = { maxWidth: '600px', flex: '0 0 600px', justifyContent: 'center', alignItems: 'center' };
-        embeddedMediaHeight = 380;
-    } else if (isDoubleMedia) {
-        mediaColumnStyle = { maxWidth: '420px', flex: '0 0 420px' };
-        embeddedMediaHeight = 260;
-    }
-
     return (
         <>
             <div className={styles.card} onClick={onOpen}>
@@ -66,7 +51,7 @@ export default function ProjectCard({ project, isExpanded, onOpen, onClose }: Pr
                     <div className={styles.modal} onClick={e => e.stopPropagation()}>
                         <button className={styles.closeModal} onClick={onClose}>✕</button>
                         <div className={styles.expandedGrid}>
-                            <div className={styles.mediaColumn} style={mediaColumnStyle}>
+                            <div className={styles.mediaColumn}>
                                 {project.media?.map((media, i) => {
                                     if (media.type === "image") {
                                         return (
@@ -75,7 +60,6 @@ export default function ProjectCard({ project, isExpanded, onOpen, onClose }: Pr
                                                     src={media.fileSrc}
                                                     alt={`Screenshot ${i + 1}`}
                                                     className={styles.projectImage}
-                                                    style={isSingleMedia ? { maxHeight: 380 } : isDoubleMedia ? { maxHeight: 260 } : {}}
                                                 />
                                                 <button
                                                     className={styles.expandImgBtn}
@@ -98,7 +82,6 @@ export default function ProjectCard({ project, isExpanded, onOpen, onClose }: Pr
                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                     allowFullScreen
                                                     className={styles.embeddedVideo}
-                                                    style={{ height: embeddedMediaHeight }}
                                                 />
                                             </div>
                                         );
@@ -112,7 +95,6 @@ export default function ProjectCard({ project, isExpanded, onOpen, onClose }: Pr
                                                     frameBorder="0"
                                                     allowFullScreen
                                                     className={styles.embeddedSlides}
-                                                    style={{ height: embeddedMediaHeight }}
                                                 />
                                             </div>
                                         );

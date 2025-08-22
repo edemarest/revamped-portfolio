@@ -8,6 +8,7 @@
   height: auto;
   align-items: center; /* Center carousel horizontally */
   justify-content: flex-start;
+  margin-top: 2rem;
 }
 
 
@@ -95,7 +96,7 @@
 
 @media (max-width: 700px) {
   .funFactCarousel {
-    min-height: 120px;
+    min-height: 200px;
     gap: 0.7rem;
   }
   .funFactGroupFadeIn, .funFactGroupFadeOut {

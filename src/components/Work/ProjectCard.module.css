@@ -15,6 +15,9 @@
   overflow: hidden;
   position: relative;
   box-shadow: 0 0 0 transparent;
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .card:hover {
@@ -68,6 +71,9 @@
   margin-bottom: 1rem;
   background: #222;
   display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
 }
 
 
@@ -206,47 +212,112 @@
 
 /* Mobile layout */
 @media (max-width: 700px) {
+    .modalOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(2px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: modalFadeIn 0.25s ease-out;
+      width: 100vw;
+      max-width: 100vw;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+    .modal {
+      width: 98vw !important;
+      max-width: 98vw !important;
+      box-sizing: border-box;
+      overflow-x: auto;
+      padding: 0px !important;
+    }
+  .card {
+    width: 100%;
+    min-width: 0;
+    margin: 0 auto 1.2rem auto;
+    box-sizing: border-box;
+  }
+
+  .cardDescription {
+    font-size: 0.98rem;
+    word-break: break-word;
+  }
+
+  .cardTags {
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+
   .expandedGrid {
     flex-direction: column;
     gap: 1.5rem;
+    max-width: 100vw;
+    box-sizing: border-box;
+    align-items: stretch;
+    justify-content: flex-start;
   }
   .mediaColumn, .textColumn {
-    max-width: 100% !important;
+    max-width: 100vw !important;
+    width: 100vw !important;
     flex: 1 1 100% !important;
-  }
-  .mediaColumn {
-    width: 100%;
-    max-width: 100% !important;
-    align-items: center;
-    justify-content: center;
+    box-sizing: border-box;
   }
   .imageWrapper {
-    width: 100%;
+    width: 100vw;
     max-width: 100vw;
+    min-width: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+    padding: 0;
   }
   .projectImage {
-    width: 100vw;
-    max-width: 100vw;
+    min-width: 0;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     object-position: right bottom;
     margin-bottom: 1rem;
     border-radius: 8px;
     background: #222;
+    box-sizing: border-box;
+    display: block;
   }
   .embeddedVideo, .embeddedSlides {
     width: 100vw;
     max-width: 100vw;
+    min-width: 0;
     aspect-ratio: 16 / 9;
     height: auto !important;
-    min-height: 180px;
+    min-height: 140px;
     border-radius: 8px;
     margin-bottom: 1rem;
     background: #222;
     display: block;
+    box-sizing: border-box;
+  }
+  .videoWrapper, .slidesWrapper {
+    width: 100vw;
+    max-width: 100vw;
+    min-width: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #222;
+    box-shadow: 0 2px 12px rgba(245,78,78,0.13);
+    box-sizing: border-box;
+    padding: 0;
+  }
+  .textColumn {
+    max-width: 100vw !important;
+    width: 100vw !important;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 0 1rem;
   }
 }
 
@@ -415,47 +486,81 @@
 
 /* Mobile layout */
 @media (max-width: 700px) {
-  .expandedGrid {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .mediaColumn, .textColumn {
-    max-width: 100% !important;
-    flex: 1 1 100% !important;
-  }
   .mediaColumn {
+    padding: 10px;
+  }
+  .modal {
     width: 100%;
-    max-width: 100% !important;
-    align-items: center;
-    justify-content: center;
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: 0.8rem 0.2rem 1.2rem 0.2rem !important;
+    box-sizing: border-box;
+  }
+  .expandedGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    align-items: stretch;
+    justify-content: flex-start;
   }
   .imageWrapper {
     width: 100%;
-    max-width: 100vw;
+    min-width: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+    padding: 0;
   }
   .projectImage {
-    width: 100vw;
+    width: 100%;
     max-width: 100vw;
+    min-width: 0;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     object-position: right bottom;
     margin-bottom: 1rem;
     border-radius: 8px;
     background: #222;
+    box-sizing: border-box;
+    display: block;
   }
   .embeddedVideo, .embeddedSlides {
     width: 100vw;
     max-width: 100vw;
+    min-width: 0;
     aspect-ratio: 16 / 9;
     height: auto !important;
-    min-height: 180px;
+    min-height: 140px;
     border-radius: 8px;
     margin-bottom: 1rem;
     background: #222;
     display: block;
+    box-sizing: border-box;
+  }
+  .videoWrapper, .slidesWrapper {
+    width: 100vw;
+    max-width: 100vw;
+    min-width: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #222;
+    box-shadow: 0 2px 12px rgba(245,78,78,0.13);
+    box-sizing: border-box;
+    padding: 0;
+  }
+  .textColumn {
+    max-width: 100vw !important;
+    width: 100vw !important;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 0 1rem;
   }
 }
 

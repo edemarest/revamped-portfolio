@@ -2,35 +2,8 @@
   "profilePhoto": "/assets/images/me.png",
   "background": {
     "title": "Background & Interests",
-"text": "I’m Ella, originally from San Diego and now based in Boston. I thrive in energetic, creative places and love building things—apps, interfaces, and new tech. My projects range from conversational engines at Northeastern’s IoT Lab to full-stack development at Regeneron and bioinformatics at Remix Therapeutics. Outside of work, I walk everywhere playing Pokémon Go (level 50!), explore new neighborhoods, and balance fitness with a weekly dessert ritual. I’m happiest when I’m building and making each week an adventure."
+    "text": "I’m Ella, originally from San Diego and now based in Boston. I thrive in energetic, creative places and love building things—apps, interfaces, and new tech. My projects range from conversational engines at Northeastern’s IoT Lab to full-stack development at Regeneron and bioinformatics at Remix Therapeutics. Outside of work, I walk everywhere playing Pokémon Go (level 50!), explore new neighborhoods, and balance fitness with a weekly dessert ritual. I’m happiest when I’m building and making each week an adventure."
   },
-  "skills": [
-    {
-      "category": "Programming & Development",
-      "icon": "FaCode",
-      "skills": ["Python", "JavaScript", "TypeScript", "Java", "C#", "Racket", "SQL", "PHP", "Flask"]
-    },
-    {
-      "category": "Frameworks, Tools & Libraries",
-      "icon": "FaTools",
-      "skills": ["React.js", "Tailwind CSS", "WordPress", "HTML", "CSS", "Google Web Designer"]
-    },
-    {
-      "category": "Data & Bioinformatics",
-      "icon": "FaDatabase",
-      "skills": ["Database Design", "Bioinformatics", "Biology"]
-    },
-    {
-      "category": "Design & Creative",
-      "icon": "FaPaintBrush",
-      "skills": ["Figma", "Adobe Photoshop", "Adobe Illustrator", "Blender", "Substance Painter"]
-    },
-    {
-      "category": "Specialized",
-      "icon": "FaStar",
-      "skills": ["AI/ML", "Veeva CRM", "Game Development", "Digital Circuit Design"]
-    }
-  ],
   "funFacts": [
     { "img": "/assets/funfacts/death-note.png", "text": "My favorite animes are Attack on Titan and Death Note." },
     { "img": "/assets/funfacts/pfizer.png", "text": "I was in a clinical trial for the Pfizer COVID-19 vaccine." },
@@ -43,8 +16,8 @@
     { "img": "/assets/funfacts/skyrim.png", "text": "I have hundreds of hours in Skyrim and am (im)patiently waiting for Elder Scrolls VI." }
   ],
   "carouselImages": [
-    { "src": "/assets/about/me.png", "caption": "Ella Demarest" },
-    { "src": "/assets/about/misty-and-sandy.jpg", "caption": "Misty & Sandy" },
+    { "src": "/assets/about/me.png", "caption": "Me!" },
+    { "src": "/assets/about/misty-and-sandy.jpg", "caption": "My childhood cats Misty & Sandy. They live back in San Diego!" },
     { "src": "/assets/about/walter.jpg", "caption": "Walter" },
     { "src": "/assets/about/ember.jpg", "caption": "Ember" }
   ]

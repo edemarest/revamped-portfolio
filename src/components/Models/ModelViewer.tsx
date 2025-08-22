@@ -17,10 +17,7 @@ const ModelPrimitive = React.memo(function ModelPrimitive({ modelPath, scale }: 
   const finalScale = scale ?? (modelPath.includes('TreasureChest') ? 2.5 : 1.2);
 
   useEffect(() => {
-    // Only log/cleanup when modelPath changes
-    console.log(`[ModelPrimitive] Mounted for:`, modelPath);
     return () => {
-      console.log(`[ModelPrimitive] Unmounting and cleaning up:`, modelPath);
       if (scene) {
         scene.traverse((obj: any) => {
           if (obj.geometry) obj.geometry.dispose();

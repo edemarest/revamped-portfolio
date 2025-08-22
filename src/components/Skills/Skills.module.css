@@ -1,0 +1,191 @@
+.skillsSection {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.skillsRow {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 120px;
+  width: 100%;
+  position: relative;
+}
+
+.skillsRow:nth-child(even) {
+  background: var(--color-stripe-even, #181a1b);
+}
+.skillsRow:nth-child(odd) {
+  background: var(--color-stripe-odd, #202225);
+}
+
+.skillsCategoryCol {
+  min-width: 260px;
+  max-width: 340px; /* Increase for desktop */
+  width: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2rem 1.5rem 2rem 2.5rem;
+  position: sticky;
+  left: 0;
+  top: 0;
+  background: inherit;
+  z-index: 2;
+  border-right: 1px solid #23272a;
+}
+
+.skillsCategoryHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff; /* Make category text white */
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.skillsCategoryIcon {
+  /* Increase icon size if not set inline */
+  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-accent, #6c63ff);
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.skillsMarqueeCol {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  background: inherit;
+  white-space: nowrap;
+  /* Fade edges for smooth looping */
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.skillsMarqueeTrack {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  width: max-content;
+  animation-play-state: running;
+  /* Prevent wrapping */
+  white-space: nowrap;
+}
+
+@keyframes marquee-ltr {
+  0% { transform: translateX(-33%); }
+  100% { transform: translateX(0%); }
+}
+@keyframes marquee-rtl {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-33%); }
+}
+
+/* Animation duration is doubled for slower speed */
+.skillsMarqueeTrack[data-direction="ltr"] {
+  animation: marquee-ltr var(--marquee-speed, 60s) linear infinite;
+}
+.skillsMarqueeTrack[data-direction="rtl"] {
+  animation: marquee-rtl var(--marquee-speed, 60s) linear infinite;
+}
+
+.skillsMarqueeCol:hover .skillsMarqueeTrack {
+  animation-play-state: paused;
+}
+
+@media (max-width: 900px) {
+  .skillsRow {
+    flex-direction: column;
+    min-height: 0;
+  }
+  .skillsCategoryCol {
+    position: static;
+    max-width: none;
+    min-width: 0;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 1.2rem 1rem 0.5rem 1rem;
+    border-right: none;
+    border-bottom: 1px solid #23272a;
+  }
+  .skillsCategoryHeader {
+    width: 100%;
+    justify-content: flex-start;
+    font-size: 1.15rem;
+    color: var(--color-accent, #7f5af0); /* Accent color for mobile too */
+  }
+  .skillsMarqueeCol {
+    padding: 0.5rem 0.5rem 1.2rem 0.5rem;
+  }
+}
+
+.skillsChip {
+  display: inline-block;
+  padding: 0.5em 1.1em;
+  border-radius: 1.2em;
+  background: #23272a;
+  color: #fff;
+  border: 2px solid transparent;
+  font-weight: 500;
+  font-size: 1rem;
+  box-shadow: 0 1px 4px rgba(80,80,120,0.07);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  position: relative;
+  /* Allow chip to grow for long tags */
+  max-width: none;
+  text-overflow: unset;
+  overflow: visible;
+  white-space: normal;
+  vertical-align: middle;
+}
+
+.skillsChip:hover,
+.skillsChip:focus {
+  border-color: var(--color-accent, #6c63ff);
+  box-shadow: 0 0 12px 2px rgba(108,99,255,0.18);
+  z-index: 1;
+}
+
+.skillsChipEmphasized {
+  border-color: #ff3b3b;
+  color: #fff;
+  background: #2a1a1a;
+  box-shadow: 0 0 16px 2px rgba(255,59,59,0.25);
+  animation: pulseGlow 1.2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 16px 2px rgba(255,59,59,0.25);
+    background: #2a1a1a;
+  }
+  100% {
+    box-shadow: 0 0 32px 6px rgba(255,59,59,0.45);
+    background: #3a2323;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skillsMarqueeTrack {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+.skillsTableWrapper {
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.08);
+  background: none; /* Ensure no black background */
+  margin-top: 2rem;
+}

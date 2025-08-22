@@ -1,0 +1,101 @@
+.floatingEmailWrapper {
+  position: fixed;
+  right: 2.2rem;
+  bottom: 1.5rem; /* Move even closer to the bottom */
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  outline: none;
+}
+
+.floatingEmailBtn {
+  background: var(--color-accent, #7f5af0);
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 16px 0 rgba(127,90,240,0.18), 0 0 0 2px #23272a;
+  width: 72px;   /* Larger button */
+  height: 72px;  /* Larger button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+  font-size: 2.4rem;
+  outline: none;
+}
+
+.floatingEmailBtn:hover,
+.floatingEmailBtn:focus {
+  box-shadow: 0 0 32px 8px #ff3b3b, 0 2px 16px 0 rgba(127,90,240,0.22), 0 0 0 2px #ff3b3b;
+  transform: scale(1.10);
+}
+
+.floatingEmailPopup {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  bottom: 100%; /* Position above the button */
+  right: 0;
+  margin-bottom: 1.1rem; /* Space between popup and button */
+  background: #181a1b;
+  color: #fff;
+  border-radius: 1.1rem;
+  padding: 1.1rem 2.2rem; /* Slightly less vertical padding */
+  min-width: 260px;       /* wider tooltip */
+  max-width: 340px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 32px 0 #ff3b3b55, 0 2px 16px 0 #181a1b;
+  transition: opacity 0.35s cubic-bezier(.5,1.5,.5,1), transform 0.35s cubic-bezier(.5,1.5,.5,1);
+  white-space: normal; /* Allow wrapping but keep single line if possible */
+  text-align: center;  /* Center text horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  flex-direction: column;
+  transform: translateY(20px) scale(0.95);
+}
+
+.open .floatingEmailPopup {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.floatingEmailPopupLine {
+  display: block;
+  font-size: 1.08rem;
+  color: #fff;
+  margin-bottom: 0.2em;
+  font-weight: bold;
+}
+
+.floatingEmailPopupAccent {
+  display: block;
+  color: #fff;
+  font-weight: normal;
+  font-size: 1.13rem;
+  /* Remove glow and animation */
+  animation: none;
+  text-shadow: none;
+}
+
+@media (max-width: 700px) {
+  .floatingEmailWrapper {
+    right: 1rem;
+    bottom: 0.2rem;
+  }
+  .floatingEmailBtn {
+    width: 56px;
+    height: 56px;
+    font-size: 1.7rem;
+  }
+  .floatingEmailPopup {
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+    min-width: 160px;
+    margin-bottom: 0.7rem;
+  }
+}

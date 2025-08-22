@@ -11,11 +11,11 @@
     ],
     "cover": "/assets/project-images/psc-logo.png",
     "link": "https://pokemon-sleep-research-community.com",
-    "tags": ["Firebase", "React"]
+    "tags": ["Firebase", "React", "Node.js"]
   },
   {
     "id": "phas-evidence-tracker",
-    "title": "Phas Evidence Tracker",
+    "title": "Phasmophobia Ghost Tracker",
     "short": "A collaborative evidence tracking tool for Phasmophobia players with Discord integration and real-time sharing.",
     "details": "A real-time collaborative evidence tracker for Phasmophobia ghost hunting sessions. Teams can use the Discord Activity version to create and join investigation lobbies directly inside Discord, or play in the browser. Track discovered evidence, eliminate ghost types, and coordinate findings in real time.\n\nChallenges: Built real-time synchronization using a polling-based client. Implemented Discord Embedded App SDK integration. Designed robust session management with participant tracking, evidence state synchronization, and ghost elimination logic.",
     "media": [
@@ -26,6 +26,44 @@
     "tags": ["React", "Node.js", "Express", "Discord SDK"]
   },
   {
+    "id": "rna-analysis-tool",
+    "title": "RNA Analysis Tool",
+    "short": "A bioinformatics platform for RNA sequence analysis with interactive visualization. Built with Flask and React.",
+    "details": "An RNA sequence analysis platform that allows users to upload FASTA files and perform various structural and predictive analyses. Supports motif search, RNA folding stability, and splice site prediction, with results via interactive graphs and data tables. Backend uses Flask APIs with SciPy and BioPython; frontend is React and Tailwind.\n\nChallenges: Designed robust backend routes for multiple sequence types. Integrated bioinformatics libraries with performant React state handling. Planned scalability for long sequences and batch submissions.",
+    "media": [
+      { "type": "image", "fileSrc": "/assets/project-images/rna-tool-1.png" },
+      { "type": "image", "fileSrc": "/assets/project-images/rna-tool-2.png" }
+    ],
+    "cover": "/assets/project-images/rna-logo.png",
+    "link": "https://github.com/edemarest/rna-analysis-tool",
+    "tags": ["Flask", "Python", "React", "Node.js"]
+  },
+  {
+    "id": "power-rock-app",
+    "title": "Power Rock App",
+    "short": "A music-themed fitness app for fans and artists. Dual user roles, real-time updates, and rewards.",
+    "details": "A music-themed fitness app connecting fans with artist-created workouts. Users select favorite genres, complete guided workouts, and earn rewards. Artists create branded exercises, and the dual user role structure supports tailored onboarding and content control.\n\nChallenges: Designed scalable logic for two user types. Handled real-time state updates during workouts. Maintained consistent UX for both fan and artist journeys.",
+    "media": [
+      { "type": "youtube", "id": "U-qfejJFTfM" },
+      { "type": "slides", "id": "194_5LoCfFsi7GLSna5Aaqp1MH_6LsLken8RVnQssJOw" }
+    ],
+    "cover": "/assets/project-images/pr-logo.png",
+    "link": "https://github.com/edemarest/Power-Rock-App",
+    "tags": ["Swift", "Firebase"]
+  },
+  {
+    "id": "kambaz",
+    "title": "Kambaz",
+    "short": "A learning management system inspired by Canvas. Course creation, user roles, and a full quiz engine.",
+    "details": "Kambaz is a full-featured learning management system built from scratch as a class project modeled after Canvas. The app supports course creation, user enrollment, module tracking, and full CRUD functionality. Built a comprehensive quiz/exam engine supporting multiple question types, submission tracking, and publishing options for faculty.\n\nChallenges: Integrated quizzes into existing data model with RESTful API endpoints. Implemented permissions and views for both student and faculty workflows. Utilized Redux for state management and backend validation of user input and submission logic.",
+    "media": [
+      { "type": "image", "fileSrc": "/assets/project-images/kambaz_1.png" },
+      { "type": "image", "fileSrc": "/assets/project-images/kambaz_2.png" }
+    ],
+    "cover": "/assets/project-images/kambaz-logo.png",
+    "tags": ["Express", "Node.js", "MongoDB", "React"]
+  },
+    {
     "id": "huskyflow",
     "title": "HuskyFlow (Enhanced)",
     "short": "A Stack Overflow clone with daily puzzles, messaging, and leaderboards. Built with the MERN stack.",
@@ -39,54 +77,16 @@
     "tags": ["Express", "MongoDB", "Node.js", "React"]
   },
   {
-    "id": "rna-analysis-tool",
-    "title": "RNA Analysis Tool",
-    "short": "A bioinformatics platform for RNA sequence analysis with interactive visualization. Built with Flask and React.",
-    "details": "An RNA sequence analysis platform that allows users to upload FASTA files and perform various structural and predictive analyses. Supports motif search, RNA folding stability, and splice site prediction, with results via interactive graphs and data tables. Backend uses Flask APIs with SciPy and BioPython; frontend is React and Tailwind.\n\nChallenges: Designed robust backend routes for multiple sequence types. Integrated bioinformatics libraries with performant React state handling. Planned scalability for long sequences and batch submissions.",
-    "media": [
-      { "type": "image", "fileSrc": "/assets/project-images/rna-tool-1.png" },
-      { "type": "image", "fileSrc": "/assets/project-images/rna-tool-2.png" }
-    ],
-    "cover": "/assets/project-images/rna-logo.png",
-    "link": "https://github.com/edemarest/rna-analysis-tool",
-    "tags": ["Flask", "Python", "React"]
-  },
-  {
-    "id": "power-rock-app",
-    "title": "Power Rock App",
-    "short": "A music-themed fitness app for fans and artists. Dual user roles, real-time updates, and rewards.",
-    "details": "A music-themed fitness app connecting fans with artist-created workouts. Users select favorite genres, complete guided workouts, and earn rewards. Artists create branded exercises, and the dual user role structure supports tailored onboarding and content control.\n\nChallenges: Designed scalable logic for two user types. Handled real-time state updates during workouts. Maintained consistent UX for both fan and artist journeys.",
-    "media": [
-      { "type": "youtube", "id": "U-qfejJFTfM" },
-      { "type": "slides", "id": "194_5LoCfFsi7GLSna5Aaqp1MH_6LsLken8RVnQssJOw" }
-    ],
-    "cover": "/assets/project-images/pr-logo.png",
-    "link": "https://github.com/edemarest/Power-Rock-App",
-    "tags": ["React"]
-  },
-  {
-    "id": "kambaz",
-    "title": "Kambaz",
-    "short": "A learning management system inspired by Canvas. Course creation, user roles, and a full quiz engine.",
-    "details": "Kambaz is a full-featured learning management system built from scratch as a class project modeled after Canvas. The app supports course creation, user enrollment, module tracking, and full CRUD functionality. Built a comprehensive quiz/exam engine supporting multiple question types, submission tracking, and publishing options for faculty.\n\nChallenges: Integrated quizzes into existing data model with RESTful API endpoints. Implemented permissions and views for both student and faculty workflows. Utilized Redux for state management and backend validation of user input and submission logic.",
-    "media": [
-      { "type": "image", "fileSrc": "/assets/project-images/kambaz_1.png" },
-      { "type": "image", "fileSrc": "/assets/project-images/kambaz_2.png" }
-    ],
-    "cover": "/assets/project-images/kambaz-logo.png",
-    "tags": ["Express", "JavaScript", "MongoDB", "Node.js", "React"]
-  },
-  {
     "id": "robux-calculator",
     "title": "Robux Calculator",
-    "short": "A tool for Roblox developers to calculate earnings and fees. Converts Robux to local currencies.",
-    "details": "This tool helps developers calculate Robux earnings, DevEx values, and marketplace fees. Converts between Robux and local currencies, applying taxes and discounts. Useful for game creators managing monetization on Roblox.\n\nChallenges: Implemented non-linear pricing logic with dynamic tax inputs. Designed currency scaling and display formatting for clarity. Integrated play tester feedback to add optional tax removal tools.",
+    "short": "A tool for Roblox developers to calculate earnings and fees. Also available as a Discord bot.",
+    "details": "This tool helps developers calculate Robux earnings, DevEx values, and marketplace fees. Converts between Robux and local currencies, applying taxes and discounts. Available both as a Lua app on Roblox and as a Discord bot with /money2robux and /robux2money commands, supporting customizable currency arguments and the same calculation logic.\n\nChallenges: Implemented non-linear pricing logic with dynamic tax inputs. Designed currency scaling and display formatting for clarity. Integrated play tester feedback to add optional tax removal tools. Developed Discord bot version in JavaScript using Discord SDK for seamless integration.",
     "media": [
       { "type": "youtube", "id": "BUmp30WhXAQ" }
     ],
     "cover": "/assets/project-images/robux-logo.png",
     "link": "https://www.roblox.com/games/13685362163/Robux-Computer",
-    "tags": ["React"]
+    "tags": ["Lua", "JavaScript", "Discord SDK"]
   },
   {
     "id": "bloxle",
@@ -98,7 +98,7 @@
     ],
     "cover": "/assets/project-images/bloxle.png",
     "link": "https://www.youtube.com/watch?v=_1k-i0bezEs",
-    "tags": []
+    "tags": ["Lua"]
   },
   {
     "id": "flood-minigame",
@@ -110,7 +110,7 @@
     ],
     "cover": "/assets/project-images/flood.png",
     "link": "https://www.roblox.com/games/12921382755/FLOOD-Beta",
-    "tags": []
+    "tags": ["Lua"]
   },
   {
     "id": "maze-game",

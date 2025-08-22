@@ -9,7 +9,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
       // Update sections to match App.tsx anchors
-      const sections = ['hero', 'projects', 'showcase', 'art', 'models', 'about']
+  const sections = ['hero', 'projects', 'skills', 'showcase', 'art', 'models', 'about']
       const current = sections.find(section => {
         const element = document.getElementById(section)
         if (element) {
@@ -62,6 +62,13 @@ export default function Navbar() {
             className={getLinkClasses('projects')}
             onClick={e => handleNavClick(e, 'projects')}
           >Projects</a>
+        </li>
+        <li>
+          <a
+            href="#skills"
+            className={getLinkClasses('skills')}
+            onClick={e => handleNavClick(e, 'skills')}
+          >Skills</a>
         </li>
         <li>
           <a

@@ -21,9 +21,11 @@ function useIsMobile() {
 
 export default function Hero() {
   const taglines = [
-    "Specializing in front-end, back-end, and AI-driven systems.",
-    "Turning complex problems into clean solutions.",
-    "Lover of clean code, cute cats, and beautiful UI."
+    "Game dev roots, full-stack focus",
+    "Bioinformatics meets software engineering",
+    "Eye for design, mind for complex systems",
+    "Building for others since childhood",
+    "Honors CS student at Northeastern"
   ];
 
   const [taglineIndex, setTaglineIndex] = useState(0);

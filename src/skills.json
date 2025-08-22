@@ -1,0 +1,70 @@
+{
+    "skills": [
+        {
+            "category": "Programming & Development",
+            "icon": "Code2",
+            "skills": [
+            { "label": "Python", "emphasized": true },
+            { "label": "TypeScript", "emphasized": false },
+            { "label": "JavaScript", "emphasized": true },
+            { "label": "Java", "emphasized": false },
+            { "label": "SQL", "emphasized": true },
+            { "label": "C#", "emphasized": false },
+            { "label": "Lua", "emphasized": false },
+            { "label": "Racket", "emphasized": false },
+            { "label": "PHP", "emphasized": false },
+            { "label": "Flask", "emphasized": false }
+            ]
+        },
+        {
+            "category": "Frameworks, Tools & Libraries",
+            "icon": "Wrench",
+            "skills": [
+                { "label": "React.js", "emphasized": true },
+                { "label": "Tailwind CSS", "emphasized": false },
+                { "label": "WordPress", "emphasized": false },
+                { "label": "HTML", "emphasized": false },
+                { "label": "CSS", "emphasized": false },
+                { "label": "Google Web Designer", "emphasized": false },
+                { "label": "Biopython", "emphasized": false },
+                { "label": "RNA-Seq", "emphasized": true }
+            ]
+        },
+        {
+            "category": "Database Design",
+            "icon": "Database",
+            "skills": [
+                { "label": "MongoDB", "emphasized": true },
+                { "label": "Firebase", "emphasized": false },
+                { "label": "SQLite", "emphasized": true },
+                { "label": "PostgreSQL", "emphasized": false },
+                { "label": "MySQL", "emphasized": false },
+                { "label": "Tableau", "emphasized": false },
+                { "label": "Dremio", "emphasized": false }
+            ]
+        },
+        {
+            "category": "Design & Creative",
+            "icon": "Palette",
+            "skills": [
+                { "label": "Figma", "emphasized": true },
+                { "label": "Adobe Photoshop", "emphasized": false },
+                { "label": "Blender", "emphasized": true },
+                { "label": "Adobe Illustrator", "emphasized": false },
+                { "label": "Substance Painter", "emphasized": false }
+            ]
+        },
+        {
+            "category": "Specialized",
+            "icon": "Star",
+            "skills": [
+                { "label": "AI Pipeline & Orchestration", "emphasized": true },
+                { "label": "Digital Circuit Design", "emphasized": false },
+                { "label": "Veeva CRM", "emphasized": true },
+                { "label": "3D Modeling", "emphasized": false },
+                { "label": "Game Development", "emphasized": true },
+                { "label": "Digital Art", "emphasized": false }
+            ]
+        }
+    ]
+}
