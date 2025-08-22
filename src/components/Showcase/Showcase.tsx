@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 export default function Showcase() {
   const fullText = "Coming Soon";
   const [typedText, setTypedText] = useState("");
-  const [typingDone, setTypingDone] = useState(false);
 
   useEffect(() => {
     let i = 0;
@@ -15,7 +14,6 @@ export default function Showcase() {
         i++;
         if (i === fullText.length) {
           clearInterval(typeInterval);
-          setTimeout(() => setTypingDone(true), 300);
         }
       }
     }, 90);
