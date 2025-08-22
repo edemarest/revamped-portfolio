@@ -141,11 +141,12 @@
   transition: border-color 0.2s, box-shadow 0.2s;
   cursor: pointer;
   position: relative;
-  /* Allow chip to grow for long tags */
-  max-width: none;
+  /* Ensure chip stays on one line and expands to fit content */
+  max-width: max-content;
+  min-width: 0;
   text-overflow: unset;
   overflow: visible;
-  white-space: normal;
+  white-space: nowrap;
   vertical-align: middle;
 }
 
