@@ -22,7 +22,6 @@ function useIsMobile() {
 const Hero = () => {
   const taglines = [
     "Game dev roots, full-stack focus",
-    "Bioinformatics meets software engineering",
     "Eye for design, mind for complex systems",
     "Building for others since childhood",
     "Honors CS student at Northeastern"
