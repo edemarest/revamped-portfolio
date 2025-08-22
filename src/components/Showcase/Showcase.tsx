@@ -3,11 +3,25 @@ import { FaRegLightbulb, FaTools } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 
 export default function Showcase() {
-  const [typingDone, setTypingDone] = useState(false)
+  const fullText = "Coming Soon";
+  const [typedText, setTypedText] = useState("");
+  const [typingDone, setTypingDone] = useState(false);
+
   useEffect(() => {
-    const timer = setTimeout(() => setTypingDone(true), 2200)
-    return () => clearTimeout(timer)
-  }, [])
+    let i = 0;
+    const typeInterval = setInterval(() => {
+      if (i < fullText.length) {
+        setTypedText(fullText.substring(0, i + 1));
+        i++;
+        if (i === fullText.length) {
+          clearInterval(typeInterval);
+          setTimeout(() => setTypingDone(true), 300);
+        }
+      }
+    }, 90);
+    return () => clearInterval(typeInterval);
+  }, []);
+
   return (
     <section id="showcase" className="section">
       <div className="section-header">
@@ -24,10 +38,8 @@ export default function Showcase() {
           <div className={styles.constructionIcon}>
             <FaTools size={32} />
           </div>
-          <div
-            className={`${styles.comingSoonButton} ${styles.comingSoonTyping} ${typingDone ? styles.done : ''}`}
-          >
-            Coming Soon
+          <div className={styles.comingSoonButton}>
+            {typedText}
           </div>
         </div>
         <div className={styles.gridBackground} />

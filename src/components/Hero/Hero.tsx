@@ -19,7 +19,7 @@ function useIsMobile() {
   return isMobile
 }
 
-export default function Hero() {
+const Hero = () => {
   const taglines = [
     "Game dev roots, full-stack focus",
     "Bioinformatics meets software engineering",
@@ -28,17 +28,30 @@ export default function Hero() {
     "Honors CS student at Northeastern"
   ];
 
-  const [taglineIndex, setTaglineIndex] = useState(0);
+  // Typing effect for name
+  const fullName = "ELLA DEMAREST";
+  const [typedName, setTypedName] = useState("");
   const [isTypingDone, setIsTypingDone] = useState(false);
-  const [animationKey, setAnimationKey] = useState(0);
-  const isMobile = useIsMobile()
 
   useEffect(() => {
-    const typingTimer = setTimeout(() => {
-      setIsTypingDone(true);
-    }, 2500); // match typing animation duration
-    return () => clearTimeout(typingTimer);
+    let i = 0;
+    const typeInterval = setInterval(() => {
+      if (i < fullName.length) {
+        setTypedName(fullName.substring(0, i + 1));
+        i++;
+        if (i === fullName.length) {
+          clearInterval(typeInterval);
+          setTimeout(() => setIsTypingDone(true), 300); // slight pause after typing
+        }
+      }
+    }, 80); // 80ms per character
+    return () => clearInterval(typeInterval);
   }, []);
+
+  // Tagline rotation
+  const [taglineIndex, setTaglineIndex] = useState(0);
+  const [animationKey, setAnimationKey] = useState(0);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -89,8 +102,9 @@ export default function Hero() {
         <div className={styles.textBlock}>
           <h1
             className={`${styles.name} ${styles.typing} ${isTypingDone ? styles.done : ''}`}
+            aria-label={fullName}
           >
-            ELLA DEMAREST
+            {typedName}
           </h1>
 
           <h2 className={`${styles.title} ${isTypingDone ? styles.fadeIn : styles.hidden} ${styles.staticGradientText}`}>
@@ -168,3 +182,6 @@ export default function Hero() {
     </section>
   )
 }
+
+export default Hero;
+

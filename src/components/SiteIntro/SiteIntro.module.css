@@ -1,42 +1,48 @@
-@media (max-width: 600px) {
-  .gradIcon {
-    display: none;
+@media (max-width: 1000px) {
+  .siteIntro {
+    padding: 0.18rem 0.1rem 0.18rem 0.1rem;
+    border-radius: 14px;
+    margin-top: 32px;
   }
-}
-@media (max-width: 600px) {
-  .gradIcon {
-    font-size: 1.05rem;
-    margin-right: 0.12rem;
-    margin-left: 0.12rem;
-    vertical-align: middle;
-  }
-}
-@media (max-width: 600px) {
   .bannerText {
     flex-direction: column;
-    gap: 0.4rem;
-    font-size: 1rem;
+    gap: 0.25rem;
+    font-size: 0.98rem;
     padding: 0.1rem 0.2rem;
+    align-items: stretch;
   }
   .bannerHeadline {
-    font-size: 1.05rem;
-    gap: 0.3rem;
+    font-size: 1.02rem;
+    gap: 0.22rem;
     justify-content: center;
     text-align: center;
+    width: 100%;
+    margin-bottom: 0.08rem;
   }
   .bannerSubtext {
-    font-size: 0.97rem;
-    gap: 0.3rem;
+    font-size: 0.95rem;
+    gap: 0.18rem;
     text-align: center;
     justify-content: center;
     flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
   }
   .subText {
-    font-size: 0.97rem;
+    font-size: 0.95rem;
     text-align: center;
     display: inline;
+    width: 100%;
+    margin-top: 0.04rem;
   }
   .dot {
+    display: none;
+  }
+  .reactIcon {
+    font-size: 1.08rem;
+    margin-right: 0.08rem;
+  }
+  .gradIcon {
     display: none;
   }
 }
@@ -50,6 +56,7 @@
   align-items: center;
   justify-content: center;
   gap: 1.2rem;
+  width: 100%;
 }
 
 .bannerHeadline {
@@ -101,6 +108,7 @@
   box-shadow: 0 2px 16px rgba(0,0,0,0.10);
   width: 100%;
   border-radius: 20px;
+  margin-top: 50px;
 }
 
 .bannerText {
