@@ -34,12 +34,14 @@ const Hero = () => {
 
   useEffect(() => {
     let i = 0;
+    let finished = false;
     setTypedName(""); // Start immediately
     const typeInterval = setInterval(() => {
       if (i < fullName.length) {
         setTypedName(fullName.substring(0, i + 1));
         i++;
         if (i === fullName.length) {
+          finished = true;
           clearInterval(typeInterval);
           setTimeout(() => setIsTypingDone(true), 150); // shorter pause
         }
@@ -48,12 +50,18 @@ const Hero = () => {
 
     // Fallback: after 3 seconds, show full name if not done
     const fallbackTimeout = setTimeout(() => {
-      setTypedName(fullName);
-      setIsTypingDone(true);
-      clearInterval(typeInterval);
+      if (!finished) {
+        setTypedName(fullName);
+        setIsTypingDone(true);
+        clearInterval(typeInterval);
+      }
     }, 3000);
 
     return () => {
+      if (!finished) {
+        setTypedName(fullName);
+        setIsTypingDone(true);
+      }
       clearInterval(typeInterval);
       clearTimeout(fallbackTimeout);
     };
