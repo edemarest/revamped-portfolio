@@ -33,7 +33,6 @@ export default function ProjectCard({ project, isExpanded, onOpen, onClose }: Pr
     const mediaCount = project.media?.length || 0;
     const isSingleMedia = mediaCount === 1;
     const isDoubleMedia = mediaCount === 2;
-    const mediaType = isSingleMedia ? project.media?.[0]?.type : null;
 
     // Dynamic sizing logic
     let mediaColumnStyle: React.CSSProperties = {};

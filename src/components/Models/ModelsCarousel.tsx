@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ModelViewer from './ModelViewer';
 import ErrorBoundary from './ErrorBoundary';
-import MobileModelViewer from './MobileModelViewer';
 import styles from './ModelsCarousel.module.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';

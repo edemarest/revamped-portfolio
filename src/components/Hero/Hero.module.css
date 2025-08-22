@@ -766,11 +766,10 @@
 }
 
 .resumeButton {
-  @extend .circleGradientButton;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
   justify-content: center;
+  gap: 0.5rem;
   padding: 0 1rem 0 1.2rem;
   font-size: 1rem;
   font-family: 'Manrope', 'Michroma', sans-serif;
@@ -781,9 +780,11 @@
   border: 2px solid var(--color-accent);
   box-shadow: 0 0 8px 0 var(--color-accent);
   cursor: pointer;
-  transition: background 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, border 0.3s, box-shadow 0.3s;
   min-width: 120px; /* Prevent width shift on hover */
   box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
 }
 
 .resumeButton:hover {

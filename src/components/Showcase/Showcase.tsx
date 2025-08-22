@@ -1,13 +1,6 @@
-import Masonry from 'react-masonry-css'
 import styles from './Showcase.module.css'
 import { FaRegLightbulb, FaTools } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
-
-const breakpointColumnsObj = {
-  default: 3,
-  1100: 2,
-  700: 1
-}
 
 export default function Showcase() {
   const [typingDone, setTypingDone] = useState(false)
