@@ -45,7 +45,18 @@ const Hero = () => {
         }
       }
     }, 50); // faster typing
-    return () => clearInterval(typeInterval);
+
+    // Fallback: after 3 seconds, show full name if not done
+    const fallbackTimeout = setTimeout(() => {
+      setTypedName(fullName);
+      setIsTypingDone(true);
+      clearInterval(typeInterval);
+    }, 3000);
+
+    return () => {
+      clearInterval(typeInterval);
+      clearTimeout(fallbackTimeout);
+    };
   }, []);
 
   // Tagline rotation
