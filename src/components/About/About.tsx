@@ -27,8 +27,8 @@ function AboutImageCarousel() {
         setAnimIdx(i => (i + 1) % total)
         setIdx(i => (i + 1) % total)
         setAnimState('in')
-      }, 50)
-    }, 4000)
+      }, 1000) // 1 second for animation
+    }, 5000) // 5 seconds per photo
     return () => clearInterval(timer)
   }, [total])
 
@@ -39,7 +39,7 @@ function AboutImageCarousel() {
       setAnimIdx(i)
       setIdx(i)
       setAnimState('in')
-    }, 400)
+    }, 1000) // 1 second for animation
   }
 
   return (
