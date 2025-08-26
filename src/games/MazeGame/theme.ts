@@ -42,11 +42,29 @@ export async function loadThemeAssets(themeId: ThemeId) {
   }
 
   const floorImage = await loadImage(def.floorFile)
+  // try load wall image if provided in theme def
+  let wallImage: HTMLImageElement | null = null
+  if (def.wallFile) {
+    wallImage = await loadImage(def.wallFile)
+    if (!wallImage) {
+      const parts = def.wallFile.split('.')
+      if (parts.length > 1) {
+        const altExt = parts.pop() === 'png' ? 'svg' : 'png'
+        const altName = parts.join('.') + '.' + altExt
+        wallImage = await loadImage(altName)
+        if (wallImage) {
+          console.warn(`[MazeGame] wall image ${def.wallFile} missing, loaded ${altName} instead`)
+        }
+      }
+    }
+    if (!wallImage) {
+      console.warn(`[MazeGame] wall image ${def.wallFile} failed to load for theme ${themeId}`)
+    }
+  }
   let particleImage: HTMLImageElement | null = null
   if (def.particleSpriteFile) {
     particleImage = await loadImage(def.particleSpriteFile)
     if (!particleImage) {
-      // try alternate extension (.png <-> .svg) in case file was renamed
       const parts = def.particleSpriteFile.split('.')
       if (parts.length > 1) {
         const altExt = parts.pop() === 'png' ? 'svg' : 'png'
@@ -64,7 +82,8 @@ export async function loadThemeAssets(themeId: ThemeId) {
 
   return {
     floorImage,
-    particleImage,
+  wallImage,
+  particleImage,
     fallbackColor: def.fallbackColor,
     def,
   }

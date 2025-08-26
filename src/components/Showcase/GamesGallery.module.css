@@ -1,0 +1,29 @@
+.galleryRoot {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 12px 0;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 920px;
+}
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 12px;
+  padding: 12px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.thumb { height: 120px; border-radius:8px; background: linear-gradient(180deg,#eef7ee,#e8f0e8); display:flex; align-items:center; justify-content:center }
+.title { font-weight:600 }
+.actions { display:flex; gap:8px; margin-top:auto }
+.openBtn { background: linear-gradient(180deg,#ffd96b,#ffc34a); border:none; padding:8px 12px; border-radius:8px; cursor:pointer }
+.modalBackdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; z-index:99999; pointer-events: auto; }
+.modalPanel { position: relative; z-index: 100000; width: 680px; max-width: 92%; background: rgba(10,12,14,0.96); border-radius:14px; padding: 14px; }
+.closeBtn { background: transparent; border: none; color: #fff; cursor: pointer }
