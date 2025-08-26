@@ -1,25 +1,15 @@
+<<<<<<< Updated upstream
 import styles from './Showcase.module.css'
 import { FaRegLightbulb, FaTools } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import { showcaseGames } from './games';
+=======
+import { FaRegLightbulb } from 'react-icons/fa'
+import GamesGallery from './GamesGallery'
+>>>>>>> Stashed changes
 
 export default function Showcase() {
-  const fullText = "Coming Soon";
-  const [typedText, setTypedText] = useState("");
-
-  useEffect(() => {
-    let i = 0;
-    const typeInterval = setInterval(() => {
-      if (i < fullText.length) {
-        setTypedText(fullText.substring(0, i + 1));
-        i++;
-        if (i === fullText.length) {
-          clearInterval(typeInterval);
-        }
-      }
-    }, 90);
-    return () => clearInterval(typeInterval);
-  }, []);
+  // Showcase header + games gallery
 
   return (
     <section id="showcase" className="section">
@@ -32,6 +22,7 @@ export default function Showcase() {
           Interactive games, puzzles, and demos utilizing AI and neat algorithms.
         </p>
       </div>
+<<<<<<< Updated upstream
       <div className={styles.comingSoonWrapper}>
         {showcaseGames.length > 0 ? (
           <>
@@ -64,6 +55,18 @@ export default function Showcase() {
         )}
         <div className={styles.gridBackground} />
       </div>
+=======
+  <GamesGallery />
+      {/* Uncomment below when ready to show tools */}
+      {/* <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="masonry-grid"
+        columnClassName="masonry-grid_column"
+      >
+        <FunFact />
+        <PetPainter />
+      </Masonry> */}
+>>>>>>> Stashed changes
     </section>
   )
 }
