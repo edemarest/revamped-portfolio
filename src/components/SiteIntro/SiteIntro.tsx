@@ -12,7 +12,7 @@ const SiteIntro = () => (
                 <span className={styles.dot}>•</span>
                 <FaGraduationCap className={styles.gradIcon} />
                 <span className={styles.subText}>
-                    Graduating with a B.S. in Computer Science May 2026 &amp; seeking new grad software roles
+                    Graduating with a B.S. in Computer Science April 2026 &amp; seeking new grad software roles
                 </span>
             </div>
         </div>
