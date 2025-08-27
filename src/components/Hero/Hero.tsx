@@ -162,7 +162,7 @@ const Hero = () => {
           <div className={`${styles.connectionButtons} connection-buttons`}>
             {/* Resume button with icon and text */}
             <a
-              href="/assets/ella_demarest_resume.pdf"
+              href="/assets/Ella_Demarest_Resume_2026.pdf"
               className={styles.resumeButton}
               download
               style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
