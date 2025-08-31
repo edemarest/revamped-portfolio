@@ -12,18 +12,93 @@
   max-width: 920px;
 }
 .card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.04);
-  border-radius: 12px;
-  padding: 12px;
+  /* remove outer card chrome so previewCard is the clear visual panel */
+  background: transparent;
+  border: none;
+  padding: 0;
+  display:flex;
+  justify-content:center;
+}
+/* new centered preview card */
+.previewCard {
+  width: 320px;
+  height: 320px;
+  max-width: 360px; /* square card */
+  min-height: 320px;
+  /* neutral light card with dark-mode fallback */
+  background: linear-gradient(180deg, #f6f7f7, #eef1ef);
+  border-radius: 18px; /* larger radius like start screen */
+  padding: 18px;
   display:flex;
   flex-direction:column;
-  gap:8px;
+  align-items:center;
+  gap:12px;
+  position: relative;
+  z-index: 3; /* sit well above the grid */
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+  transition: transform 180ms ease, box-shadow 220ms ease, border-color 180ms ease;
+  /* per-card accent (set via inline style --game-accent) */
+  --accent: var(--game-accent, #2f8f4f);
 }
-.thumb { height: 120px; border-radius:8px; background: linear-gradient(180deg,#eef7ee,#e8f0e8); display:flex; align-items:center; justify-content:center }
-.title { font-weight:600 }
-.actions { display:flex; gap:8px; margin-top:auto }
-.openBtn { background: linear-gradient(180deg,#ffd96b,#ffc34a); border:none; padding:8px 12px; border-radius:8px; cursor:pointer }
+.previewInner{ width: 100%; display:flex; align-items:center; justify-content:center; border-radius:10px; overflow:hidden; background: transparent }
+.previewImage { width: 140px; height: auto; display:block; border-radius:10px; box-shadow: 0 10px 24px rgba(0,0,0,0.28); }
+
+.meta { text-align:center; width:100%; max-width: 78%; }
+.title { font-weight:900; font-size:22px; margin-top:8px; font-family: 'Michroma', 'Manrope', sans-serif; color: var(--accent); letter-spacing: 0.01em }
+.desc { color: var(--mg-muted, #6b6b6b); font-size:13px; margin-top:8px; font-family: 'Manrope', sans-serif; line-height:1.45 }
+
+.metaWrapper { display:flex; flex-direction:column; align-items:center; gap:12px; width:100% }
+
+/* hover / focus state: small scale and green glowing outline to match the site's accent */
+.previewCard:hover,
+.previewCard:focus-within {
+  transform: translateY(-6px) scale(1.02);
+  border-color: color-mix(in srgb, var(--accent) 18%, rgba(0,0,0,0.06));
+  box-shadow: 0 18px 34px rgba(0,0,0,0.36), 0 0 22px color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+/* stronger green glow when hovered on large screens */
+@media (min-width: 900px) {
+  .previewCard:hover {
+    box-shadow: 0 26px 60px rgba(0,0,0,0.42), 0 0 36px rgba(6,214,160,0.08);
+  }
+}
+
+/* Dark mode: tone down light backgrounds and invert card colors */
+@media (prefers-color-scheme: dark) {
+  .previewCard {
+  background: linear-gradient(180deg, #111214, #0f1112);
+  border: 1px solid color-mix(in srgb, var(--accent) 6%, rgba(255,255,255,0.02));
+  box-shadow: 0 8px 28px rgba(0,0,0,0.6), 0 0 10px color-mix(in srgb, var(--accent) 2%, rgba(0,0,0,0.02)) inset;
+  }
+  .title, .desc { color: #e9eeea }
+}
+
+.card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02)); }
+.actions { display:flex; gap:8px; margin-top:6px }
+.openBtn {
+  background: var(--accent);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: var(--btn-text, #fff);
+  font-weight: 700;
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--accent) 14%, rgba(0,0,0,0.18));
+  transition: transform 140ms ease, box-shadow 140ms ease, filter 120ms ease;
+}
+
+.openBtn:hover,
+.openBtn:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px color-mix(in srgb, var(--accent) 20%, rgba(0,0,0,0.28));
+}
+
+/* ensure contrast if accent is very light by inverting text color when needed (basic check) */
+.openBtn[style*="#"] {
+  color: #fff;
+}
 .modalBackdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; z-index:99999; pointer-events: auto; }
 .modalPanel { position: relative; z-index: 100000; width: 680px; max-width: 92%; background: rgba(10,12,14,0.96); border-radius:14px; padding: 14px; }
 .closeBtn { background: transparent; border: none; color: #fff; cursor: pointer }

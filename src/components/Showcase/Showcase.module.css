@@ -1,13 +1,16 @@
 .comingSoonWrapper {
+  /* keep the showcase visually constrained like the rest of the site */
   width: 100%;
+  max-width: 1100px;
+  margin: 2.5rem auto 2rem auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 220px;
-  margin: 2.5rem 0 2rem 0;
+  min-height: 160px;
+  padding: 18px;
   position: relative;
-  background-color: #000000;
-  border-radius: 20px;
+  background-color: #0b0b0b; /* small dark panel consistent with site */
+  border-radius: 18px;
   z-index: 10;
 }
 
@@ -102,7 +105,7 @@
 .gridBackground {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 0; /* sit behind the card */
   pointer-events: none;
   background-image: repeating-linear-gradient(
     to right, rgba(255,68,68,0.18) 0px, rgba(255,68,68,0.18) 2px, transparent 2px, transparent 32px

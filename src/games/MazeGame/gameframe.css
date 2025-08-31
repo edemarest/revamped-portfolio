@@ -1,0 +1,94 @@
+.mg-root {
+	position: fixed;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 9999; /* ensure it sits above other page content */
+	padding: 20px; /* give room on small screens */
+}
+.mg-backdrop {
+	position: absolute;
+	inset: 0;
+	background: rgba(0,0,0,0.6);
+	backdrop-filter: blur(2px);
+}
+.mg-frame {
+	position: relative;
+	z-index: 10000;
+	width: min(920px, 100%);
+	max-height: calc(100% - 40px);
+	background: var(--mg-panel-bg, rgb(18, 18, 18));
+	color: var(--mg-panel-fore, #fff);
+	border-radius: 14px;
+	padding: 24px;
+	box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+	overflow: auto; /* allow inner scrolling if content is large */
+	-webkit-overflow-scrolling: touch;
+}
+
+/* small utility to keep the preview area from collapsing */
+.mg-frame .ss-preview {
+	min-width: 220px;
+	min-height: 160px;
+}
+
+.mg-frame canvas[style] {
+	/* ensure canvases inside frame don't intercept pointer events by default */
+	pointer-events: none;
+}
+
+/* Close X in top-right */
+.mg-close {
+	position: absolute;
+	right: 12px;
+	top: 12px;
+	z-index: 11000;
+	background: transparent;
+	border: none;
+	color: #fff;
+	font-size: 18px;
+	padding: 6px 10px;
+	cursor: pointer;
+}
+.mg-close:focus { outline: 2px solid rgba(255,255,255,0.12); border-radius: 8px }
+
+/* Quit button visible during gameplay */
+.mg-quit {
+	position: absolute;
+	right: 12px;
+	bottom: 12px;
+	z-index: 11000;
+	background: rgba(255,255,255,0.06);
+	color: #fff;
+	border: 1px solid rgba(255,255,255,0.06);
+	padding: 8px 12px;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+
+.mg-root {
+	position: fixed;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 9999; /* ensure it sits above other page content */
+}
+.mg-backdrop {
+	position: absolute;
+	inset: 0;
+	background: rgba(0,0,0,0.6);
+	backdrop-filter: blur(2px);
+}
+.mg-frame {
+	position: relative;
+	z-index: 10000;
+	max-width: calc(100% - 40px);
+	max-height: calc(100% - 40px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
