@@ -16,6 +16,8 @@ import {
   faLeaf
 } from '@fortawesome/free-solid-svg-icons'
 import { faFire as faFirebase } from '@fortawesome/free-solid-svg-icons'
+import { faDatabase, faChartLine, faBolt, faLock } from '@fortawesome/free-solid-svg-icons'
+import { faDocker } from '@fortawesome/free-brands-svg-icons'
 
 const luaSvgIcon = <img src={luaIcon} alt="Lua" style={{ marginRight: 6, verticalAlign: 'middle', width: 18, height: 18, filter: 'invert(1)' }} />;
 
@@ -35,3 +37,13 @@ export const tagIconMap: Record<string, React.ReactNode> = {
   'Swift': <FontAwesomeIcon icon={faSwift} style={tagIconStyle} />,
   'Lua': luaSvgIcon
 };
+
+// Additional mappings for technologies without a dedicated SVG in the repo
+// Use FontAwesome symbols where available and a small text fallback for TypeScript
+tagIconMap['Docker'] = <FontAwesomeIcon icon={faDocker} style={tagIconStyle} />;
+tagIconMap['Docker Compose'] = <FontAwesomeIcon icon={faDocker} style={tagIconStyle} />;
+tagIconMap['PostgreSQL'] = <FontAwesomeIcon icon={faDatabase} style={tagIconStyle} />;
+tagIconMap['Chart.js'] = <FontAwesomeIcon icon={faChartLine} style={tagIconStyle} />;
+tagIconMap['Vite'] = <FontAwesomeIcon icon={faBolt} style={tagIconStyle} />;
+tagIconMap['Lucia'] = <FontAwesomeIcon icon={faLock} style={tagIconStyle} />;
+tagIconMap['TypeScript'] = <span style={{ ...tagIconStyle, fontWeight: 700 }}>TS</span>;

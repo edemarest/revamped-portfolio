@@ -28,8 +28,9 @@
                 { "label": "Google Web Designer", "emphasized": false },
                 { "label": "Biopython", "emphasized": false },
                 { "label": "RNA-Seq", "emphasized": true },
-                { "label": "EC2", "emphasized": false }
-            ]
+                { "label": "EC2", "emphasized": false },                { "label": "Chart.js", "emphasized": false },
+                { "label": "Lucia (auth)", "emphasized": false },
+                { "label": "Docker", "emphasized": true }            ]
         },
         {
             "category": "Database Design",
@@ -38,7 +39,7 @@
                 { "label": "MongoDB", "emphasized": true },
                 { "label": "Firebase", "emphasized": false },
                 { "label": "SQLite", "emphasized": true },
-                { "label": "PostgreSQL", "emphasized": false },
+                { "label": "PostgreSQL", "emphasized": true },
                 { "label": "MySQL", "emphasized": false },
                 { "label": "Tableau", "emphasized": false },
                 { "label": "Dremio", "emphasized": false },
