@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './endscreen.css'
 
 export default function EndScreen({ stats, onRestart, onClose, avatar }: { stats: any, onRestart: () => void, onClose?: () => void, avatar?: string }) {
