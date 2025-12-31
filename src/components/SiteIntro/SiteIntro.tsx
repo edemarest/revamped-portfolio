@@ -6,7 +6,7 @@ const SiteIntro = () => (
         <div className={styles.bannerText}>
             <div className={styles.bannerHeadline}>
                 <FaHandSparkles className={styles.reactIcon} />
-                <b>Welcome to my 2025 Portfolio!</b>
+                <b>Welcome to my 2026 Portfolio!</b>
             </div>
             <div className={styles.bannerSubtext}>
                 <span className={styles.dot}>•</span>
