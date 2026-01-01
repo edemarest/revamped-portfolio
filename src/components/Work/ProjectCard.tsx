@@ -52,6 +52,14 @@ function buildImageFallbacks(src?: string, explicitFallback?: string): string[] 
     return Array.from(new Set(fallbacks)).filter(f => f && f !== src);
 }
 
+function getVideoMimeType(src: string): string | undefined {
+    const normalized = src.split('?')[0].toLowerCase();
+    if (normalized.endsWith('.mp4')) return 'video/mp4';
+    if (normalized.endsWith('.webm')) return 'video/webm';
+    if (normalized.endsWith('.mov')) return 'video/quicktime';
+    return undefined;
+}
+
 function FallbackImage(props: {
     src: string
     fallbackSrc?: string
@@ -183,6 +191,7 @@ export default function ProjectCard({ project, isExpanded, onOpen, onClose }: Pr
                                         );
                                     }
                                     if (media.type === "video") {
+                                        const mimeType = getVideoMimeType(media.fileSrc);
                                         return (
                                             <div key={i} className={styles.videoWrapper}>
                                                 <video
@@ -192,7 +201,7 @@ export default function ProjectCard({ project, isExpanded, onOpen, onClose }: Pr
                                                     preload="metadata"
                                                     poster={media.poster}
                                                 >
-                                                    <source src={media.fileSrc} />
+                                                    <source src={media.fileSrc} type={mimeType} />
                                                 </video>
                                             </div>
                                         );

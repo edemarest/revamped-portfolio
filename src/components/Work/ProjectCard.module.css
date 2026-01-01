@@ -783,6 +783,7 @@
 .videoWrapper, .slidesWrapper {
   position: relative;
   width: 100%;
+  aspect-ratio: 16 / 9;
   margin-bottom: 1rem;
   border-radius: 10px;
   overflow: hidden;
@@ -792,25 +793,20 @@
 
 /* Embedded media sizing */
 .embeddedVideo, .embeddedSlides {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: 180px;
+  height: 100%;
   border-radius: 10px;
   border: none;
   background: #222;
   display: block;
-  transition: height 0.3s;
-}
-
-/* Larger height for single/double media (set via inline style) */
-.embeddedVideo[style*="height: 380px"], .embeddedSlides[style*="height: 380px"] {
-  height: 380px !important;
-}
-.embeddedVideo[style*="height: 260px"], .embeddedSlides[style*="height: 260px"] {
-  height: 260px !important;
+  transition: opacity 0.2s;
 }
 
 @media (max-width: 700px) {
-  .embeddedVideo, .embeddedSlides {
-    height: 140px;
+  .videoWrapper, .slidesWrapper {
+    width: 100vw;
+    max-width: 100vw;
   }
 }
