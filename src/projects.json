@@ -16,18 +16,21 @@
         "tags": ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Docker", "Chart.js"]
       },
       {
-        "id": "pokemon-sleep-research-community",
-        "title": "Pok\u00e9mon Sleep Research Community",
-        "short": "A privacy-focused community for Pok\u00e9mon Sleep players. Features friend code sharing, posts, and tag-based filtering.",
-        "details": "A community forum and friend code-sharing site for Pok\u00e9mon Sleep players. Built with React and Firebase, the platform offers privacy-aware code sharing, discussion posts, and a tag-based filtering system. Users can share entries, earn reputation, and connect with others while protecting their codes from spammers.\n\nChallenges: Developed secure authentication and Firestore rules for privacy-preserving features. Created a flexible, scalable data structure for posts and user activity. Implemented a dynamic masonry layout and profanity filter to maintain quality user contributions.",
+        "id": "lineslight",
+        "title": "LinesLight (Beta)",
+        "short": "Real-time MBTA train tracking web app with route planning, accessibility features, and saved locations. Desktop and mobile alternative to MBTA Go.",
+        "details": "LinesLight is a web app that provides real-time tracking of all MBTA lines, stops, and trains, enabling users to view upcoming departures without complex navigation. Features include accessibility information, saved locations (Home, Work, etc.), and upcoming AI-powered trip planning. Available on desktop and mobile, offering similar functionality to the MBTA Go app.\n\nYou can view the live site at https://lineslight.live.\n\nTech highlights: React frontend with TypeScript, Node.js backend with TypeScript, and Redis caching for lightweight, fast performance.",
         "media": [
-          { "type": "image", "fileSrc": "/assets/project-images/psc.png" },
-          { "type": "image", "fileSrc": "/assets/project-images/psc2.png" },
-          { "type": "image", "fileSrc": "/assets/project-images/psc3.png" }
+          { "type": "image", "fileSrc": "/assets/project-images/lineslight-logo.png" },
+          { "type": "video", "fileSrc": "/assets/project-images/lineslight-video.mp4", "poster": "/assets/project-images/lineslight-logo.png" },
+          { "type": "image", "fileSrc": "/assets/project-images/lineslight-1.png" },
+          { "type": "image", "fileSrc": "/assets/project-images/lineslight-2.png" },
+          { "type": "image", "fileSrc": "/assets/project-images/lineslight-3.png" }
         ],
-        "cover": "/assets/project-images/psc-logo.png",
-        "link": "https://pokemon-sleep-research-community.com",
-        "tags": ["Firebase", "React", "Node.js"]
+        "cover": "/assets/project-images/lineslight-cover.gif",
+        "coverFallback": "/assets/project-images/lineslight-logo.png",
+        "link": "https://lineslight.live",
+        "tags": ["React", "TypeScript", "Node.js", "Redis"]
       },
       {
         "id": "phas-evidence-tracker",
@@ -38,6 +41,7 @@
           { "type": "youtube", "id": "Ia5rDEf-x7s" }
         ],
         "cover": "/assets/project-images/phas-journal-cover.gif",
+        "coverFallback": "/assets/project-images/phas-journal-cover.png",
         "link": "https://phas-evidence-tracker.onrender.com/",
         "tags": ["React", "Node.js", "Express", "Discord SDK"]
       },

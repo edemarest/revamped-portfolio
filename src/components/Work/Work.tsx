@@ -7,6 +7,7 @@ import { FaFilter, FaCode } from 'react-icons/fa'
 
 type MediaItem =
   | { type: "image"; fileSrc: string }
+  | { type: "video"; fileSrc: string; poster?: string }
   | { type: "youtube"; id: string }
   | { type: "slides"; id: string }
 

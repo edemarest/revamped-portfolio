@@ -3,10 +3,11 @@ import styles from './ProjectCard.module.css'
 import Tag from './Tag'
 import { tagIconMap } from './TagIcons'
 import { FaSearch } from 'react-icons/fa'
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 type MediaItem = 
   | { type: "image"; fileSrc: string }
+    | { type: "video"; fileSrc: string; poster?: string }
   | { type: "youtube"; id: string }
   | { type: "slides"; id: string }
 
@@ -17,6 +18,7 @@ type Project = {
     details: string
     media?: MediaItem[]
     cover?: string
+    coverFallback?: string
     link?: string
     tags: string[]
 }
@@ -28,14 +30,117 @@ type Props = {
     onClose: () => void
 }
 
+function buildImageFallbacks(src?: string, explicitFallback?: string): string[] {
+    if (!src) return explicitFallback ? [explicitFallback] : [];
+
+    const normalizedSrc = src.split('?')[0];
+    const fallbacks: string[] = [];
+
+    if (explicitFallback && explicitFallback !== src) fallbacks.push(explicitFallback);
+
+    if (/\.gif$/i.test(normalizedSrc)) {
+        fallbacks.push(src.replace(/\.gif(\?.*)?$/i, '.png$1'));
+        fallbacks.push(src.replace(/\.gif(\?.*)?$/i, '.jpg$1'));
+        fallbacks.push(src.replace(/\.gif(\?.*)?$/i, '.jpeg$1'));
+    } else if (/\.png$/i.test(normalizedSrc)) {
+        fallbacks.push(src.replace(/\.png(\?.*)?$/i, '.jpg$1'));
+        fallbacks.push(src.replace(/\.png(\?.*)?$/i, '.jpeg$1'));
+    } else if (/\.(jpe?g)$/i.test(normalizedSrc)) {
+        fallbacks.push(src.replace(/\.(jpe?g)(\?.*)?$/i, '.png$2'));
+    }
+
+    return Array.from(new Set(fallbacks)).filter(f => f && f !== src);
+}
+
+function FallbackImage(props: {
+    src: string
+    fallbackSrc?: string
+    alt: string
+    className?: string
+    onClick?: React.MouseEventHandler<HTMLImageElement>
+}) {
+    const { src, fallbackSrc, alt, className, onClick } = props;
+    const fallbacks = useMemo(() => buildImageFallbacks(src, fallbackSrc), [src, fallbackSrc]);
+    const [currentSrc, setCurrentSrc] = useState(src);
+    const [attempt, setAttempt] = useState(0);
+
+    useEffect(() => {
+        setCurrentSrc(src);
+        setAttempt(0);
+    }, [src]);
+
+    const handleError = () => {
+        if (attempt >= fallbacks.length) return;
+        const next = fallbacks[attempt];
+        setAttempt(attempt + 1);
+        setCurrentSrc(next);
+    };
+
+    return (
+        <img
+            src={currentSrc}
+            alt={alt}
+            className={className}
+            loading="lazy"
+            onError={handleError}
+            onClick={onClick}
+        />
+    );
+}
+
+function renderDetails(details: string, projectId: string) {
+    const highlightUrl = projectId === 'lineslight' ? 'https://lineslight.live' : null;
+
+    const withLink = (text: string) => {
+        if (!highlightUrl || !text.includes(highlightUrl)) return text;
+        const parts = text.split(highlightUrl);
+        return (
+            <>
+                {parts.map((part, idx) => (
+                    <span key={idx}>
+                        {part}
+                        {idx < parts.length - 1 && (
+                            <a
+                                href={highlightUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.inlineLink}
+                            >
+                                {highlightUrl}
+                            </a>
+                        )}
+                    </span>
+                ))}
+            </>
+        );
+    };
+
+    return details.split('\n').map((line, idx, arr) => (
+        <span key={idx}>
+            {withLink(line)}
+            {idx < arr.length - 1 && <br />}
+        </span>
+    ));
+}
+
 export default function ProjectCard({ project, isExpanded, onOpen, onClose }: Props) {
     const [expandedImgIdx, setExpandedImgIdx] = useState<number | null>(null);
+    const isCoverGif = Boolean(project.cover && /\.gif(\?.*)?$/i.test(project.cover));
 
     return (
         <>
             <div className={styles.card} onClick={onOpen}>
                 {project.cover && (
-                    <img src={project.cover} alt={project.title} className={styles.projectImage} />
+                    <FallbackImage
+                        src={project.cover}
+                        fallbackSrc={project.coverFallback}
+                        alt={project.title}
+                        className={
+                            isCoverGif
+                                ? `${styles.projectCoverImage} ${styles.projectCoverImageCropped}`
+                                : styles.projectCoverImage
+                        }
+                    />
                 )}
                 <h3 className={styles.title}>{project.title}</h3>
                 <div className={styles.cardTags}>
@@ -54,12 +159,17 @@ export default function ProjectCard({ project, isExpanded, onOpen, onClose }: Pr
                             <div className={styles.mediaColumn}>
                                 {project.media?.map((media, i) => {
                                     if (media.type === "image") {
+                                        const isGif = /\.gif(\?.*)?$/i.test(media.fileSrc);
                                         return (
                                             <div key={i} className={styles.imageWrapper}>
-                                                <img
+                                                <FallbackImage
                                                     src={media.fileSrc}
                                                     alt={`Screenshot ${i + 1}`}
-                                                    className={styles.projectImage}
+                                                    className={
+                                                        isGif
+                                                            ? `${styles.projectMediaImage} ${styles.projectMediaImageCropped}`
+                                                            : styles.projectMediaImage
+                                                    }
                                                 />
                                                 <button
                                                     className={styles.expandImgBtn}
@@ -69,6 +179,21 @@ export default function ProjectCard({ project, isExpanded, onOpen, onClose }: Pr
                                                 >
                                                     <FaSearch style={{ verticalAlign: 'middle', fontSize: '1.2rem' }} />
                                                 </button>
+                                            </div>
+                                        );
+                                    }
+                                    if (media.type === "video") {
+                                        return (
+                                            <div key={i} className={styles.videoWrapper}>
+                                                <video
+                                                    className={styles.embeddedVideo}
+                                                    controls
+                                                    playsInline
+                                                    preload="metadata"
+                                                    poster={media.poster}
+                                                >
+                                                    <source src={media.fileSrc} />
+                                                </video>
                                             </div>
                                         );
                                     }
@@ -111,7 +236,7 @@ export default function ProjectCard({ project, isExpanded, onOpen, onClose }: Pr
                                         </span>
                                     ))}
                                 </div>
-                                <p className={styles.cardDescription}>{project.details}</p>
+                                <p className={styles.cardDescription}>{renderDetails(project.details, project.id)}</p>
                             </div>
                         </div>
                         {/* Move View Project button into its own flex row at the bottom of modal */}
@@ -134,16 +259,15 @@ export default function ProjectCard({ project, isExpanded, onOpen, onClose }: Pr
                                     className={styles.expandedImgContainer}
                                     onClick={e => e.stopPropagation()}
                                 >
-                                    <img
-                                        src={
-                                            project.media && expandedImgIdx !== null &&
-                                            project.media[expandedImgIdx]?.type === "image"
-                                                ? (project.media[expandedImgIdx] as { type: "image"; fileSrc: string }).fileSrc
-                                                : ''
-                                        }
-                                        alt={`Screenshot ${expandedImgIdx !== null ? expandedImgIdx + 1 : ''}`}
-                                        className={styles.expandedImg}
-                                    />
+                                    {project.media &&
+                                        expandedImgIdx !== null &&
+                                        project.media[expandedImgIdx]?.type === 'image' && (
+                                            <FallbackImage
+                                                src={(project.media[expandedImgIdx] as { type: 'image'; fileSrc: string }).fileSrc}
+                                                alt={`Screenshot ${expandedImgIdx + 1}`}
+                                                className={styles.expandedImg}
+                                            />
+                                        )}
                                     <button
                                         className={styles.closeExpandedImgBtn}
                                         onClick={() => setExpandedImgIdx(null)}
