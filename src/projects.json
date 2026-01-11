@@ -38,7 +38,6 @@
         ],
         "cover": "/assets/project-images/phas-journal-cover.gif",
         "coverFallback": "/assets/project-images/phas-journal-cover.png",
-        "link": "https://phas-evidence-tracker.onrender.com/",
         "tags": ["React", "Node.js", "Express", "Discord SDK"]
       },
       {
@@ -89,7 +88,6 @@
           { "type": "image", "fileSrc": "/assets/project-images/swe_2.png" }
         ],
         "cover": "/assets/project-images/swe-logo.png",
-        "link": "https://fake-so-client-418.onrender.com",
         "tags": ["Express", "MongoDB", "Node.js", "React"]
       },
       {
