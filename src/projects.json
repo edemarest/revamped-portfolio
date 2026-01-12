@@ -18,7 +18,7 @@
       {
         "id": "lineslight",
         "title": "LinesLight (Beta)",
-        "short": "Real-time MBTA train tracking web app with route planning, accessibility features, and saved locations. Desktop and mobile alternative to MBTA Go.",
+        "short": "Built to plan your commute in seconds. Real-time MBTA train tracking web app with ALL depature reporting, accessibility browsing, and saved locations on the map. Browser alternative to MBTA Go App.",
         "details": "LinesLight is a web app that provides real-time tracking of all MBTA lines, stops, and trains, enabling users to view upcoming departures without complex navigation. Features include accessibility information, saved locations (Home, Work, etc.), and upcoming AI-powered trip planning. Available on desktop and mobile, offering similar functionality to the MBTA Go app.\n\nYou can view the live site at https://lineslight.live.\n\nTech highlights: React frontend with TypeScript, Node.js backend with TypeScript, and Redis caching for lightweight, fast performance.",
         "media": [
           { "type": "youtube", "id": "5EDvdh5JT_Q" }
