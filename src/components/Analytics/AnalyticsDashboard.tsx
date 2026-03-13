@@ -144,9 +144,9 @@ export const AnalyticsDashboard = () => {
                   cx="50%"
                   cy="50%"
                   outerRadius={80}
-                  label={({ country, count }) => `${country} (${count})`}
+                  label={(props) => `${props.payload.country} (${props.payload.count})`}
                 >
-                  {data.topCountries.map((entry, index) => (
+                  {data.topCountries.map((_, index) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
