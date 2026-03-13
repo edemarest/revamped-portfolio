@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Cookie } from 'lucide-react';
 import styles from './ConsentBanner.module.css';
 
 export const ConsentBanner = () => {
@@ -29,20 +30,17 @@ export const ConsentBanner = () => {
   return (
     <div className={styles.banner}>
       <div className={styles.content}>
+        <Cookie className={styles.icon} size={24} />
         <p className={styles.text}>
-          We collect visitor analytics (location, page views) to understand our audience and improve your experience. 
-          We do not share your data with third parties.
+          I am collecting simple location data so I can experiment with Netlify functions. Allow cookies?
         </p>
         <div className={styles.buttons}>
           <button onClick={handleAccept} className={styles.acceptBtn}>
-            Accept Analytics
+            Allow
           </button>
           <button onClick={handleReject} className={styles.rejectBtn}>
-            Reject
+            Decline
           </button>
-          <a href="/privacy-policy" className={styles.link}>
-            Privacy Policy
-          </a>
         </div>
       </div>
     </div>
