@@ -10,10 +10,15 @@ import About from './components/About/About'
 import Footer from './components/Footer/Footer'
 import Skills from './components/Skills/Skills'
 import FloatingEmailButton from './components/FloatingEmailButton/FloatingEmailButton'
+import { ConsentBanner } from './components/ConsentBanner'
+import { useVisitorTracking } from './hooks/useVisitorTracking'
 
 function App() {
+  useVisitorTracking()
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <ConsentBanner />
       <Navbar />
       <Hero />
 
