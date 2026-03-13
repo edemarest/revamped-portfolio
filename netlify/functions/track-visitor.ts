@@ -25,13 +25,30 @@ const handler: Handler = async (event) => {
     const clientIP = event.headers['client-ip'] || event.headers['x-forwarded-for'] || 'unknown';
     const pageUrl = event.body ? JSON.parse(event.body).page || '' : '';
 
-    // Get geolocation data from ipapi.co
+    // Get geolocation data - try primary API first, then fallback
     let geoData: any = { country_name: 'Unknown', city: 'Unknown' };
     try {
-      const geoResponse = await fetch(`https://ipapi.co/${clientIP}/json/`);
-      geoData = await geoResponse.json();
+      // Try ipapi.co first
+      let geoResponse = await fetch(`https://ipapi.co/${clientIP}/json/`);
+      
+      // If that fails, try ip-api.com as fallback
+      if (!geoResponse.ok) {
+        console.log('ipapi.co failed, trying ip-api.com fallback');
+        geoResponse = await fetch(`http://ip-api.com/json/${clientIP}`);
+        if (geoResponse.ok) {
+          const data = await geoResponse.json();
+          geoData = {
+            country_name: data.country || 'Unknown',
+            city: data.city || 'Unknown',
+            latitude: data.lat || null,
+            longitude: data.lon || null,
+          };
+        }
+      } else {
+        geoData = await geoResponse.json();
+      }
     } catch (geoError) {
-      console.log('Geolocation API error:', geoError);
+      console.error('Geolocation API error:', geoError);
     }
 
     const visitorData: VisitorData = {
@@ -39,10 +56,10 @@ const handler: Handler = async (event) => {
       referrer: event.headers.referer || '',
       userAgent: event.headers['user-agent'] || '',
       timestamp: new Date().toISOString(),
-      country: geoData.country_name || 'Unknown',
+      country: geoData.country_name || geoData.country || 'Unknown',
       city: geoData.city || 'Unknown',
-      latitude: geoData.latitude || null,
-      longitude: geoData.longitude || null,
+      latitude: geoData.latitude || geoData.lat || null,
+      longitude: geoData.longitude || geoData.lon || null,
       ip_address: clientIP,
     };
 
