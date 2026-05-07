@@ -3,7 +3,6 @@ import styles from './Hero.module.css'
 import heroGif from '../../assets/hero-bg.gif'
 import heroAvatar from '../../assets/hero-avatar.png'
 import { FaDownload, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa'
-import bipLogo from '../../assets/company-logos/bip-logo.png'
 import regeneronLogo from '../../assets/company-logos/regeneron-logo.png'
 import remixLogo from '../../assets/company-logos/remix-logo.png'
 import vueLogo from '../../assets/company-logos/vue-logo.svg'
@@ -21,10 +20,9 @@ function useIsMobile() {
 
 const Hero = () => {
   const taglines = [
-    "Game dev roots, full-stack focus",
-    "Eye for design, mind for complex systems",
-    "Building for others since childhood",
-    "Honors CS student at Northeastern"
+    "Full-stack AI engineer with a designer's eye",
+    "Game dev roots, real-time systems, and interactive products",
+    "Eye for design, mind for complex systems"
   ];
 
   // Typing effect for name
@@ -98,9 +96,6 @@ const Hero = () => {
             <a href="https://vuehealth.com/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
               <img src={vueLogo} alt="Vue Health" />
             </a>
-            <a href="https://www.bip-group.com/en-us/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
-              <img src={bipLogo} alt="BIP" />
-            </a>
             <a href="https://www.regeneron.com/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
               <img src={regeneronLogo} alt="Regeneron" />
             </a>
@@ -118,7 +113,7 @@ const Hero = () => {
           </h1>
 
           <h2 className={`${styles.title} ${isTypingDone ? styles.fadeIn : styles.hidden} ${styles.staticGradientText}`}>
-            Full-Stack Developer
+            AI Engineer &amp; Full-Stack Developer
           </h2>
 
           <div className={styles.subtitleBlock}>
@@ -140,9 +135,6 @@ const Hero = () => {
               </a>
               <a href="https://vuehealth.com/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
                 <img src={vueLogo} alt="Vue Health" />
-              </a>
-              <a href="https://www.bip-group.com/en-us/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
-                <img src={bipLogo} alt="BIP" />
               </a>
               <a href="https://www.regeneron.com/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
                 <img src={regeneronLogo} alt="Regeneron" />

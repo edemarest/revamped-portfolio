@@ -1,5 +1,19 @@
     [
       {
+        "id": "hells-fortune",
+        "title": "Hell's Fortune",
+        "short": "Roblox Game with 1M+ visits and ~300 concurrent players. In Hell's Fortune, players can roll for characters, customize their own fan profile, trade with others, and more!",
+        "details": "Hell's Fortune is a Roblox game where players can roll for characters, customize their own fan profile, and explore several Hazbin-Hotel themed locations.\n\nFeatures include a gacha-style character system, a fully custom Scrapbook builder, character crafting, player-to-player trading, and several mini games — including a Barista-style service game and memory match.\n\nWhat makes this project important to me is the weight of full ownership. Players have invested real money, so uptime and stability are genuinely high-stakes. I manage a ticket system and community forum, take direct player feedback, and have shipped features that measurably improved retention and engagement — all with zero advertising.\n\nSo far, it is the #1 Hazbin Hotel game on Roblox with organic growth and no paid promotion.",
+        "cover": "/assets/project-images/hf_1.png",
+        "link": "https://www.roblox.com/games/105950169251296/HAZBIN-HOTEL-Hells-Fortune#!/about",
+        "tags": ["Roblox", "Lua"],
+        "media": [
+          { "type": "image", "fileSrc": "/assets/project-images/hf_1.png" },
+          { "type": "image", "fileSrc": "/assets/project-images/hf_2.png" },
+          { "type": "image", "fileSrc": "/assets/project-images/hf_3.png" }
+        ]
+      },
+      {
         "id": "rblxstats",
         "title": "RBLXStats (BETA)",
         "short": "Real-time Roblox game analytics with hourly sampling, retention rollups, and engagement ratings.",

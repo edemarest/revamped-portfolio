@@ -22,7 +22,7 @@ export default function ModelsSection() {
           3D Models
         </h2>
         <p className="section-body">
-          I am advanced at modeling and texturing 3D assets and do commissions for them as well as sell wearable assets on the Roblox Marketplace. I have extensive experience creating both stylized and realistic clothing, character accessories, environment assets, vehicles, and more.
+          I sell 3D wearables on the Roblox Marketplace and take commissions for custom modeling and texturing work. My range covers both stylized and realistic styles -- clothing, character accessories, environment assets, vehicles.
         </p>
         <div className={styles.sectionSubtitleTech}>
           <FaTools className={styles.sectionSubtitleIcon} />

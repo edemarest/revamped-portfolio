@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { GiGamepad } from 'react-icons/gi'
 // import Lua SVG icon
 import luaIcon from '/assets/custom-icons/lua.svg'
 import {
@@ -35,7 +36,8 @@ export const tagIconMap: Record<string, React.ReactNode> = {
   'React': <FontAwesomeIcon icon={faReact} style={tagIconStyle} />,
   'Node.js': <FontAwesomeIcon icon={faNodeJs} style={tagIconStyle} />,
   'Swift': <FontAwesomeIcon icon={faSwift} style={tagIconStyle} />,
-  'Lua': luaSvgIcon
+  'Lua': luaSvgIcon,
+  'Roblox': <GiGamepad style={tagIconStyle} />
 };
 
 // Additional mappings for technologies without a dedicated SVG in the repo

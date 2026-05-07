@@ -32,7 +32,7 @@ export default function Art() {
           Art
         </h2>
         <p className="section-body">
-          I have been drawing since I was in elementary school, and picked up digital art very early. I have been selling artwork commissions since I was in 5th grade and steadily increased my skills, prices, and marketing since then. I expanded my expertise into vector art and UI design, animation, painting, and more. While I focus more on programming now and rarely take commissions, I like to sit down and draw on Procreate now and then to destress. I enjoy painting horror-themed pieces and drawing characters from my favorite shows.
+          I've been selling artwork commissions since 5th grade, steadily raising my skills, prices, and client base over the years. Along the way I expanded into vector art, UI design, animation, and painting. These days I focus more on programming and rarely take commissions, but I still draw on Procreate regularly -- mostly horror-themed pieces and characters from shows I love.
         </p>
         <div className={styles.sectionSubtitleTech}>
           <FaTools className={styles.sectionSubtitleIcon} />
