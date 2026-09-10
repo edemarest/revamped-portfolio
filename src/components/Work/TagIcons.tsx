@@ -18,7 +18,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { faFire as faFirebase } from '@fortawesome/free-solid-svg-icons'
 import { faDatabase, faChartLine, faBolt, faLock } from '@fortawesome/free-solid-svg-icons'
-import { faDocker } from '@fortawesome/free-brands-svg-icons'
+import { faDocker, faCloudflare } from '@fortawesome/free-brands-svg-icons'
 
 const luaSvgIcon = <img src={luaIcon} alt="Lua" style={{ marginRight: 6, verticalAlign: 'middle', width: 18, height: 18, filter: 'invert(1)' }} />;
 
@@ -49,3 +49,4 @@ tagIconMap['Chart.js'] = <FontAwesomeIcon icon={faChartLine} style={tagIconStyle
 tagIconMap['Vite'] = <FontAwesomeIcon icon={faBolt} style={tagIconStyle} />;
 tagIconMap['Lucia'] = <FontAwesomeIcon icon={faLock} style={tagIconStyle} />;
 tagIconMap['TypeScript'] = <span style={{ ...tagIconStyle, fontWeight: 700 }}>TS</span>;
+tagIconMap['Cloudflare'] = <FontAwesomeIcon icon={faCloudflare} style={tagIconStyle} />;

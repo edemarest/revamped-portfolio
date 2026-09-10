@@ -6,7 +6,7 @@ const SiteIntro = () => (
         <div className={styles.bannerText}>
             <div className={styles.bannerHeadline}>
                 <FaHandSparkles className={styles.reactIcon} />
-                <b>Full-stack AI engineer • Start within 3 weeks of offer • Relocating to SF Bay Area</b>
+                <b>Building Scientific Authoring at Eli Lilly's Frontier AI Labs • Based in Boston, MA</b>
             </div>
         </div>
     </section>

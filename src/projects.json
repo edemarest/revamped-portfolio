@@ -1,5 +1,22 @@
     [
       {
+        "id": "masterpiece-market",
+        "title": "Masterpiece Market (Closed Beta)",
+        "short": "A real art program inside Roblox, with a market attached. Layered painting studio, limited editions with royalties on every resale, and AI-screened publishing. Built solo.",
+        "details": "Masterpiece Market is a Roblox game I'm building solo. In most creative games you make something and then it's over -- here, what you make becomes an asset with a price, a supply, an owner history, and a royalty back to you. Making art feeds the market, and the market is the reason to make more.\n\nThe studio is a real art program, not a minigame: someone who uses Procreate or Photoshop should sit down and recognize it. Up to 12 layers with blend modes, clipping masks and alpha lock; liquify, free transform, shape and magic-wand selection; named brushes with a stabilizer and pressure support; and a pixel mode with frame animations that play live in the world. Every finished piece gets a replayable speedpaint.\n\nThe market: artists price their own work in ArtBux, the original is always edition #1, and supply is hard-capped at 50 per piece. The original creator earns a 15% royalty on every resale, forever, and an 8% market tax keeps the currency stable. Pieces sell from your own booth or on consignment in other players' galleries, and every piece carries its own ledger.\n\nSafety was the first thing I built. A game where kids upload drawings to each other is a moderation problem before it is a game, so every publish passes a vision model and a separate text-recognition pass before going live, with a review bot that lets me inspect and override any decision. There is no generative AI in the game -- every image is drawn by a player.\n\nTech: Luau with React-lua, Charm and Lapis on a Rojo/Wally/Zap toolchain; a Cloudflare Workers backend with D1, R2 and KV for blob storage, ledgers and moderation; plus a companion site and Discord bot.",
+        "cover": "/assets/project-images/mm-cover.jpg",
+        "link": "https://www.roblox.com/games/131094069645707/Masterpiece-Market",
+        "tags": ["Roblox", "Lua", "Cloudflare"],
+        "media": [
+          { "type": "image", "fileSrc": "/assets/project-images/mm-editor.jpg" },
+          { "type": "image", "fileSrc": "/assets/project-images/mm-gallery.jpg" },
+          { "type": "image", "fileSrc": "/assets/project-images/mm-edition.jpg" },
+          { "type": "image", "fileSrc": "/assets/project-images/mm-market.jpg" },
+          { "type": "image", "fileSrc": "/assets/project-images/mm-publish.jpg" },
+          { "type": "image", "fileSrc": "/assets/project-images/mm-speedpaint.jpg" }
+        ]
+      },
+      {
         "id": "hells-fortune",
         "title": "Hell's Fortune",
         "short": "Roblox Game with 1M+ visits and ~300 concurrent players. In Hell's Fortune, players can roll for characters, customize their own fan profile, trade with others, and more!",
@@ -15,9 +32,9 @@
       },
       {
         "id": "rblxstats",
-        "title": "RBLXStats (BETA)",
-        "short": "Real-time Roblox game analytics with hourly sampling, retention rollups, and engagement ratings.",
-          "details": "RBLXStats (also referred to as RBLXRank) is a full-stack analytics platform for Roblox developers. The system performs hourly sampling of player counts for tracked games, stores raw samples for 90 days, and compacts data into daily/weekly/monthly rollups for long-term trends. Tracking states (Tracking, Following, Archived) control sampling and quota usage. Key features: shared sampling to avoid duplicate API calls when multiple users track the same game, precomputed daily aggregates for fast dashboards, system metrics (coverage, freshness, sample count), and an engagement rating computed as (AvgPlaying / Visits in 24h) × 100%.\n\nYou can view the live site at https://rblxstats.live.\n\nAn AI agent (presented as an anime-style assistant) can analyze a game's performance and surface strengths and concerns when a 24-hour sampling window is available — it highlights retention issues, momentum shifts, and suggestions for improvements.\n\nTech highlights: React 18 + TypeScript frontend (Vite), Node.js + Express backend (TypeScript), PostgreSQL 15 with monthly partitioning for experience_metrics, node-postgres driver, background hourly sampling workers, Docker Compose deployment, and Chart.js for visualizations. Designed for efficient API usage, predictable retention, and quick API responses backed by nightly rollups.",
+        "title": "RBLXStats (Offline)",
+        "short": "Real-time Roblox game analytics with hourly sampling, retention rollups, and engagement ratings. Not currently hosted.",
+          "details": "RBLXStats (also referred to as RBLXRank) is a full-stack analytics platform for Roblox developers. The system performs hourly sampling of player counts for tracked games, stores raw samples for 90 days, and compacts data into daily/weekly/monthly rollups for long-term trends. Tracking states (Tracking, Following, Archived) control sampling and quota usage. Key features: shared sampling to avoid duplicate API calls when multiple users track the same game, precomputed daily aggregates for fast dashboards, system metrics (coverage, freshness, sample count), and an engagement rating computed as (AvgPlaying / Visits in 24h) × 100%.\n\nNote: this project is not up right now. I have a job now and don't want to pay for domains or AWS, so the site has been taken offline.\n\nAn AI agent (presented as an anime-style assistant) can analyze a game's performance and surface strengths and concerns when a 24-hour sampling window is available — it highlights retention issues, momentum shifts, and suggestions for improvements.\n\nTech highlights: React 18 + TypeScript frontend (Vite), Node.js + Express backend (TypeScript), PostgreSQL 15 with monthly partitioning for experience_metrics, node-postgres driver, background hourly sampling workers, Docker Compose deployment, and Chart.js for visualizations. Designed for efficient API usage, predictable retention, and quick API responses backed by nightly rollups.",
         "media": [
           { "type": "image", "fileSrc": "/assets/project-images/rblxstats-1.png" },
           { "type": "image", "fileSrc": "/assets/project-images/rblxstats-2.png" },
@@ -26,7 +43,6 @@
           { "type": "image", "fileSrc": "/assets/project-images/rblxstats-6.png" }
         ],
         "cover": "/assets/project-images/rblx-stats-cover.png",
-        "link": "https://rblxstats.live",
         "tags": ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Docker", "Chart.js"]
       },
       {

@@ -6,6 +6,7 @@ import { FaDownload, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa'
 import regeneronLogo from '../../assets/company-logos/regeneron-logo.png'
 import remixLogo from '../../assets/company-logos/remix-logo.png'
 import vueLogo from '../../assets/company-logos/vue-logo.svg'
+import lillyLogo from '../../assets/company-logos/lilly-logo.svg'
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false)
@@ -99,6 +100,9 @@ const Hero = () => {
             <a href="https://www.regeneron.com/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
               <img src={regeneronLogo} alt="Regeneron" />
             </a>
+            <a href="https://www.lilly.com/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
+              <img src={lillyLogo} alt="Eli Lilly and Company" />
+            </a>
           </div>
         </div>
       )}
@@ -113,7 +117,7 @@ const Hero = () => {
           </h1>
 
           <h2 className={`${styles.title} ${isTypingDone ? styles.fadeIn : styles.hidden} ${styles.staticGradientText}`}>
-            AI Engineer &amp; Full-Stack Developer
+            Principal Engineer · Frontier AI Labs @ Eli Lilly
           </h2>
 
           <div className={styles.subtitleBlock}>
@@ -138,6 +142,9 @@ const Hero = () => {
               </a>
               <a href="https://www.regeneron.com/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
                 <img src={regeneronLogo} alt="Regeneron" />
+              </a>
+              <a href="https://www.lilly.com/" target="_blank" rel="noopener noreferrer" className={styles.companyLogo}>
+                <img src={lillyLogo} alt="Eli Lilly and Company" />
               </a>
             </div>
           )}

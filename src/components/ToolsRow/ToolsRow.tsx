@@ -3,22 +3,10 @@ import styles from './ToolsRow.module.css'
 
 const tools = [
   {
-    name: 'RBLXStats',
-    logo: '/assets/project-logos/rblxstats_logo.png',
-    className: styles.rblxstatsButton,
-    href: 'https://rblxstats.live',
-  },
-  {
     name: 'LinesLight',
     logo: '/assets/project-logos/lineslight_logo.png',
     className: styles.lineslightButton,
     href: 'https://lineslight.live',
-  },
-  {
-    name: 'Inkdrop Studio',
-    logo: '/assets/project-logos/inkdrop_studio-logo.png',
-    className: styles.inkdropButton,
-    href: 'https://inkdrop-studio.com',
   },
 ]
 
